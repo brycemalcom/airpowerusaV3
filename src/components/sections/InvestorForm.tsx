@@ -74,8 +74,42 @@ export default function InvestorForm() {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Split name into first and last name
+      const nameParts = formData.name.trim().split(' ');
+      const firstname = nameParts[0] || '';
+      const lastname = nameParts.slice(1).join(' ') || '';
+      
+      // Prepare payload for HubSpot API
+      const payload = {
+        firstname,
+        lastname,
+        email: formData.email,
+        phone: formData.phone,
+        message: `Investment Range: ${formData.investmentRange}\n\nMessage: ${formData.message}`
+      };
+
+      console.log('About to submit payload:', payload);
+
+      // Submit to our API route
+      const response = await fetch('/api/hubspot/submit-investor', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log('Response status:', response.status);
+      console.log('Response:', response);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log('Form submitted successfully:', result);
       
       setIsSubmitted(true);
       setFormData({
@@ -87,6 +121,7 @@ export default function InvestorForm() {
       });
     } catch (error) {
       console.error('Form submission error:', error);
+      // You might want to show an error message to the user here
     } finally {
       setIsSubmitting(false);
     }

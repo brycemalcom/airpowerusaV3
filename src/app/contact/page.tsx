@@ -51,7 +51,7 @@ export default function ContactPage() {
                 <Phone className="h-6 w-6 text-primary mt-1" />
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">Phone</h3>
-                  <p className="text-muted-foreground">(760) 712-2890</p>
+                  <p className="text-muted-foreground">214.257.7957</p>
                 </div>
               </div>
 

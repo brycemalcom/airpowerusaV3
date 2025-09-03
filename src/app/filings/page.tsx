@@ -25,7 +25,7 @@ const secFilingData = {
     state: "WY",
     zipCode: "82801"
   },
-  phone: "760-533-8590",
+  phone: "214-257-7957",
   industryGroup: "Electric Utilities",
   revenueRange: "No Revenues",
   federalExemption: "06c",
