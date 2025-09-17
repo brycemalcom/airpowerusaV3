@@ -77,16 +77,51 @@ export default function InvestorCTA() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log("Investor form submission:", data);
-    
-    // Here you would typically send to your backend/CRM
-    // await sendToInvestorCRM(data);
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+    try {
+      // Split name into first and last name
+      const nameParts = data.fullName.trim().split(' ');
+      const firstname = nameParts[0] || '';
+      const lastname = nameParts.slice(1).join(' ') || '';
+      
+      // Prepare payload for HubSpot API (using same format as working investor form)
+      const payload = {
+        firstname,
+        lastname,
+        email: data.email,
+        phone: data.phone || '',
+        message: `Investment Interest: ${data.message || 'No specific message provided'}\n\nAccredited Investor: ${data.accreditedInvestor ? 'Yes' : 'No'}`
+      };
+
+      console.log('About to submit InvestorCTA payload:', payload);
+
+      // Submit to our existing investor API route
+      const response = await fetch('/api/hubspot/submit-investor', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log('InvestorCTA form submitted successfully:', result);
+      
+      setIsSubmitted(true);
+      form.reset();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // You might want to show an error message to the user here
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -100,11 +135,11 @@ export default function InvestorCTA() {
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Thank You for Your Interest
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-6">
               Your investor packet request has been received. Our team will review your submission and respond within 24 hours.
             </p>
-            <div className="text-sm text-muted-foreground">
-              Please check your email (including spam folder) for confirmation and next steps.
+            <div className="text-sm text-muted-foreground mb-8">
+              📧 <strong>Please check your spam, junk, and promotions folders</strong> to ensure you don't miss our response.
             </div>
           </Card>
         </div>

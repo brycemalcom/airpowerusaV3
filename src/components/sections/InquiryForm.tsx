@@ -19,20 +19,10 @@ interface FormData {
   organization: string;
   email: string;
   phone: string;
-  useCase: string;
   location: string;
   message: string;
 }
 
-const useCaseOptions = [
-  { value: "", label: "Select your sector..." },
-  { value: "agriculture", label: "Agriculture & Grow Operations" },
-  { value: "disaster-relief", label: "Disaster Relief & Emergency Response" },
-  { value: "utility", label: "Utilities & Grid Operators" },
-  { value: "military", label: "Military & Defense" },
-  { value: "construction", label: "Construction & Infrastructure" },
-  { value: "other", label: "Other" }
-];
 
 export default function InquiryForm() {
   const [formData, setFormData] = useState<FormData>({
@@ -40,7 +30,6 @@ export default function InquiryForm() {
     organization: "",
     email: "",
     phone: "",
-    useCase: "",
     location: "",
     message: ""
   });
@@ -48,7 +37,7 @@ export default function InquiryForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
@@ -67,7 +56,6 @@ export default function InquiryForm() {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    if (!formData.useCase) newErrors.useCase = "Please select your sector";
     if (!formData.message.trim()) newErrors.message = "Please provide some details about your needs";
 
     setErrors(newErrors);
@@ -82,8 +70,43 @@ export default function InquiryForm() {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Split name into first and last name
+      const nameParts = formData.name.trim().split(' ');
+      const firstname = nameParts[0] || '';
+      const lastname = nameParts.slice(1).join(' ') || '';
+      
+      // Prepare payload for HubSpot Customer API
+      const payload = {
+        firstname,
+        lastname,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.organization,
+        location: formData.location,
+        message: formData.message
+      };
+
+      console.log('About to submit customer inquiry payload:', payload);
+
+      // Submit to our customer API route
+      const response = await fetch('/api/hubspot/submit-customer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log('Customer API Response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Customer API Error Response:', errorText);
+        throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log('Customer inquiry form submitted successfully:', result);
       
       setIsSubmitted(true);
       setFormData({
@@ -91,12 +114,12 @@ export default function InquiryForm() {
         organization: "",
         email: "",
         phone: "",
-        useCase: "",
         location: "",
         message: ""
       });
     } catch (error) {
       console.error('Form submission error:', error);
+      // You might want to show an error message to the user here
     } finally {
       setIsSubmitting(false);
     }
@@ -114,8 +137,11 @@ export default function InquiryForm() {
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Thank You!
               </h3>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-4">
                 We've received your inquiry and will get back to you within 1 business day.
+              </p>
+              <p className="text-sm text-muted-foreground mb-6">
+                📧 <strong>Please check your spam, junk, and promotions folders</strong> to ensure you don't miss our response.
               </p>
               <Button 
                 variant="outline" 
@@ -228,41 +254,17 @@ export default function InquiryForm() {
                 </div>
               </div>
 
-              {/* Use Case and Location */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="useCase">Use Case / Sector *</Label>
-                  <select
-                    id="useCase"
-                    name="useCase"
-                    value={formData.useCase}
-                    onChange={handleInputChange}
-                    className={`flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30 ${
-                      errors.useCase ? "border-destructive" : ""
-                    }`}
-                  >
-                    {useCaseOptions.map(option => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.useCase && (
-                    <p className="text-sm text-destructive">{errors.useCase}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="location">Location or Region</Label>
-                  <Input
-                    id="location"
-                    name="location"
-                    type="text"
-                    value={formData.location}
-                    onChange={handleInputChange}
-                    placeholder="City, State, Country"
-                  />
-                </div>
+              {/* Location */}
+              <div className="space-y-2">
+                <Label htmlFor="location">Location or Region</Label>
+                <Input
+                  id="location"
+                  name="location"
+                  type="text"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  placeholder="City, State, Country"
+                />
               </div>
 
               {/* Message */}

@@ -139,8 +139,11 @@ export default function InvestorForm() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Thank You for Your Interest!
               </h3>
-              <p className="text-lg text-white/80 mb-6">
+              <p className="text-lg text-white/80 mb-4">
                 We've received your investment inquiry and will send you the investor packet within 24 hours.
+              </p>
+              <p className="text-sm text-white/60 mb-6">
+                📧 <strong>Please check your spam, junk, and promotions folders</strong> to ensure you don't miss our response.
               </p>
               <Button 
                 variant="outline" 

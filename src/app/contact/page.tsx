@@ -1,4 +1,7 @@
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,7 +10,153 @@ import { Label } from "@/components/ui/label";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 export default function ContactPage() {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof ContactFormData]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<ContactFormData> = {};
+    
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    
+    try {
+      // Split name into first and last name
+      const nameParts = formData.name.trim().split(' ');
+      const firstname = nameParts[0] || '';
+      const lastname = nameParts.slice(1).join(' ') || '';
+      
+      // Prepare payload for HubSpot Customer API
+      const payload = {
+        firstname,
+        lastname,
+        email: formData.email,
+        phone: '', // Contact form doesn't have phone
+        company: 'General Contact', // Default company for contact form
+        location: '', // Contact form doesn't have location
+        message: `Subject: ${formData.subject}\n\nMessage: ${formData.message}`
+      };
+
+      console.log('About to submit contact form payload:', payload);
+
+      // Submit to our customer API route
+      const response = await fetch('/api/hubspot/submit-customer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log('Contact API Response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Contact API Error Response:', errorText);
+        throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log('Contact form submitted successfully:', result);
+      
+      setIsSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // You might want to show an error message to the user here
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 py-24 pt-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                Thank You!
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-gray-300">
+                We've received your message and will get back to you within 1 business day.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto max-w-4xl px-6 py-24 lg:px-8">
+          <Card className="p-12 text-center bg-background/50 backdrop-blur-sm border-border">
+            <div className="mx-auto w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mb-6">
+              <CheckCircle2 className="w-10 h-10 text-green-500" />
+            </div>
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Message Sent Successfully
+            </h3>
+            <p className="text-lg text-muted-foreground mb-4">
+              Our team will review your inquiry and respond as soon as possible.
+            </p>
+            <p className="text-sm text-muted-foreground mb-6">
+              📧 <strong>Please check your spam, junk, and promotions folders</strong> to ensure you don't miss our response.
+            </p>
+            <Button 
+              variant="outline" 
+              onClick={() => setIsSubmitted(false)}
+              className="hover:bg-primary hover:text-primary-foreground"
+            >
+              Send Another Message
+            </Button>
+          </Card>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -78,7 +227,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <Card className="p-8 bg-background/50 backdrop-blur-sm border border-border">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-6">Send us a message</h3>
               </div>
@@ -90,10 +239,14 @@ export default function ContactPage() {
                     id="name"
                     name="name"
                     type="text"
-                    required
-                    className="mt-1"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className={`mt-1 ${errors.name ? "border-red-500" : ""}`}
                     placeholder="Your full name"
                   />
+                  {errors.name && (
+                    <p className="text-sm text-red-400 mt-1">{errors.name}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="email" className="text-foreground">Email *</Label>
@@ -101,10 +254,14 @@ export default function ContactPage() {
                     id="email"
                     name="email"
                     type="email"
-                    required
-                    className="mt-1"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className={`mt-1 ${errors.email ? "border-red-500" : ""}`}
                     placeholder="your.email@example.com"
                   />
+                  {errors.email && (
+                    <p className="text-sm text-red-400 mt-1">{errors.email}</p>
+                  )}
                 </div>
               </div>
 
@@ -114,10 +271,14 @@ export default function ContactPage() {
                   id="subject"
                   name="subject"
                   type="text"
-                  required
-                  className="mt-1"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className={`mt-1 ${errors.subject ? "border-red-500" : ""}`}
                   placeholder="What is this regarding?"
                 />
+                {errors.subject && (
+                  <p className="text-sm text-red-400 mt-1">{errors.subject}</p>
+                )}
               </div>
 
               <div>
@@ -126,18 +287,33 @@ export default function ContactPage() {
                   id="message"
                   name="message"
                   rows={6}
-                  required
-                  className="mt-1"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className={`mt-1 ${errors.message ? "border-red-500" : ""}`}
                   placeholder="Tell us more about your inquiry..."
                 />
+                {errors.message && (
+                  <p className="text-sm text-red-400 mt-1">{errors.message}</p>
+                )}
               </div>
 
               <Button 
                 type="submit" 
                 size="lg"
+                disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold"
               >
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin mr-3 h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-3 h-5 w-5" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </Card>
