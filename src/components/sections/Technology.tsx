@@ -70,7 +70,7 @@ const steps = [
     description: "Excess energy generated is stored in an integrated 1.5MW lithium or graphene battery system for continuous uptime or backup use.",
     visual: {
       type: "image",
-      src: "/media/images/howitworks_bess05.jpeg",
+      src: "/media/images/bess.room.jpg",
       description: "1.5MW BESS battery storage system with visible battery racks",
       placeholder: "BESS Battery System"
     }
