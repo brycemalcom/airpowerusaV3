@@ -81,10 +81,19 @@ const steps = [
     title: "Deployment & Use",
     description: "The AirPower Station can be installed on-site, mounted on trucks, or delivered to remote locations. It's built to power everything from data centers and grow operations to disaster relief zones and off-grid microgrids.",
     visual: {
-      type: "image",
-      src: "/media/images/airpack.png",
-      description: "AirPower Station truck-mounted deployment configuration",
-      placeholder: "Deployment Applications"
+      type: "imageStack",
+      sources: [
+        {
+          src: "/media/images/trailer.airport2.png",
+          alt: "Towable trailer-mounted generator unit"
+        },
+        {
+          src: "/media/images/airpack.png",
+          alt: "Truck-mounted AirPower Station"
+        }
+      ],
+      description: "Truck and trailer-mounted deployment configurations",
+      placeholder: "Deployment Configurations"
     }
   }
 ];
@@ -201,6 +210,30 @@ export default function Technology() {
                             }}
                           />
                           {/* Subtle gradient overlay for better text contrast if needed */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                        </>
+                      ) : step.visual.type === "imageStack" && Array.isArray((step.visual as any).sources) ? (
+                        <>
+                          <div className="absolute inset-0 p-2 flex flex-col gap-2">
+                            {(step.visual as any).sources.map((img: { src: string; alt?: string }, idx: number, arr: any[]) => {
+                              const isBottomImage = idx === arr.length - 1;
+                              return (
+                                <div key={idx} className="relative flex-1">
+                                  <img
+                                    src={img.src}
+                                    alt={img.alt || step.visual.description}
+                                    style={{
+                                      width: '100%',
+                                      height: '100%',
+                                      objectFit: isBottomImage ? 'cover' : 'contain',
+                                      objectPosition: isBottomImage ? '50% 70%' : 'center',
+                                      display: 'block'
+                                    }}
+                                  />
+                                </div>
+                              );
+                            })}
+                          </div>
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                         </>
                       ) : step.visual.type === "video" && step.visual.src ? (
