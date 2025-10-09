@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
+import type { LucideIcon } from "lucide-react";
 import { 
   Wind,
   Zap,
@@ -14,7 +15,39 @@ import {
   Volume2
 } from "lucide-react";
 
-const steps = [
+type ImageVisual = {
+  type: "image";
+  src: string;
+  description: string;
+  placeholder: string;
+};
+
+type VideoVisual = {
+  type: "video";
+  src: string;
+  description: string;
+  placeholder: string;
+};
+
+type ImageStackItem = { src: string; alt?: string };
+type ImageStackVisual = {
+  type: "imageStack";
+  sources: ImageStackItem[];
+  description: string;
+  placeholder: string;
+};
+
+type Visual = ImageVisual | VideoVisual | ImageStackVisual;
+
+type Step = {
+  number: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  visual: Visual;
+};
+
+const steps: Step[] = [
   {
     number: "01",
     icon: Wind,
@@ -212,10 +245,10 @@ export default function Technology() {
                           {/* Subtle gradient overlay for better text contrast if needed */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                         </>
-                      ) : step.visual.type === "imageStack" && Array.isArray((step.visual as any).sources) ? (
+                      ) : step.visual.type === "imageStack" && Array.isArray(step.visual.sources) ? (
                         <>
                           <div className="absolute inset-0 p-2 flex flex-col gap-2">
-                            {(step.visual as any).sources.map((img: { src: string; alt?: string }, idx: number, arr: any[]) => {
+                            {step.visual.sources.map((img, idx, arr) => {
                               const isBottomImage = idx === arr.length - 1;
                               return (
                                 <div key={idx} className="relative flex-1">
