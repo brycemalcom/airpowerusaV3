@@ -47,6 +47,28 @@ const videos = [
     category: "Field Testing",
     views: "3.2K"
   }
+  ,
+  {
+    id: 5,
+    title: "Compressed-Air Minibus — European Mobility Week Road Demo",
+    description: "Shot in Rouen during European Mobility Week 2020, this clip shows our 14-seat compressed-air minibus in real-world operation—exterior walk-arounds and drive sequences highlighting quiet running, instant torque, and cold, clean air exhaust. A practical proof of our retrofit pathway that converts existing ICE platforms into zero-emission passenger transport.",
+    src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/Airpower_EU_mobility_week.mp4",
+    thumbnail: "/media/images/mobilityweek_thumb.png",
+    thumbnailType: "image",
+    category: "Field Testing",
+    views: "1.1K"
+  }
+  ,
+  {
+    id: 6,
+    title: "Off-Grid Agriculture — Irrigation & Cold Storage with Compressed Air",
+    description: "A short field piece showing how AirPower enables farmers to pump water for irrigation in remote locations—without diesel or grid power—and capture a second benefit from the same process: naturally cold, clean air for produce storage. Greater independence, longer shelf life, and zero tailpipe emissions for modern agriculture.",
+    src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/Airpower_maroc.mp4",
+    thumbnail: "/media/images/agriculture.jpeg",
+    thumbnailType: "image",
+    category: "Agriculture",
+    views: "1.4K"
+  }
 ];
 
 export default function VideoGallery() {
