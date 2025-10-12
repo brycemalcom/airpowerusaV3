@@ -122,15 +122,17 @@ export default function Hero() {
           <Button 
             variant="outline" 
             size="lg" 
-            className="group relative border-3 border-cyan-400/80 bg-cyan-900/20 backdrop-blur-lg hover:bg-cyan-400 hover:text-black text-cyan-100 px-8 py-4 text-base sm:px-10 sm:py-5 sm:text-lg font-bold transition-all duration-300 shadow-2xl hover:shadow-cyan-400/40 hover:scale-105"
-            onClick={() => window.location.href = '/invest'}
+            className="group relative border-3 border-cyan-400/80 bg-cyan-900/20 backdrop-blur-lg text-cyan-100 px-8 py-4 text-base sm:px-10 sm:py-5 sm:text-lg font-bold transition-all duration-300 shadow-2xl opacity-80 cursor-not-allowed"
+            onClick={(e) => e.preventDefault()}
+            aria-disabled
+            title="Coming soon"
             style={{ 
               textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
               boxShadow: '0 8px 32px rgba(6, 182, 212, 0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
             }}
           >
-            For Investors
-            <TrendingUp className="ml-3 h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:translate-y-1" />
+            For Investors — Coming Soon
+            <TrendingUp className="ml-3 h-5 w-5 sm:h-6 sm:w-6" />
           </Button>
         </div>
       </div>

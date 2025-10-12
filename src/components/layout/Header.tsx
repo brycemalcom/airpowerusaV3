@@ -17,7 +17,7 @@ const navigation = [
 
 const hamburgerMenu = [
   { name: "For Customers", href: "/customer", color: "text-blue-400" },
-  { name: "For Investors", href: "/invest", color: "text-cyan-400" },
+  { name: "For Investors — Coming Soon", href: "#", color: "text-cyan-400 opacity-70" },
   { name: "Investor FAQs", href: "/investor-faqs", color: "text-emerald-400" },
   { name: "SEC Filings", href: "/filings", color: "text-yellow-400" },
   { name: "Newsroom", href: "/newsroom", color: "text-purple-400" },
@@ -116,7 +116,14 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   className={`block text-lg font-semibold leading-7 transition-colors hover:opacity-80 ${item.color}`}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    if (item.name.startsWith('For Investors')) {
+                      e.preventDefault();
+                      return;
+                    }
+                    setMobileMenuOpen(false);
+                  }}
+                  aria-disabled={item.name.startsWith('For Investors')}
                 >
                   {item.name}
                 </a>
