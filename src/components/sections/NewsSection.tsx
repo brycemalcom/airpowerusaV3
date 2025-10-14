@@ -3,37 +3,54 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, ExternalLink, FileText } from "lucide-react";
+import { Calendar, ExternalLink, FileText, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 // Placeholder news data - professional "coming soon" placeholders
-const pressReleases = [
+type PressRelease = {
+  id: number;
+  title: string;
+  excerpt: string;
+  date: string;
+  category: string;
+  link?: string;
+  isPlaceholder?: boolean;
+  contentUrl?: string; // path under /public, e.g., /press/2025-09-24-dealmaker.html
+};
+
+const pressReleases: PressRelease[] = [
   {
-    id: 1,
-    title: "Press Releases",
-    excerpt: "Official company announcements, product launches, and major milestones will be featured here.",
-    date: "Coming Soon",
+    id: 101,
+    title: "Air Power USA Announces Engagement of DealMaker Securities",
+    excerpt: "Company engages DealMaker Securities for investor awareness in connection with a $25M SEC REG D 504(c) filing.",
+    date: "September 24, 2025",
     category: "Official Updates",
-    link: "#",
-    isPlaceholder: true
+    contentUrl: "/press/2025-09-24-dealmaker-awareness.html",
   },
   {
-    id: 2,
-    title: "Company News", 
-    excerpt: "Stay updated on AirPower USA's latest developments, partnerships, and breakthrough achievements.",
-    date: "Coming Soon",
+    id: 102,
+    title: "Air Power USA Announces $25M SEC REG D 504(c) Filing",
+    excerpt: "Company files Regulation D 504(c) offering to fund introduction of its ‘Clean Energy from Thin Air’ technology.",
+    date: "August 19, 2025",
+    category: "Official Updates",
+    contentUrl: "/press/2025-08-19-reg-d-504c-filing.html",
+  },
+  {
+    id: 103,
+    title: "Air Power USA Announces $5M SEC CF Crowdfunding Filing",
+    excerpt: "Company files Reg CF crowdfunding to complement its ongoing Reg D 504(c) raise and broaden participation.",
+    date: "October 6, 2025",
+    category: "Official Updates",
+    contentUrl: "/press/2025-10-06-sec-cf-crowdfunding.html",
+  },
+  {
+    id: 104,
+    title: "Air Power USA VP Phil Plumley to Speak at IUCN Conference in Abu Dhabi",
+    excerpt: "Air Power USA technology to be introduced to the UAE; meetings with royal families and regional stakeholders.",
+    date: "October 4, 2025",
     category: "Company News",
-    link: "#",
-    isPlaceholder: true
+    contentUrl: "/press/2025-10-04-iucn-abu-dhabi.html",
   },
-  {
-    id: 3,
-    title: "Product Announcements",
-    excerpt: "Be the first to know about new product releases, technical innovations, and deployment updates.",
-    date: "Coming Soon",
-    category: "Product Updates",
-    link: "#",
-    isPlaceholder: true
-  }
 ];
 
 const mediaCoverage = [
@@ -67,6 +84,43 @@ const mediaCoverage = [
 ];
 
 export default function NewsSection() {
+  const [selected, setSelected] = useState<PressRelease | null>(null);
+  const [contentHtml, setContentHtml] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  
+  // Sort newest first by parsed date string (e.g., "October 6, 2025")
+  const sortedPressReleases = [...pressReleases].sort((a, b) => {
+    const ad = new Date(a.date).getTime();
+    const bd = new Date(b.date).getTime();
+    return bd - ad;
+  });
+
+  useEffect(() => {
+    if (!selected?.contentUrl) {
+      setContentHtml(null);
+      setIsLoading(false);
+      setLoadError(null);
+      return;
+    }
+    let cancelled = false;
+    setIsLoading(true);
+    setLoadError(null);
+    fetch(selected.contentUrl)
+      .then(r => r.text())
+      .then(html => {
+        if (!cancelled) setContentHtml(html);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError("Failed to load press release.");
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [selected?.contentUrl]);
   return (
     <section className="py-24 bg-card/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -89,8 +143,14 @@ export default function NewsSection() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pressReleases.map((release) => (
-              <Card key={release.id} className={`group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] ${release.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}>
+            {sortedPressReleases.map((release) => (
+              <Card 
+                key={release.id} 
+                className={`group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] ${release.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}
+                onClick={() => {
+                  if (!release.isPlaceholder && release.contentUrl) setSelected(release);
+                }}
+              >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant={release.isPlaceholder ? "secondary" : "outline"} className={release.isPlaceholder ? "opacity-60" : ""}>
@@ -115,7 +175,15 @@ export default function NewsSection() {
                       Coming Soon
                     </div>
                   ) : (
-                    <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (release.contentUrl) setSelected(release);
+                      }}
+                    >
                       <FileText className="w-4 h-4 mr-2" />
                       Read Full Release
                     </Button>
@@ -185,6 +253,48 @@ export default function NewsSection() {
         </div>
 
 
+        {/* Modal for full press release */}
+        {selected && (
+          <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
+            <div className="relative w-full max-w-4xl bg-card rounded-xl overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-3 right-3 bg-black/60 hover:bg-black/80 text-white rounded-full p-2"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <div className="p-6 border-b border-border">
+                <div className="flex items-center justify-between gap-4 flex-wrap">
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground">{selected.title}</h3>
+                    <div className="mt-1 text-sm text-muted-foreground flex items-center"><Calendar className="w-4 h-4 mr-1" />{selected.date}</div>
+                  </div>
+                  <Badge variant="outline">{selected.category}</Badge>
+                </div>
+              </div>
+              <div className="h-[70vh] bg-background">
+                {isLoading && (
+                  <div className="h-full w-full flex items-center justify-center text-muted-foreground">Loading…</div>
+                )}
+                {!isLoading && loadError && (
+                  <div className="p-6 text-destructive">{loadError}</div>
+                )}
+                {!isLoading && !loadError && contentHtml && (
+                  <iframe
+                    title={selected.title}
+                    className="w-full h-full"
+                    sandbox="allow-popups allow-top-navigation-by-user-activation"
+                    srcDoc={contentHtml}
+                  />
+                )}
+                {!isLoading && !loadError && !contentHtml && (
+                  <div className="p-6 text-muted-foreground">Content coming soon.</div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
