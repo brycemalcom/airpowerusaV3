@@ -83,6 +83,18 @@ const mediaCoverage = [
   }
 ];
 
+// Curated external reads (not specifically about AirPower)
+const industryInsights = [
+  {
+    id: 2001,
+    title: "How Battery Energy Storage Systems Power Modern Grids",
+    publication: "BSLBATT Lithium",
+    date: "July 7, 2025",
+    excerpt: "Overview of how BESS stabilizes grids, core components (cells, inverters), safety, and investment models.",
+    link: "https://bslbatt.com/blogs/how-bess-store-energy-and-balance-modern-power-grids/",
+  },
+];
+
 export default function NewsSection() {
   const [selected, setSelected] = useState<PressRelease | null>(null);
   const [contentHtml, setContentHtml] = useState<string | null>(null);
@@ -194,6 +206,61 @@ export default function NewsSection() {
           </div>
         </div>
 
+        {/* Industry Insights */}
+        <div className="mt-4 mb-20">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <Badge variant="secondary" className="mb-4">
+              Curated Reads
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Industry
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-300">
+                Insights
+              </span>
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+              Expert articles and explainers we recommend. External links open in a new tab.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {industryInsights.map((article) => (
+              <Card key={article.id} className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="outline" className="bg-teal-500/10 text-teal-300 border-teal-500/20">Insight</Badge>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {article.date}
+                    </div>
+                  </div>
+                  <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
+                    {article.title}
+                  </CardTitle>
+                  <CardDescription className="font-medium text-primary">
+                    {article.publication}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    {article.excerpt}
+                  </p>
+                  <a
+                    href={article.link}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                  >
+                    <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Read Article
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
         {/* Media Coverage */}
         <div>
           <div className="mx-auto max-w-3xl text-center mb-12">
@@ -241,10 +308,16 @@ export default function NewsSection() {
                       Stay Tuned
                     </div>
                   ) : (
-                    <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Read Article
-                    </Button>
+                    <a
+                      href={article.link}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                    >
+                      <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Read Article
+                      </Button>
+                    </a>
                   )}
                 </CardContent>
               </Card>
