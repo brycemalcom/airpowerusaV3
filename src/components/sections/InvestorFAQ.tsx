@@ -7,7 +7,7 @@ const faqData = [
   {
     id: 1,
     question: "How do I invest in AirPower USA?",
-    answer: "You can invest directly through our current Regulation D offering by completing the subscription agreement and submitting your payment. Once processed, your shares will be recorded with our transfer agent. Contact us at invest@airpowerusa.com for the investor packet and instructions."
+    answer: "You can invest directly through our current Regulation D offering by completing the subscription agreement and submitting your payment. Once processed, your shares will be recorded with our transfer agent. Contact us at invest@airpowerusa.net for the investor packet and instructions."
   },
   {
     id: 2,
@@ -47,7 +47,7 @@ const faqData = [
   {
     id: 9,
     question: "Where can I find more information about AirPower USA?",
-    answer: "Visit airpowerusa.com or contact invest@airpowerusa.com for our executive summary, pitch deck, and Reg D investor documents."
+    answer: "Visit airpowerusa.com or contact invest@airpowerusa.net for our executive summary, pitch deck, and Reg D investor documents."
   },
   {
     id: 10,
@@ -112,7 +112,7 @@ const faqData = [
   {
     id: 22,
     question: "Where can I find the Regulation D offering memorandum?",
-    answer: "Contact invest@airpowerusa.com to request the full investor packet, which includes the offering memorandum and subscription agreement."
+    answer: "Contact invest@airpowerusa.net to request the full investor packet, which includes the offering memorandum and subscription agreement."
   },
   {
     id: 23,
@@ -207,10 +207,10 @@ export default function InvestorFAQ({ showTitle = true, className = "" }: Invest
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
-                href="mailto:invest@airpowerusa.com"
+                href="mailto:invest@airpowerusa.net"
                 className="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-105"
               >
-                invest@airpowerusa.com
+                invest@airpowerusa.net
               </a>
               <div className="text-slate-600">
                 <span className="font-medium">Phone:</span> 214.257.7957
