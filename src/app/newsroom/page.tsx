@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import NewsroomHero from "@/components/sections/NewsroomHero";
 import VideoGallery from "@/components/sections/VideoGallery";
 import NewsSection from "@/components/sections/NewsSection";
+import { Suspense } from "react";
 import { Newspaper } from "lucide-react";
 
 export default function NewsroomPage() {
@@ -11,7 +12,9 @@ export default function NewsroomPage() {
       <Header />
       <NewsroomHero />
       <NewsSection />
-      <VideoGallery />
+      <Suspense fallback={<div />}> 
+        <VideoGallery />
+      </Suspense>
       
       {/* Stay Connected CTA */}
       <section className="py-16 bg-card/50">

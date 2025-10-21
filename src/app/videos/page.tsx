@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import VideoGallery from "@/components/sections/VideoGallery";
+import { Suspense } from "react";
 
 export default function VideoGalleryPage() {
   return (
@@ -25,7 +26,9 @@ export default function VideoGalleryPage() {
         </div>
       </section>
 
-      <VideoGallery />
+      <Suspense fallback={<div />}> 
+        <VideoGallery />
+      </Suspense>
       <Footer />
     </main>
   );
