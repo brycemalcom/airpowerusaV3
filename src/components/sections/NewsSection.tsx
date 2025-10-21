@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, ExternalLink, FileText, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 // Placeholder news data - professional "coming soon" placeholders
 type PressRelease = {
@@ -19,6 +20,14 @@ type PressRelease = {
 };
 
 const pressReleases: PressRelease[] = [
+  {
+    id: 105,
+    title: "Air Power USA Debuts Compressed‑Air Power at IUCN Conference in Abu Dhabi",
+    excerpt: "Senior VP Phil Plumley presents the ‘Thin Air to Clean Energy’ platform to UAE stakeholders; watch the brief event walkthrough.",
+    date: "October 20, 2025",
+    category: "Official Updates",
+    contentUrl: "/press/2025-10-20-iucn-abu-dhabi-debut.html",
+  },
   {
     id: 101,
     title: "Air Power USA Announces Engagement of DealMaker Securities",
@@ -100,6 +109,8 @@ export default function NewsSection() {
   const [contentHtml, setContentHtml] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
   
   // Sort newest first by parsed date string (e.g., "October 6, 2025")
   const sortedPressReleases = [...pressReleases].sort((a, b) => {
@@ -354,11 +365,24 @@ export default function NewsSection() {
                   <div className="p-6 text-destructive">{loadError}</div>
                 )}
                 {!isLoading && !loadError && contentHtml && (
-                  <iframe
-                    title={selected.title}
-                    className="w-full h-full"
-                    sandbox="allow-popups allow-top-navigation-by-user-activation"
-                    srcDoc={contentHtml}
+                  <div
+                    className="w-full h-full overflow-auto p-0"
+                    onClick={(e) => {
+                      const anchor = (e.target as HTMLElement).closest('a') as HTMLAnchorElement | null;
+                      if (!anchor) return;
+                      try {
+                        const url = new URL(anchor.href, window.location.origin);
+                        const vid = url.searchParams.get('videoId');
+                        const onNewsroom = url.pathname.includes('/newsroom') || url.pathname === '/videos';
+                        if (vid && onNewsroom) {
+                          e.preventDefault();
+                          const ts = Date.now();
+                          router.push(`${pathname}?videoId=${vid}&ts=${ts}`, { scroll: false });
+                          setSelected(null);
+                        }
+                      } catch {}
+                    }}
+                    dangerouslySetInnerHTML={{ __html: contentHtml }}
                   />
                 )}
                 {!isLoading && !loadError && !contentHtml && (

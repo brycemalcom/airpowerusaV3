@@ -3,10 +3,21 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Play, Eye } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 // Video data - you can update these with your actual video files and metadata
 const videos = [
+  {
+    id: 7,
+    title: "IUCN Abu Dhabi 2025 — Conference Walkthrough",
+    description: "On-the-ground look at Air Power USA’s presence at the IUCN Conference in Abu Dhabi—brand visuals across event screens and exhibits, plus venue walkthrough footage as we introduce our ‘Thin Air to Clean Energy’ platform to regional stakeholders.",
+    src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/abudhabi_2025.mp4",
+    thumbnail: "https://airpowe-videos.s3.us-east-2.amazonaws.com/abudhabi_2025.mp4",
+    thumbnailType: "video",
+    category: "Events",
+    views: "New"
+  },
   {
     id: 1,
     title: "AirPower Station 20ft Unit Walkthrough",
@@ -73,6 +84,16 @@ const videos = [
 
 export default function VideoGallery() {
   const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
+  const searchParams = useSearchParams();
+
+  // Open a specific video when linked like /videos?videoId=7
+  useEffect(() => {
+    const idParam = searchParams?.get("videoId");
+    if (!idParam) return;
+    const match = videos.find(v => String(v.id) === idParam);
+    if (match) setSelectedVideo(match);
+    // also react to a timestamp param to allow same-link re-open without full refresh
+  }, [searchParams?.get('videoId'), searchParams?.get('ts')]);
 
   return (
     <section className="py-24 bg-background">
