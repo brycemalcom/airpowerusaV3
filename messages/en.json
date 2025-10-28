@@ -248,6 +248,106 @@
       "intro1": "The AirPower Station isn't just one product — it's a flexible energy platform that adapts to your mission. Whether truck-mounted or available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized configurations, each unit delivers our full CAE + generator system, with optional BESS for battery storage.",
       "intro2": "From mobile operations to permanent grid support, AirPower's modular design means clean, scalable power — wherever it's needed most.",
       "features": "Key Features",
+      "categories": {
+        "mobile": "Mobile",
+        "industrial": "Industrial",
+        "storage": "Storage",
+        "prototype": "Prototype"
+      },
+      "cards": {
+        "airpack": {
+          "title": "AirPack - Truck Mounted Station",
+          "subtitle": "Mobile response, military-ready",
+          "description": "Engine + generator mounted in vehicle or flatbed. Ideal for rapid deployment, off-grid ops.",
+          "specs": {
+            "deployment": "Deployment",
+            "powerOutput": "Power Output",
+            "range": "Range",
+            "applications": "Applications"
+          },
+          "values": {
+            "deployment": "< 15 minutes",
+            "powerOutput": "Up to 50kW",
+            "range": "Unlimited mobility",
+            "applications": "Emergency, Military, Remote"
+          },
+          "features": {
+            "rapid": "Rapid deployment",
+            "vehicleIntegrated": "Vehicle-integrated",
+            "militaryGrade": "Military-grade",
+            "offGridReady": "Off-grid ready"
+          }
+        },
+        "container": {
+          "title": "Containerized Station",
+          "subtitle": "Available in 20-foot (0.5MW) and 40-foot (1.5MW) configurations",
+          "description": "Full AirPower Station with integrated BESS. Stationary or truck-portable infrastructure.",
+          "specs": {
+            "powerOutput": "Power Output",
+            "dailyCapacity": "Daily Capacity",
+            "batteryStorage": "Battery Storage",
+            "runtime": "Runtime"
+          },
+          "values": {
+            "powerOutput": "Up to 0.5MW (20ft) or 1.5MW (40ft)",
+            "dailyCapacity": "Up to 400 homes/day",
+            "batteryStorage": "Optional BESS",
+            "runtime": "Up to 16 hours runtime per fill cycle"
+          },
+          "features": {
+            "industrialScale": "Industrial scale",
+            "bessIntegration": "BESS integration",
+            "containerized": "Containerized",
+            "gridLevel": "Grid-level power"
+          }
+        },
+        "bess": {
+          "title": "BESS-Only Module",
+          "subtitle": "1.5MW battery storage unit",
+          "description": "Rechargeable from generator or grid. Enables silent, stored energy on demand.",
+          "specs": {
+            "storageCapacity": "Storage Capacity",
+            "chargingSource": "Charging Source",
+            "outputMode": "Output Mode",
+            "cycleLife": "Cycle Life"
+          },
+          "values": {
+            "storageCapacity": "1.5MW",
+            "chargingSource": "CAE or Grid",
+            "outputMode": "Silent operation",
+            "cycleLife": "10,000+ cycles"
+          },
+          "features": {
+            "silent": "Silent operation",
+            "gridCharging": "Grid charging",
+            "longCycle": "Long cycle life",
+            "modular": "Modular design"
+          }
+        },
+        "demo": {
+          "title": "Demo Van / CAE Prototype",
+          "subtitle": "Functional vehicle running CAE",
+          "description": "Proof of concept for future air-powered mobility. Included as reference visual, not for sale.",
+          "specs": {
+            "purpose": "Purpose",
+            "technology": "Technology",
+            "status": "Status",
+            "future": "Future"
+          },
+          "values": {
+            "purpose": "Proof of concept",
+            "technology": "CAE-powered vehicle",
+            "status": "Demonstration only",
+            "future": "Air-powered mobility"
+          },
+          "features": {
+            "poc": "Proof of concept",
+            "caePowered": "CAE-powered",
+            "futureMobility": "Future mobility",
+            "techDemo": "Technology demo"
+          }
+        }
+      },
       "statFormats": "Deployment Formats",
       "statHomes": "Homes Powered Daily",
       "statLocations": "Deployment Locations",

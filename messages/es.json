@@ -248,6 +248,106 @@
       "intro1": "La Estación AirPower no es un único producto — es una plataforma energética flexible que se adapta a tu misión. Ya sea montada en camión o en contenedores de 20 pies (0.5MW) y 40 pies (1.5MW), cada unidad integra nuestro sistema completo CAE + generador, con BESS opcional.",
       "intro2": "Desde operaciones móviles hasta soporte permanente a la red, el diseño modular de AirPower significa energía limpia y escalable — donde más se necesita.",
       "features": "Características clave",
+      "categories": {
+        "mobile": "Móvil",
+        "industrial": "Industrial",
+        "storage": "Almacenamiento",
+        "prototype": "Prototipo"
+      },
+      "cards": {
+        "airpack": {
+          "title": "AirPack - Estación montada en camión",
+          "subtitle": "Respuesta móvil, lista para misiones militares",
+          "description": "Motor + generador montados en vehículo o plataforma. Ideal para despliegue rápido y operaciones fuera de red.",
+          "specs": {
+            "deployment": "Despliegue",
+            "powerOutput": "Potencia de salida",
+            "range": "Alcance",
+            "applications": "Aplicaciones"
+          },
+          "values": {
+            "deployment": "< 15 minutos",
+            "powerOutput": "Hasta 50 kW",
+            "range": "Movilidad ilimitada",
+            "applications": "Emergencias, Militar, Remoto"
+          },
+          "features": {
+            "rapid": "Despliegue rápido",
+            "vehicleIntegrated": "Integrado al vehículo",
+            "militaryGrade": "Grado militar",
+            "offGridReady": "Listo para fuera de red"
+          }
+        },
+        "container": {
+          "title": "Estación contenedorizada",
+          "subtitle": "Disponible en configuraciones de 20 pies (0.5MW) y 40 pies (1.5MW)",
+          "description": "Estación AirPower completa con BESS integrado. Infraestructura estacionaria o transportable en camión.",
+          "specs": {
+            "powerOutput": "Potencia de salida",
+            "dailyCapacity": "Capacidad diaria",
+            "batteryStorage": "Almacenamiento de baterías",
+            "runtime": "Autonomía"
+          },
+          "values": {
+            "powerOutput": "Hasta 0.5MW (20 pies) o 1.5MW (40 pies)",
+            "dailyCapacity": "Hasta 400 hogares/día",
+            "batteryStorage": "BESS opcional",
+            "runtime": "Hasta 16 horas por ciclo de llenado"
+          },
+          "features": {
+            "industrialScale": "Escala industrial",
+            "bessIntegration": "Integración BESS",
+            "containerized": "Contenedorizada",
+            "gridLevel": "Potencia a nivel de red"
+          }
+        },
+        "bess": {
+          "title": "Módulo solo BESS",
+          "subtitle": "Unidad de almacenamiento de 1.5MW",
+          "description": "Recargable desde generador o red. Permite energía almacenada y silenciosa bajo demanda.",
+          "specs": {
+            "storageCapacity": "Capacidad de almacenamiento",
+            "chargingSource": "Fuente de carga",
+            "outputMode": "Modo de salida",
+            "cycleLife": "Ciclos de vida"
+          },
+          "values": {
+            "storageCapacity": "1.5MW",
+            "chargingSource": "CAE o red",
+            "outputMode": "Operación silenciosa",
+            "cycleLife": "10,000+ ciclos"
+          },
+          "features": {
+            "silent": "Operación silenciosa",
+            "gridCharging": "Carga desde la red",
+            "longCycle": "Larga vida útil",
+            "modular": "Diseño modular"
+          }
+        },
+        "demo": {
+          "title": "Furgoneta demo / Prototipo CAE",
+          "subtitle": "Vehículo funcional con CAE",
+          "description": "Prueba de concepto para movilidad futura impulsada por aire. Incluida como referencia visual, no a la venta.",
+          "specs": {
+            "purpose": "Propósito",
+            "technology": "Tecnología",
+            "status": "Estado",
+            "future": "Futuro"
+          },
+          "values": {
+            "purpose": "Prueba de concepto",
+            "technology": "Vehículo impulsado por CAE",
+            "status": "Solo demostración",
+            "future": "Movilidad impulsada por aire"
+          },
+          "features": {
+            "poc": "Prueba de concepto",
+            "caePowered": "Impulsado por CAE",
+            "futureMobility": "Movilidad del futuro",
+            "techDemo": "Demostración tecnológica"
+          }
+        }
+      },
       "statFormats": "Formatos de despliegue",
       "statHomes": "Hogares abastecidos por día",
       "statLocations": "Lugares de despliegue",

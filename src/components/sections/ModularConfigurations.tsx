@@ -16,90 +16,79 @@ import {
   Clock
 } from "lucide-react";
 
-const configurations = [
+type Visual = { type: 'image' | 'video'; src: string; alt: string };
+
+type ConfigMeta = {
+  id: number;
+  key: 'airpack' | 'container' | 'bess' | 'demo';
+  icon: any;
+  categoryKey: 'mobile' | 'industrial' | 'storage' | 'prototype';
+  categoryColor: string;
+  visual: Visual;
+  specPairs: { labelKey: string; valueKey: string }[];
+  featureKeys: string[];
+};
+
+const configurations: ConfigMeta[] = [
   {
     id: 1,
-    title: "AirPack - Truck Mounted Station",
-    subtitle: "Mobile response, military-ready",
-    description: "Engine + generator mounted in vehicle or flatbed. Ideal for rapid deployment, off-grid ops.",
+    key: 'airpack',
     icon: Truck,
-    category: "Mobile",
-    specifications: [
-      { label: "Deployment", value: "< 15 minutes" },
-      { label: "Power Output", value: "Up to 50kW" },
-      { label: "Range", value: "Unlimited mobility" },
-      { label: "Applications", value: "Emergency, Military, Remote" }
+    categoryKey: 'mobile',
+    categoryColor: 'bg-red-500',
+    visual: { type: 'image', src: '/media/images/airpack.png', alt: 'Truck-mounted AirPower Station for mobile deployment' },
+    specPairs: [
+      { labelKey: 'deployment', valueKey: 'deployment' },
+      { labelKey: 'powerOutput', valueKey: 'powerOutput' },
+      { labelKey: 'range', valueKey: 'range' },
+      { labelKey: 'applications', valueKey: 'applications' }
     ],
-    features: ["Rapid deployment", "Vehicle-integrated", "Military-grade", "Off-grid ready"],
-    visual: {
-      type: "image",
-      src: "/media/images/airpack.png",
-      alt: "Truck-mounted AirPower Station for mobile deployment"
-    },
-    categoryColor: "bg-red-500"
+    featureKeys: ['rapid', 'vehicleIntegrated', 'militaryGrade', 'offGridReady']
   },
   {
     id: 2,
-    title: "Containerized Station",
-    subtitle: "Available in 20-foot (0.5MW) and 40-foot (1.5MW) configurations",
-    description: "Full AirPower Station with integrated BESS. Stationary or truck-portable infrastructure.",
+    key: 'container',
     icon: Container,
-    category: "Industrial",
-    specifications: [
-      { label: "Power Output", value: "Up to 0.5MW (20ft) or 1.5MW (40ft)" },
-      { label: "Daily Capacity", value: "Up to 400 homes/day" },
-      { label: "Battery Storage", value: "Optional BESS" },
-      { label: "Runtime", value: "Up to 16 hours runtime per fill cycle" }
+    categoryKey: 'industrial',
+    categoryColor: 'bg-blue-500',
+    visual: { type: 'video', src: '/media/videos/airpower_station_loop.mp4', alt: 'Containerized AirPower Station in operation' },
+    specPairs: [
+      { labelKey: 'powerOutput', valueKey: 'powerOutput' },
+      { labelKey: 'dailyCapacity', valueKey: 'dailyCapacity' },
+      { labelKey: 'batteryStorage', valueKey: 'batteryStorage' },
+      { labelKey: 'runtime', valueKey: 'runtime' }
     ],
-    features: ["Industrial scale", "BESS integration", "Containerized", "Grid-level power"],
-    visual: {
-      type: "video",
-      src: "/media/videos/airpower_station_loop.mp4",
-      alt: "Containerized AirPower Station in operation"
-    },
-    categoryColor: "bg-blue-500"
+    featureKeys: ['industrialScale', 'bessIntegration', 'containerized', 'gridLevel']
   },
   {
     id: 3,
-    title: "BESS-Only Module",
-    subtitle: "1.5MW battery storage unit",
-    description: "Rechargeable from generator or grid. Enables silent, stored energy on demand.",
+    key: 'bess',
     icon: Battery,
-    category: "Storage",
-    specifications: [
-      { label: "Storage Capacity", value: "1.5MW" },
-      { label: "Charging Source", value: "CAE or Grid" },
-      { label: "Output Mode", value: "Silent operation" },
-      { label: "Cycle Life", value: "10,000+ cycles" }
+    categoryKey: 'storage',
+    categoryColor: 'bg-purple-500',
+    visual: { type: 'image', src: '/media/images/bess.jpeg', alt: 'Commercial BESS battery storage system' },
+    specPairs: [
+      { labelKey: 'storageCapacity', valueKey: 'storageCapacity' },
+      { labelKey: 'chargingSource', valueKey: 'chargingSource' },
+      { labelKey: 'outputMode', valueKey: 'outputMode' },
+      { labelKey: 'cycleLife', valueKey: 'cycleLife' }
     ],
-    features: ["Silent operation", "Grid charging", "Long cycle life", "Modular design"],
-    visual: {
-      type: "image",
-      src: "/media/images/bess.jpeg",
-      alt: "Commercial BESS battery storage system"
-    },
-    categoryColor: "bg-purple-500"
+    featureKeys: ['silent', 'gridCharging', 'longCycle', 'modular']
   },
   {
     id: 4,
-    title: "Demo Van / CAE Prototype",
-    subtitle: "Functional vehicle running CAE",
-    description: "Proof of concept for future air-powered mobility. Included as reference visual, not for sale.",
+    key: 'demo',
     icon: Car,
-    category: "Prototype",
-    specifications: [
-      { label: "Purpose", value: "Proof of concept" },
-      { label: "Technology", value: "CAE-powered vehicle" },
-      { label: "Status", value: "Demonstration only" },
-      { label: "Future", value: "Air-powered mobility" }
+    categoryKey: 'prototype',
+    categoryColor: 'bg-cyan-500',
+    visual: { type: 'video', src: '/media/videos/proto_truck.mp4', alt: 'Prototype CAE-powered vehicle demonstration' },
+    specPairs: [
+      { labelKey: 'purpose', valueKey: 'purpose' },
+      { labelKey: 'technology', valueKey: 'technology' },
+      { labelKey: 'status', valueKey: 'status' },
+      { labelKey: 'future', valueKey: 'future' }
     ],
-    features: ["Proof of concept", "CAE-powered", "Future mobility", "Technology demo"],
-    visual: {
-      type: "video",
-      src: "/media/videos/proto_truck.mp4",
-      alt: "Prototype CAE-powered vehicle demonstration"
-    },
-    categoryColor: "bg-cyan-500"
+    featureKeys: ['poc', 'caePowered', 'futureMobility', 'techDemo']
   }
 ];
 
@@ -158,7 +147,7 @@ export default function ModularConfigurations() {
                 <div className="relative">
                   {/* Visual rendering */}
                   <div className="aspect-[16/10] relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
-                    {typeof config.visual === 'object' && config.visual.type === 'image' ? (
+                    {config.visual.type === 'image' ? (
                       <img
                         src={config.visual.src}
                         alt={config.visual.alt}
@@ -173,7 +162,7 @@ export default function ModularConfigurations() {
                           zIndex: 1
                         }}
                       />
-                    ) : typeof config.visual === 'object' && config.visual.type === 'video' ? (
+                    ) : config.visual.type === 'video' ? (
                       <>
                         {/* Video for desktop */}
                         {!isMobile ? (
@@ -193,7 +182,7 @@ export default function ModularConfigurations() {
                             <div className="text-center">
                               <Icon className="h-16 w-16 sm:h-20 sm:w-20 text-muted-foreground mx-auto mb-4" />
                               <p className="text-sm text-muted-foreground px-4">
-                                {config.title}
+                                {t(`cards.${config.key}.title`)}
                               </p>
                               <Badge variant="outline" className="mt-2">
                                 VIDEO
@@ -216,7 +205,7 @@ export default function ModularConfigurations() {
                     {/* Category badge */}
                     <div className="absolute top-4 left-4" style={{zIndex: 10}}>
                       <Badge className={`${config.categoryColor} text-white border-0`}>
-                        {config.category}
+                        {t(`categories.${config.categoryKey}`)}
                       </Badge>
                     </div>
                     
@@ -242,27 +231,27 @@ export default function ModularConfigurations() {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-bold text-foreground text-lg sm:text-xl leading-tight">
-                          {config.title}
+                          {t(`cards.${config.key}.title`)}
                         </h3>
                         <p className="text-xs sm:text-sm text-primary font-medium">
-                          {config.subtitle}
+                          {t(`cards.${config.key}.subtitle`)}
                         </p>
                       </div>
                     </div>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      {config.description}
+                      {t(`cards.${config.key}.description`)}
                     </p>
                   </div>
                   
                   {/* Specifications */}
                   <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                    {config.specifications.map((spec, index) => (
+                    {config.specPairs.map((spec, index) => (
                       <div key={index} className="space-y-1">
                         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                          {spec.label}
+                          {t(`cards.${config.key}.specs.${spec.labelKey}`)}
                         </div>
                         <div className="text-xs sm:text-sm font-semibold text-foreground">
-                          {spec.value}
+                          {t(`cards.${config.key}.values.${spec.valueKey}`)}
                         </div>
                       </div>
                     ))}
@@ -274,9 +263,9 @@ export default function ModularConfigurations() {
                       {t('features', { default: 'Key Features' })}
                     </div>
                     <div className="flex flex-wrap gap-1 sm:gap-2">
-                      {config.features.map((feature, index) => (
+                      {config.featureKeys.map((feature, index) => (
                         <Badge key={index} variant="outline" className="text-xs">
-                          {feature}
+                          {t(`cards.${config.key}.features.${feature}`)}
                         </Badge>
                       ))}
                     </div>
