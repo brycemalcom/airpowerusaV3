@@ -12,12 +12,15 @@ import { useTranslations } from "next-intl";
 type PressRelease = {
   id: number;
   title: string;
+  titleEs?: string;
   excerpt: string;
+  excerptEs?: string;
   date: string;
   category: string;
   link?: string;
   isPlaceholder?: boolean;
-  contentUrl?: string; // path under /public, e.g., /press/2025-09-24-dealmaker.html
+  contentUrl?: string; // English content path
+  contentUrlEs?: string; // Spanish content path
 };
 
 const pressReleases: PressRelease[] = [
@@ -113,6 +116,7 @@ export default function NewsSection() {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations('home.newsroom.sections');
+  const isEs = pathname?.startsWith('/es');
   
   // Sort newest first by parsed date string (e.g., "October 6, 2025")
   const sortedPressReleases = [...pressReleases].sort((a, b) => {
@@ -122,7 +126,8 @@ export default function NewsSection() {
   });
 
   useEffect(() => {
-    if (!selected?.contentUrl) {
+    const url = (isEs && selected?.contentUrlEs) ? selected?.contentUrlEs : selected?.contentUrl;
+    if (!url) {
       setContentHtml(null);
       setIsLoading(false);
       setLoadError(null);
@@ -131,7 +136,7 @@ export default function NewsSection() {
     let cancelled = false;
     setIsLoading(true);
     setLoadError(null);
-    fetch(selected.contentUrl)
+    fetch(url)
       .then(r => r.text())
       .then(html => {
         if (!cancelled) setContentHtml(html);
@@ -187,12 +192,12 @@ export default function NewsSection() {
                     </div>
                   </div>
                   <CardTitle className={`line-clamp-2 transition-colors ${release.isPlaceholder ? 'text-muted-foreground' : 'group-hover:text-primary'}`}>
-                    {release.title}
+                    {isEs && release.titleEs ? release.titleEs : release.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="leading-relaxed mb-4">
-                    {release.excerpt}
+                    {isEs && release.excerptEs ? release.excerptEs : release.excerpt}
                   </CardDescription>
                   {release.isPlaceholder ? (
                     <div className="flex items-center text-sm text-muted-foreground font-medium">
@@ -353,7 +358,7 @@ export default function NewsSection() {
               <div className="p-6 border-b border-border">
                 <div className="flex items-center justify-between gap-4 flex-wrap">
                   <div>
-                    <h3 className="text-xl font-bold text-foreground">{selected.title}</h3>
+                    <h3 className="text-xl font-bold text-foreground">{isEs && selected.titleEs ? selected.titleEs : selected.title}</h3>
                     <div className="mt-1 text-sm text-muted-foreground flex items-center"><Calendar className="w-4 h-4 mr-1" />{selected.date}</div>
                   </div>
                   <Badge variant="outline">{selected.category}</Badge>

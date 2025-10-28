@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Play, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 // Video data - you can update these with your actual video files and metadata
@@ -86,6 +86,8 @@ const videos = [
 export default function VideoGallery() {
   const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const isEs = pathname?.startsWith('/es');
   const t = useTranslations('home.videos');
 
   // Open a specific video when linked like /videos?videoId=7
@@ -177,10 +179,10 @@ export default function VideoGallery() {
               {/* Video Info */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {video.title}
+                  {isEs && (video as any).titleEs ? (video as any).titleEs : video.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {video.description}
+                  {isEs && (video as any).descriptionEs ? (video as any).descriptionEs : video.description}
                 </p>
                 
                 {/* Stats */}
@@ -234,10 +236,10 @@ export default function VideoGallery() {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {selectedVideo.title}
+                    {isEs && (selectedVideo as any).titleEs ? (selectedVideo as any).titleEs : selectedVideo.title}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      {selectedVideo.description}
+                      {isEs && (selectedVideo as any).descriptionEs ? (selectedVideo as any).descriptionEs : selectedVideo.description}
                     </p>
                   </div>
                   <Badge variant="outline" className="ml-4">
