@@ -12,9 +12,10 @@ export default async function LocaleLayout({
   params
 }: {
   children: ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
-  const locale = params.locale || defaultLocale;
+  const { locale: rawLocale } = await params;
+  const locale = (rawLocale && locales.includes(rawLocale)) ? rawLocale : defaultLocale;
   if (!locales.includes(locale)) {
     // Fallback to default if an unsupported locale is accessed
     return children as any;
