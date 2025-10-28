@@ -86,7 +86,7 @@ const videos = [
 export default function VideoGallery() {
   const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
   const searchParams = useSearchParams();
-  const t = useTranslations('videos');
+  const t = useTranslations('home.videos');
 
   // Open a specific video when linked like /videos?videoId=7
   useEffect(() => {

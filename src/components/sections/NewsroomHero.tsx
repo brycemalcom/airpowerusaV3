@@ -5,7 +5,7 @@ import { FileText, Video, Newspaper, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function NewsroomHero() {
-  const t = useTranslations('newsroom.hero');
+  const t = useTranslations('home.newsroom.hero');
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Background overlay */}

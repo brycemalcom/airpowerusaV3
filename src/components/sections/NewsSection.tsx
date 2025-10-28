@@ -112,7 +112,7 @@ export default function NewsSection() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
-  const t = useTranslations('newsroom.sections');
+  const t = useTranslations('home.newsroom.sections');
   
   // Sort newest first by parsed date string (e.g., "October 6, 2025")
   const sortedPressReleases = [...pressReleases].sort((a, b) => {
