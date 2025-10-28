@@ -530,6 +530,41 @@
       }
     }
   }
+  ,
+  "about": {
+    "hero": {
+      "title": "About AirPower USA",
+      "subtitle": "Pioneering the future of clean, deployable energy with revolutionary compressed air technology."
+    },
+    "title": "About AirPower USA",
+    "subtitle": "Redefining clean, reliable, and deployable power with patented compressed air technology.",
+    "mission": {
+      "title": "Mission Statement",
+      "body": "AirPower USA is on a mission to redefine clean, reliable, and deployable power. Our patented compressed air engine and generator system delivers zero-emission electricity with built-in battery storage, producing cold, clean air as a valuable byproduct. We design our systems to operate anywhere — from military bases to disaster zones — without reliance on traditional grid infrastructure."
+    },
+    "story": {
+      "title": "Our Story",
+      "p1": "Founded to solve one of the most pressing challenges of our time — how to provide scalable, off-grid energy that's both clean and dependable — AirPower USA combines decades of engineering innovation with practical, real-world deployment experience.
+",
+      "p2": "Our technology leverages the most abundant fuel source on the planet: ambient air. By compressing and storing air, our systems can generate power on demand, recharge themselves, and recycle energy in a closed loop. This approach eliminates emissions, reduces fuel logistics, and creates operational flexibility unmatched by diesel or intermittent renewable systems.",
+      "p3": "We operate with the belief that energy security is essential — whether that's powering a remote village, keeping mission-critical military operations online, or enabling first responders in the aftermath of a disaster."
+    },
+    "deliver": {
+      "title": "What We Deliver",
+      "features": {
+        "fuel": { "title": "Unlimited Fuel Source", "description": "Ambient air — free, renewable, and always available." },
+        "zero": { "title": "Zero Emissions", "description": "No combustion, no pollutants, no toxic waste." },
+        "bess": { "title": "Integrated Battery Storage", "description": "Built-in BESS for flexible energy management." },
+        "cold": { "title": "Cold Air Byproduct", "description": "Exhaust temperatures between -20°C and -40°C for industrial cooling, agriculture, and more." }
+      }
+    },
+    "ahead": {
+      "title": "Looking Ahead",
+      "p1": "AirPower USA is preparing for large-scale production from our planned San Diego facility, with applications spanning defense, disaster relief, remote infrastructure, EV charging, data centers, agriculture, and beyond.",
+      "p2": "Our roadmap includes manufacturing proprietary system components, expanding into international markets, and preparing for an IPO in 2025–2026.",
+      "cta": "Join us as we scale our patented energy technology into a global clean energy leader — delivering true energy independence."
+    }
+  }
 }
 
 

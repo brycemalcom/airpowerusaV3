@@ -530,6 +530,40 @@
       }
     }
   }
+  ,
+  "about": {
+    "hero": {
+      "title": "Acerca de AirPower USA",
+      "subtitle": "Pioneros del futuro de la energía limpia y desplegable con tecnología revolucionaria de aire comprimido."
+    },
+    "title": "Acerca de AirPower USA",
+    "subtitle": "Redefinimos energía limpia, fiable y desplegable con tecnología patentada de aire comprimido.",
+    "mission": {
+      "title": "Declaración de misión",
+      "body": "AirPower USA tiene la misión de redefinir la energía limpia, fiable y desplegable. Nuestro motor y generador de aire comprimido patentados entregan electricidad de cero emisiones con almacenamiento integrado, produciendo aire frío y limpio como subproducto. Diseñamos nuestros sistemas para operar en cualquier lugar — desde bases militares hasta zonas de desastre — sin depender de la infraestructura de red tradicional."
+    },
+    "story": {
+      "title": "Nuestra historia",
+      "p1": "Fundada para resolver uno de los retos más urgentes de nuestro tiempo — proveer energía fuera de red escalable, limpia y confiable — AirPower USA combina décadas de innovación en ingeniería con experiencia práctica de despliegue.",
+      "p2": "Nuestra tecnología aprovecha la fuente de combustible más abundante del planeta: el aire ambiente. Al comprimir y almacenar aire, nuestros sistemas pueden generar energía bajo demanda, recargarse y reciclar energía en un ciclo cerrado. Este enfoque elimina emisiones, reduce la logística de combustible y crea una flexibilidad operativa sin igual frente al diésel o renovables intermitentes.",
+      "p3": "Operamos con la convicción de que la seguridad energética es esencial — ya sea para abastecer una aldea remota, mantener en línea operaciones militares críticas o apoyar a primeros respondedores tras un desastre."
+    },
+    "deliver": {
+      "title": "Lo que entregamos",
+      "features": {
+        "fuel": { "title": "Fuente de combustible ilimitada", "description": "Aire ambiente — gratis, renovable y siempre disponible." },
+        "zero": { "title": "Cero emisiones", "description": "Sin combustión, sin contaminantes, sin residuos tóxicos." },
+        "bess": { "title": "Almacenamiento de baterías integrado", "description": "BESS incorporado para gestión energética flexible." },
+        "cold": { "title": "Subproducto de aire frío", "description": "Escape entre -20°C y -40°C para refrigeración industrial, agricultura y más." }
+      }
+    },
+    "ahead": {
+      "title": "Mirando al futuro",
+      "p1": "AirPower USA se prepara para producción a gran escala desde nuestra planta planificada en San Diego, con aplicaciones en defensa, ayuda ante desastres, infraestructura remota, carga de VE, centros de datos, agricultura y más.",
+      "p2": "Nuestro plan incluye fabricar componentes propietarios del sistema, expandirnos a mercados internacionales y prepararnos para una salida a bolsa en 2025–2026.",
+      "cta": "Únete mientras escalamos nuestra tecnología energética patentada hacia un líder global de energía limpia — entregando verdadera independencia energética."
+    }
+  }
 }
 
 
