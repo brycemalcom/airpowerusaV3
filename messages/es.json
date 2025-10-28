@@ -81,6 +81,33 @@
       "statSetup": "Tiempo mínimo de instalación",
       "cta": "Elige tu estrategia de despliegue",
       "contact": "Contacta a nuestro equipo"
+    },
+    "why": {
+      "badge": "Fiabilidad universal",
+      "titleTop": "Por qué funciona",
+      "titleBottom": "en todas partes",
+      "subtitle": "Diseñada para operar en condiciones extremas — de zonas militares a aldeas de montaña.",
+      "intro1": "La Estación AirPower fue diseñada para los entornos más duros y las misiones más exigentes. A diferencia de los sistemas solares o diésel, entrega energía instantánea y bajo demanda: fiable, portátil y segura.",
+      "intro2": "Con cero emisiones, funcionamiento silencioso y aire frío como único escape — esta plataforma supera a los generadores tradicionales en todas las categorías que importan.",
+      "advantages": "Ventajas competitivas",
+      "statRange": "a +50°C de rango operativo",
+      "statUptime": "Operación continua",
+      "statFuel": "Requerimientos de combustible",
+      "statReady": "Lista para la misión"
+    },
+    "market": {
+      "badge": "Oportunidad de mercado",
+      "titleLead": "Un",
+      "titleHighlight": "mercado de más de $70B",
+      "titleTail": "listo para la disrupción",
+      "subtitle": "AirPower se sitúa en la intersección de tres industrias enormes — todas hambrientas de energía escalable y sin emisiones.",
+      "intro1": "Desde energía remota hasta despliegue militar, la necesidad de energía limpia, portátil y de alta capacidad nunca ha sido mayor. La Estación AirPower aprovecha la demanda explosiva de generadores, infraestructura para vehículos eléctricos y almacenamiento de baterías — todo con un único sistema modular y desplegable.",
+      "intro2": "No resolvemos solo un problema. Estamos creando una categoría completa.",
+      "insightsTitle": "Por qué esta oportunidad importa ahora",
+      "insightsSubtitle": "Varias tendencias convergentes crean una ventana sin precedentes para la tecnología de AirPower",
+      "tamTitle": "Mercado total direccionable",
+      "tamCopy": "Estimación conservadora que combina reemplazo de generadores, infraestructura de VE y mercados de almacenamiento. La posición única de AirPower permite capturar los tres verticales.",
+      "cta": "¿Listo para transformar tres industrias a la vez?"
     }
   }
 }

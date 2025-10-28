@@ -10,6 +10,7 @@ import {
   Zap,
   Shield
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const benefits = [
   {
@@ -47,33 +48,32 @@ const benefits = [
 
 
 export default function WhyItWorks() {
+  const t = useTranslations('home.why');
   return (
     <section className="py-24 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="secondary" className="mb-4">
-            Universal Reliability
+            {t('badge', { default: 'Universal Reliability' })}
           </Badge>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Why It Works
+            {t('titleTop', { default: 'Why It Works' })}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              Everywhere
+              {t('titleBottom', { default: 'Everywhere' })}
             </span>
           </h2>
           <p className="mt-6 text-xl leading-8 text-muted-foreground">
-            Built to operate in extreme conditions — from military zones to mountain villages.
+            {t('subtitle', { default: 'Built to operate in extreme conditions — from military zones to mountain villages.' })}
           </p>
           
           {/* Intro Copy */}
           <div className="mt-8 p-6 rounded-xl bg-card/50 border border-border">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              The AirPower Station was engineered for the harshest environments and the most demanding missions. 
-              Unlike solar or diesel systems, it delivers instant, on-demand energy that's reliable, portable, and safe.
+              {t('intro1', { default: "The AirPower Station was engineered for the harshest environments and the most demanding missions. Unlike solar or diesel systems, it delivers instant, on-demand energy that's reliable, portable, and safe." })}
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground mt-4">
-              With zero emissions, silent operation, and cold air as its only exhaust — this platform outperforms 
-              traditional generators in every category that matters.
+              {t('intro2', { default: 'With zero emissions, silent operation, and cold air as its only exhaust — this platform outperforms traditional generators in every category that matters.' })}
             </p>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function WhyItWorks() {
         {/* Benefits Grid */}
         <div className="mb-20">
           <h3 className="text-2xl font-bold text-center text-foreground mb-12">
-            Competitive Advantages
+            {t('advantages', { default: 'Competitive Advantages' })}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => {
@@ -118,19 +118,19 @@ export default function WhyItWorks() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-3xl font-bold text-foreground mb-2">-40°C</div>
-              <div className="text-sm text-muted-foreground">to +50°C Operating Range</div>
+              <div className="text-sm text-muted-foreground">{t('statRange', { default: 'to +50°C Operating Range' })}</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-foreground mb-2">24/7</div>
-              <div className="text-sm text-muted-foreground">Continuous Operation</div>
+              <div className="text-sm text-muted-foreground">{t('statUptime', { default: 'Continuous Operation' })}</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-foreground mb-2">0</div>
-              <div className="text-sm text-muted-foreground">Fuel Requirements</div>
+              <div className="text-sm text-muted-foreground">{t('statFuel', { default: 'Fuel Requirements' })}</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-foreground mb-2">100%</div>
-              <div className="text-sm text-muted-foreground">Mission Ready</div>
+              <div className="text-sm text-muted-foreground">{t('statReady', { default: 'Mission Ready' })}</div>
             </div>
           </div>
         </div>

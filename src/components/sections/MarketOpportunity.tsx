@@ -12,6 +12,7 @@ import {
   MapPin,
   Lightbulb
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const marketStats = [
   {
@@ -63,34 +64,33 @@ const keyPoints = [
 ];
 
 export default function MarketOpportunity() {
+  const t = useTranslations('home.market');
   return (
     <section className="py-24 bg-gradient-to-br from-card to-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="secondary" className="mb-4">
-            Market Opportunity
+            {t('badge', { default: 'Market Opportunity' })}
           </Badge>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            A 
+            {t('titleLead', { default: 'A' })} 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
-              $70B+ Market
+              {t('titleHighlight', { default: '$70B+ Market' })}
             </span>
-            <span className="block">Ready for Disruption</span>
+            <span className="block">{t('titleTail', { default: 'Ready for Disruption' })}</span>
           </h2>
           <p className="mt-6 text-xl leading-8 text-muted-foreground">
-            AirPower sits at the intersection of three massive industries — all hungry for scalable, zero-emission power.
+            {t('subtitle', { default: 'AirPower sits at the intersection of three massive industries — all hungry for scalable, zero-emission power.' })}
           </p>
           
           {/* Intro Copy */}
           <div className="mt-8 p-6 rounded-xl bg-background/50 border border-border backdrop-blur-sm">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              From remote energy to military deployment, the need for clean, portable, high-capacity power has never been greater. 
-              The AirPower Station taps into explosive demand across generators, electric vehicle infrastructure, and battery storage — 
-              all with one modular, deployable system.
+              {t('intro1', { default: 'From remote energy to military deployment, the need for clean, portable, high-capacity power has never been greater. The AirPower Station taps into explosive demand across generators, electric vehicle infrastructure, and battery storage — all with one modular, deployable system.' })}
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground mt-4 font-semibold">
-              We're not just solving one problem. We're unlocking a whole new category.
+              {t('intro2', { default: "We're not just solving one problem. We're unlocking a whole new category." })}
             </p>
           </div>
         </div>
@@ -145,10 +145,10 @@ export default function MarketOpportunity() {
         <div className="border-t border-border pt-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-foreground mb-6">
-              Why This Opportunity Matters Now
+              {t('insightsTitle', { default: 'Why This Opportunity Matters Now' })}
             </h3>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Multiple converging trends create an unprecedented window for AirPower's revolutionary technology
+              {t('insightsSubtitle', { default: "Multiple converging trends create an unprecedented window for AirPower's revolutionary technology" })}
             </p>
           </div>
 
@@ -178,14 +178,13 @@ export default function MarketOpportunity() {
                 <DollarSign className="w-10 h-10 text-primary" />
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Total Addressable Market
+                {t('tamTitle', { default: 'Total Addressable Market' })}
               </h3>
               <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300 mb-4">
                 $70B+
               </div>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Conservative estimate combining generator replacement, EV infrastructure, and battery storage markets. 
-                AirPower's unique position enables capture across all three verticals.
+                {t('tamCopy', { default: "Conservative estimate combining generator replacement, EV infrastructure, and battery storage markets. AirPower's unique position enables capture across all three verticals." })}
               </p>
             </div>
           </Card>
@@ -195,7 +194,7 @@ export default function MarketOpportunity() {
         <div className="mt-16 text-center">
           <div className="inline-flex items-center space-x-2 text-muted-foreground">
             <div className="h-px w-12 bg-border" />
-            <span className="text-sm font-medium">Ready to disrupt three industries at once?</span>
+            <span className="text-sm font-medium">{t('cta', { default: 'Ready to disrupt three industries at once?' })}</span>
             <div className="h-px w-12 bg-border" />
           </div>
         </div>
