@@ -13,6 +13,7 @@ import {
   Clock,
   CheckCircle2
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface FormData {
   name: string;
@@ -25,6 +26,7 @@ interface FormData {
 
 
 export default function InquiryForm() {
+  const t = useTranslations('customer.form');
   const [formData, setFormData] = useState<FormData>({
     name: "",
     organization: "",
@@ -49,14 +51,14 @@ export default function InquiryForm() {
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
     
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.organization.trim()) newErrors.organization = "Organization is required";
+    if (!formData.name.trim()) newErrors.name = t('errors.name');
+    if (!formData.organization.trim()) newErrors.organization = t('errors.organization');
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t('errors.email');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t('errors.emailValid');
     }
-    if (!formData.message.trim()) newErrors.message = "Please provide some details about your needs";
+    if (!formData.message.trim()) newErrors.message = t('errors.message');
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -135,20 +137,20 @@ export default function InquiryForm() {
                 <CheckCircle2 className="w-10 h-10 text-green-500" />
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Thank You!
+                {t('thanks')}
               </h3>
               <p className="text-lg text-muted-foreground mb-4">
-                We've received your inquiry and will get back to you within 1 business day.
+                {t('thanksBody')}
               </p>
               <p className="text-sm text-muted-foreground mb-6">
-                📧 <strong>Please check your spam, junk, and promotions folders</strong> to ensure you don't miss our response.
+                📧 <strong>{t('checkSpam')}</strong> {t('checkTail')}
               </p>
               <Button 
                 variant="outline" 
                 onClick={() => setIsSubmitted(false)}
                 className="hover:bg-primary hover:text-primary-foreground"
               >
-                Submit Another Inquiry
+                {t('submitAnother')}
               </Button>
             </CardContent>
           </Card>
@@ -164,25 +166,25 @@ export default function InquiryForm() {
         <div className="text-center mb-12">
           <Badge variant="secondary" className="mb-4">
             <MessageCircle className="mr-2 h-4 w-4" />
-            Get Started
+            {t('badge')}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-4">
-            Request a Callback or
+            {t('titleTop')}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              Technical Info Packet
+              {t('titleBottom')}
             </span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Tell us about your power needs and we'll provide a customized solution
+            {t('subtitle')}
           </p>
         </div>
 
         {/* Form */}
         <Card className="overflow-hidden border-border bg-card/50 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-xl">Contact Information</CardTitle>
+            <CardTitle className="text-xl">{t('contactInfo')}</CardTitle>
             <CardDescription>
-              Fill out the form below and we'll get back to you with detailed information about how AirPower can solve your energy challenges.
+              {t('contactBody')}
             </CardDescription>
           </CardHeader>
           
@@ -191,14 +193,14 @@ export default function InquiryForm() {
               {/* Name and Organization */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name *</Label>
+                  <Label htmlFor="name">{t('name')}</Label>
                   <Input
                     id="name"
                     name="name"
                     type="text"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Your full name"
+                    placeholder={t('phName')}
                     className={errors.name ? "border-destructive" : ""}
                   />
                   {errors.name && (
@@ -207,14 +209,14 @@ export default function InquiryForm() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="organization">Organization *</Label>
+                  <Label htmlFor="organization">{t('organization')}</Label>
                   <Input
                     id="organization"
                     name="organization"
                     type="text"
                     value={formData.organization}
                     onChange={handleInputChange}
-                    placeholder="Company or organization"
+                    placeholder={t('phOrg')}
                     className={errors.organization ? "border-destructive" : ""}
                   />
                   {errors.organization && (
@@ -226,14 +228,14 @@ export default function InquiryForm() {
               {/* Email and Phone */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="email">{t('email')}</Label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="your.email@company.com"
+                    placeholder={t('phEmail')}
                     className={errors.email ? "border-destructive" : ""}
                   />
                   {errors.email && (
@@ -242,41 +244,41 @@ export default function InquiryForm() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
+                  <Label htmlFor="phone">{t('phone')}</Label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Optional phone number"
+                    placeholder={t('phPhone')}
                   />
                 </div>
               </div>
 
               {/* Location */}
               <div className="space-y-2">
-                <Label htmlFor="location">Location or Region</Label>
+                <Label htmlFor="location">{t('location')}</Label>
                 <Input
                   id="location"
                   name="location"
                   type="text"
                   value={formData.location}
                   onChange={handleInputChange}
-                  placeholder="City, State, Country"
+                    placeholder={t('phLocation')}
                 />
               </div>
 
               {/* Message */}
               <div className="space-y-2">
-                <Label htmlFor="message">Message / Details *</Label>
+                <Label htmlFor="message">{t('message')}</Label>
                 <Textarea
                   id="message"
                   name="message"
                   rows={4}
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us about your power requirements, deployment timeline, and any specific challenges you're facing..."
+                  placeholder={t('phMessage')}
                   className={errors.message ? "border-destructive" : ""}
                 />
                 {errors.message && (
@@ -294,12 +296,12 @@ export default function InquiryForm() {
                   {isSubmitting ? (
                     <>
                       <div className="animate-spin mr-3 h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
-                      Submitting...
+                      {t('submitting')}
                     </>
                   ) : (
                     <>
                       <Send className="mr-3 h-5 w-5" />
-                      Submit Request
+                      {t('submit')}
                     </>
                   )}
                 </Button>
@@ -312,9 +314,7 @@ export default function InquiryForm() {
         <div className="mt-8 text-center">
           <div className="inline-flex items-center space-x-2 text-muted-foreground">
             <Clock className="h-4 w-4" />
-            <span className="text-sm">
-              We'll get back to you within 1 business day to discuss your application needs or schedule a short demo.
-            </span>
+            <span className="text-sm">{t('footerNote')}</span>
           </div>
         </div>
       </div>

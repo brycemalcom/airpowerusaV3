@@ -2,9 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRef, useEffect, useState } from "react";
 
 export default function CustomerHero() {
+  const t = useTranslations('customer.hero');
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -92,14 +94,14 @@ export default function CustomerHero() {
         <div className="mb-8">
           <span className="inline-flex items-center rounded-full bg-primary/20 backdrop-blur-sm px-4 py-2 text-sm font-medium text-primary-foreground ring-1 ring-primary/30">
             <Phone className="mr-2 h-4 w-4" />
-            For Customers
+            {t('badge')}
           </span>
         </div>
 
         {/* Main headline with enhanced text shadows */}
         <h1 className="mx-auto max-w-5xl text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl drop-shadow-2xl">
           <span style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)' }}>
-            Power Anywhere.
+            {t('titleTop')}
           </span>
           <span 
             className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mt-2"
@@ -108,13 +110,13 @@ export default function CustomerHero() {
               WebkitTextStroke: '1px rgba(255,255,255,0.1)'
             }}
           >
-            Zero Emissions.
+            {t('titleMid')}
           </span>
           <span 
             className="block mt-2"
             style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)' }}
           >
-            From Ambient Air.
+            {t('titleBottom')}
           </span>
         </h1>
         
@@ -123,7 +125,7 @@ export default function CustomerHero() {
           className="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-white sm:text-xl lg:text-2xl font-light"
           style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6)' }}
         >
-          Whether you're deploying grow ops, disaster response, or utility-scale microgrids—Air-Power delivers clean, portable energy where others can't.
+          {t('subtitle')}
         </p>
         
         {/* Enhanced CTA buttons */}
@@ -137,7 +139,7 @@ export default function CustomerHero() {
               boxShadow: '0 8px 32px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)'
             }}
           >
-            Get Started
+            {t('ctaPrimary')}
             <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button 
@@ -149,7 +151,7 @@ export default function CustomerHero() {
               boxShadow: '0 8px 32px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.1)'
             }}
           >
-            Sign In
+            {t('ctaSecondary')}
           </Button>
         </div>
       </div>

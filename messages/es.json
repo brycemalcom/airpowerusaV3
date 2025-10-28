@@ -564,6 +564,87 @@
       "cta": "Únete mientras escalamos nuestra tecnología energética patentada hacia un líder global de energía limpia — entregando verdadera independencia energética."
     }
   }
+  ,
+  "customer": {
+    "hero": {
+      "badge": "Para clientes",
+      "titleTop": "Energía en cualquier lugar.",
+      "titleMid": "Cero emisiones.",
+      "titleBottom": "Desde el aire ambiente.",
+      "subtitle": "Ya sea cultivo interior, respuesta a desastres o microredes a escala de servicios — Air‑Power entrega energía limpia y portátil donde otros no pueden.",
+      "ctaPrimary": "Comenzar",
+      "ctaSecondary": "Iniciar sesión"
+    },
+    "serve": {
+      "badge": "Confiado por líderes",
+      "titleLead": "A quién",
+      "titleHighlight": "servimos",
+      "subtitle": "Organizaciones que resuelven retos energéticos en el mundo real",
+      "ag": {"cat": "Agricultura", "title": "Agricultura y cultivos", "desc": "Unidades móviles autocontenidas con escape de aire frío", "details": "Ambientes controlados que requieren refrigeración fuera de red y energía para operaciones de alta eficiencia."},
+      "em": {"cat": "Emergencias", "title": "Ayuda ante desastres y respuesta de emergencia", "desc": "Despliegue rápido en zonas sin energía", "details": "Agencias gubernamentales que necesitan energía móvil y confiable para operaciones de emergencia e infraestructura crítica."},
+      "def": {"cat": "Defensa", "title": "Ámbitos militares y mando remoto", "desc": "Preparación táctica para misiones fuera de red", "details": "OTAN, bases remotas y operaciones especiales que requieren fuentes de energía seguras e independientes para misiones críticas."},
+      "util": {"cat": "Servicios públicos", "title": "Utilities y operadores de red", "desc": "Sistemas de respaldo y generación en el borde", "details": "Empresas eléctricas interesadas en microredes contenedorizadas para estabilidad, respaldo y generación en el borde."},
+      "cons": {"cat": "Construcción", "title": "Proyectos de infraestructura remota", "desc": "Energía para obras más allá de la red", "details": "Construcción, telecom y proyectos isleños/tribales que requieren energía portátil, robusta y siempre disponible."},
+      "ev": {"cat": "Movilidad", "title": "Carga de VE y transporte", "desc": "Energía limpia donde la red no llega", "details": "Estaciones de energía de despliegue rápido e infraestructura móvil de carga para hubs de VE, paradas, flotas y aplicaciones de movilidad en el borde."},
+      "pillZero": "Cero emisiones",
+      "pillMobile": "Listo para movilidad",
+      "bottomTitle": "Tecnología comprobada para despliegues reales",
+      "bottomBody": "Nuestro AirPack móvil de 50 kW y sistemas BESS escalables entregan energía sin emisiones en los lugares más difíciles. Con {amount} en propuestas activas y varias unidades de prueba internacionales, estamos listos para impulsar tus operaciones críticas."
+    },
+    "why": {
+      "badge": "Nuestra ventaja",
+      "titleLead": "Por qué",
+      "titleHighlight": "Air‑Power?",
+      "subtitle": "Tecnología revolucionaria que entrega energía limpia donde otros no pueden",
+      "benefits": {
+        "noFuel": {"title": "Sin combustible", "description": "Impulsado por aire ambiente — gratis, limpio e ilimitado", "details": "Nuestra tecnología de motor de aire comprimido aprovecha el poder ilimitado del aire atmosférico, sin combustibles fósiles ni fuentes externas y con cero emisiones."},
+        "dual": {"title": "Doble salida", "description": "Electricidad + aire frío de -20°C a -40°C para refrigeración o almacenamiento", "details": "Sistema de doble salida que genera electricidad limpia y aire extremadamente frío de forma simultánea — ideal para aplicaciones que requieren energía y refrigeración."},
+        "mobile": {"title": "Móvil y modular", "description": "Unidades listas para despliegue en campo", "details": "Sistemas contenedorizados y montables en camión diseñados para despliegue rápido en cualquier lugar. Disponibles en 20 pies (0.5MW) y 40 pies (1.5MW), además de unidades móviles de 50 kW."},
+        "validated": {"title": "Probado y validado", "description": "+$77M en propuestas activas y múltiples unidades de prueba internacionales", "details": "Tecnología comprobada con despliegues reales, contratos militares y comerciales activos, y rendimiento validado en varios mercados internacionales."}
+      },
+      "bottomTitle": "¿Listo para experimentar el futuro de la energía limpia?",
+      "bottomBody": "Únete a organizaciones líderes que ya despliegan la tecnología de AirPower para sus necesidades más críticas. Desde ayuda ante desastres hasta operaciones remotas, nuestras soluciones probadas cumplen cuando más importa.",
+      "pillZero": "Cero emisiones",
+      "pillRapid": "Despliegue rápido",
+      "pillProven": "Tecnología comprobada",
+      "pillGlobal": "Soporte global"
+    },
+    "form": {
+      "badge": "Comenzar",
+      "titleTop": "Solicita una llamada o",
+      "titleBottom": "paquete de información técnica",
+      "subtitle": "Cuéntanos tus necesidades y te daremos una solución personalizada",
+      "contactInfo": "Información de contacto",
+      "contactBody": "Completa el formulario y te responderemos con información detallada sobre cómo AirPower puede resolver tus desafíos energéticos.",
+      "name": "Nombre *",
+      "organization": "Organización *",
+      "email": "Correo *",
+      "phone": "Teléfono",
+      "location": "Ubicación o región",
+      "message": "Mensaje / Detalles *",
+      "phName": "Tu nombre completo",
+      "phOrg": "Empresa u organización",
+      "phEmail": "tu.email@empresa.com",
+      "phPhone": "Número de teléfono (opcional)",
+      "phLocation": "Ciudad, Estado, País",
+      "phMessage": "Cuéntanos tus requerimientos, cronograma y retos específicos...",
+      "submitting": "Enviando...",
+      "submit": "Enviar solicitud",
+      "footerNote": "Respondemos en 1 día hábil para revisar tu caso o agendar una demo.",
+      "thanks": "¡Gracias!",
+      "thanksBody": "Hemos recibido tu consulta y te contactaremos dentro de 1 día hábil.",
+      "checkSpam": "Revisa tus carpetas de spam, correo no deseado y promociones",
+      "checkTail": "para asegurarte de no perder nuestra respuesta.",
+      "submitAnother": "Enviar otra consulta",
+      "errors": {
+        "name": "El nombre es obligatorio",
+        "organization": "La organización es obligatoria",
+        "email": "El correo es obligatorio",
+        "emailValid": "Ingresa un correo válido",
+        "message": "Por favor describe tus necesidades"
+      }
+    }
+  }
 }
 
 

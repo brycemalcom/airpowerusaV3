@@ -564,6 +564,87 @@
       "cta": "Join us as we scale our patented energy technology into a global clean energy leader — delivering true energy independence."
     }
   }
+  ,
+  "customer": {
+    "hero": {
+      "badge": "For Customers",
+      "titleTop": "Power Anywhere.",
+      "titleMid": "Zero Emissions.",
+      "titleBottom": "From Ambient Air.",
+      "subtitle": "Whether you're deploying grow ops, disaster response, or utility-scale microgrids—Air-Power delivers clean, portable energy where others can't.",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Sign In"
+    },
+    "serve": {
+      "badge": "Trusted by Leaders",
+      "titleLead": "Who We",
+      "titleHighlight": "Serve",
+      "subtitle": "Trusted by organizations solving power challenges in the real world",
+      "ag": {"cat": "Agriculture", "title": "Agriculture & Grow Operations", "desc": "Self-contained mobile units with cold air exhaust", "details": "Controlled environments needing off-grid cooling + energy for high-efficiency grow operations and environmental control."},
+      "em": {"cat": "Emergency", "title": "Disaster Relief & Emergency Response", "desc": "Rapid deployment to blackout zones", "details": "Domestic or international government agencies requiring mobile, reliable power for emergency operations and critical infrastructure."},
+      "def": {"cat": "Defense", "title": "Military & Remote Command", "desc": "Tactical readiness for off-grid missions", "details": "NATO, remote command bases, and special operations requiring secure, independent power sources for mission-critical operations."},
+      "util": {"cat": "Utility", "title": "Utilities & Grid Operators", "desc": "Backup and edge generation systems", "details": "Power companies interested in containerized microgrid assets for grid stability, backup power, and edge generation solutions."},
+      "cons": {"cat": "Construction", "title": "Remote Infrastructure Projects", "desc": "Energy for builds beyond the grid", "details": "Construction, telecom, island/tribal projects requiring portable, rugged, and always-on power solutions for remote locations."},
+      "ev": {"cat": "Mobility", "title": "EV Charging & Transport", "desc": "Clean power where grid access can't reach", "details": "Rapid-deploy energy stations and mobile charging infrastructure for electric vehicle hubs, rest stops, utility fleets, and edge mobility applications—powered by compressed air."},
+      "pillZero": "Zero Emissions",
+      "pillMobile": "Mobile Ready",
+      "bottomTitle": "Proven Technology for Real-World Deployment",
+      "bottomBody": "Our mobile 50kW AirPack and scalable BESS systems provide emissions-free power for the hardest-to-reach locations. With {amount} in active proposals and multiple international test units built, we're ready to power your mission-critical operations."
+    },
+    "why": {
+      "badge": "Our Advantage",
+      "titleLead": "Why",
+      "titleHighlight": "Air-Power?",
+      "subtitle": "Revolutionary technology that delivers clean energy where others can't",
+      "benefits": {
+        "noFuel": {"title": "No Fuel Required", "description": "Powered by ambient air—free, clean, and unlimited", "details": "Our revolutionary compressed air engine technology harnesses the unlimited power of atmospheric air, requiring no fossil fuels, no external energy sources, and producing zero emissions."},
+        "dual": {"title": "Dual Output", "description": "Electricity + -20°C to -40°C cold air for cooling or storage", "details": "Unique dual-output system generates both clean electricity and extremely cold air simultaneously, perfect for applications requiring both power and cooling solutions."},
+        "mobile": {"title": "Mobile & Modular", "description": "Drop-in units ready for field deployment", "details": "Containerized and truck-deployable systems designed for rapid deployment anywhere. Available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized configurations, plus 50kW mobile units."},
+        "validated": {"title": "Tested & Validated", "description": "$77M+ in active proposals, multiple international test units built", "details": "Proven technology with real-world deployments, active military and commercial contracts, and validated performance across multiple international markets."}
+      },
+      "bottomTitle": "Ready to Experience the Future of Clean Energy?",
+      "bottomBody": "Join leading organizations worldwide who are already deploying AirPower technology for their most critical energy needs. From disaster relief to remote operations, our proven solutions deliver when it matters most.",
+      "pillZero": "Zero Emissions",
+      "pillRapid": "Rapid Deployment",
+      "pillProven": "Proven Technology",
+      "pillGlobal": "Global Support"
+    },
+    "form": {
+      "badge": "Get Started",
+      "titleTop": "Request a Callback or",
+      "titleBottom": "Technical Info Packet",
+      "subtitle": "Tell us about your power needs and we'll provide a customized solution",
+      "contactInfo": "Contact Information",
+      "contactBody": "Fill out the form below and we'll get back to you with detailed information about how AirPower can solve your energy challenges.",
+      "name": "Name *",
+      "organization": "Organization *",
+      "email": "Email *",
+      "phone": "Phone",
+      "location": "Location or Region",
+      "message": "Message / Details *",
+      "phName": "Your full name",
+      "phOrg": "Company or organization",
+      "phEmail": "your.email@company.com",
+      "phPhone": "Optional phone number",
+      "phLocation": "City, State, Country",
+      "phMessage": "Tell us about your power requirements, deployment timeline, and any specific challenges you're facing...",
+      "submitting": "Submitting...",
+      "submit": "Submit Request",
+      "footerNote": "We'll get back to you within 1 business day to discuss your application needs or schedule a short demo.",
+      "thanks": "Thank You!",
+      "thanksBody": "We've received your inquiry and will get back to you within 1 business day.",
+      "checkSpam": "Please check your spam, junk, and promotions folders",
+      "checkTail": "to ensure you don't miss our response.",
+      "submitAnother": "Submit Another Inquiry",
+      "errors": {
+        "name": "Name is required",
+        "organization": "Organization is required",
+        "email": "Email is required",
+        "emailValid": "Please enter a valid email address",
+        "message": "Please provide some details about your needs"
+      }
+    }
+  }
 }
 
 
