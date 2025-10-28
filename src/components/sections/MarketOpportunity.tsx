@@ -14,53 +14,18 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const marketStats = [
-  {
-    value: "$28B+",
-    label: "Global Generator Market",
-    description: "Off-grid and backup power demand growing faster than ever.",
-    icon: Zap,
-    growth: "12% CAGR"
-  },
-  {
-    value: "$45B+",
-    label: "EV/BESS Infrastructure",
-    description: "Clean storage and mobile charging stations are mission-critical.",
-    icon: Battery,
-    growth: "25% CAGR"
-  },
-  {
-    value: "42%",
-    label: "CAGR in Grid-Scale Battery Storage",
-    description: "Demand for renewable-ready storage solutions is surging.",
-    icon: BarChart3,
-    growth: "42% CAGR"
-  },
-  {
-    value: "40%",
-    label: "of the World Lacks Reliable Grid Access",
-    description: "Our solution is engineered for where the grid can't reach.",
-    icon: Globe,
-    growth: "2.8B People"
-  }
+type StatMeta = { key: 'gen'|'evbess'|'storage'|'access'; value: string; growth: string; icon: any };
+const marketStats: StatMeta[] = [
+  { key: 'gen', value: '$28B+', growth: '12% CAGR', icon: Zap },
+  { key: 'evbess', value: '$45B+', growth: '25% CAGR', icon: Battery },
+  { key: 'storage', value: '42%', growth: '42% CAGR', icon: BarChart3 },
+  { key: 'access', value: '40%', growth: '2.8B People', icon: Globe }
 ];
 
 const keyPoints = [
-  {
-    icon: TrendingUp,
-    title: "Explosive Growth Markets",
-    description: "Multi-billion dollar industries with double-digit growth rates"
-  },
-  {
-    icon: MapPin,
-    title: "Global Deployment Opportunity",
-    description: "Serving markets from developed infrastructure to emerging regions"
-  },
-  {
-    icon: Lightbulb,
-    title: "Technology Convergence",
-    description: "First solution to address generator, storage, and grid challenges simultaneously"
-  }
+  { icon: TrendingUp, key: 'growthMarkets' },
+  { icon: MapPin, key: 'globalDeployment' },
+  { icon: Lightbulb, key: 'techConvergence' }
 ];
 
 export default function MarketOpportunity() {
@@ -124,12 +89,12 @@ export default function MarketOpportunity() {
                         {stat.value}
                       </div>
                       <h3 className="text-xl font-bold text-foreground leading-tight">
-                        {stat.label}
+                        {t(`insights.${stat.key}.label`)}
                       </h3>
                     </div>
                     
                     <p className="text-muted-foreground leading-relaxed">
-                      {stat.description}
+                      {t(`insights.${stat.key}.description`)}
                     </p>
                   </div>
                 </div>
@@ -161,10 +126,10 @@ export default function MarketOpportunity() {
                     <Icon className="w-8 h-8 text-primary" />
                   </div>
                   <h4 className="text-xl font-bold text-foreground mb-3">
-                    {point.title}
+                    {t(`insightsTitleCards.${point.key}.title`)}
                   </h4>
                   <p className="text-muted-foreground leading-relaxed">
-                    {point.description}
+                    {t(`insightsTitleCards.${point.key}.description`)}
                   </p>
                 </div>
               );

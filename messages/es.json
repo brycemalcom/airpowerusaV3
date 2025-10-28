@@ -402,8 +402,40 @@
       "subtitle": "AirPower se sitúa en la intersección de tres industrias enormes — todas hambrientas de energía escalable y sin emisiones.",
       "intro1": "Desde energía remota hasta despliegue militar, la necesidad de energía limpia, portátil y de alta capacidad nunca ha sido mayor. La Estación AirPower aprovecha la demanda explosiva de generadores, infraestructura para vehículos eléctricos y almacenamiento de baterías — todo con un único sistema modular y desplegable.",
       "intro2": "No resolvemos solo un problema. Estamos creando una categoría completa.",
+      "insights": {
+        "gen": {
+          "label": "Mercado global de generadores",
+          "description": "La demanda de energía fuera de red y de respaldo crece más que nunca."
+        },
+        "evbess": {
+          "label": "Infraestructura de VE/BESS",
+          "description": "El almacenamiento limpio y las estaciones de carga móvil son críticas para la misión."
+        },
+        "storage": {
+          "label": "Crecimiento en almacenamiento a escala de red",
+          "description": "La demanda de soluciones de almacenamiento listas para renovables se dispara."
+        },
+        "access": {
+          "label": "del mundo carece de acceso confiable a la red",
+          "description": "Nuestra solución está diseñada para donde la red no llega."
+        }
+      },
       "insightsTitle": "Por qué esta oportunidad importa ahora",
       "insightsSubtitle": "Varias tendencias convergentes crean una ventana sin precedentes para la tecnología de AirPower",
+      "insightsTitleCards": {
+        "growthMarkets": {
+          "title": "Mercados de crecimiento explosivo",
+          "description": "Industrias de miles de millones con tasas de crecimiento de dos dígitos"
+        },
+        "globalDeployment": {
+          "title": "Oportunidad de despliegue global",
+          "description": "Atendemos desde infraestructura desarrollada hasta regiones emergentes"
+        },
+        "techConvergence": {
+          "title": "Convergencia tecnológica",
+          "description": "Primera solución que aborda generadores, almacenamiento y red al mismo tiempo"
+        }
+      },
       "tamTitle": "Mercado total direccionable",
       "tamCopy": "Estimación conservadora que combina reemplazo de generadores, infraestructura de VE y mercados de almacenamiento. La posición única de AirPower permite capturar los tres verticales.",
       "cta": "¿Listo para transformar tres industrias a la vez?"

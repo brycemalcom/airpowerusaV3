@@ -394,6 +394,52 @@
       "cta": "Choose your deployment strategy",
       "contact": "Contact Our Team"
     },
+    "market": {
+      "badge": "Market Opportunity",
+      "titleLead": "A",
+      "titleHighlight": "$70B+ Market",
+      "titleTail": "Ready for Disruption",
+      "subtitle": "AirPower sits at the intersection of three massive industries — all hungry for scalable, zero-emission power.",
+      "intro1": "From remote energy to military deployment, the need for clean, portable, high-capacity power has never been greater. The AirPower Station taps into explosive demand across generators, electric vehicle infrastructure, and battery storage — all with one modular, deployable system.",
+      "intro2": "We're not just solving one problem. We're unlocking a whole new category.",
+      "insights": {
+        "gen": {
+          "label": "Global Generator Market",
+          "description": "Off-grid and backup power demand growing faster than ever."
+        },
+        "evbess": {
+          "label": "EV/BESS Infrastructure",
+          "description": "Clean storage and mobile charging stations are mission-critical."
+        },
+        "storage": {
+          "label": "CAGR in Grid-Scale Battery Storage",
+          "description": "Demand for renewable-ready storage solutions is surging."
+        },
+        "access": {
+          "label": "of the World Lacks Reliable Grid Access",
+          "description": "Our solution is engineered for where the grid can't reach."
+        }
+      },
+      "insightsTitle": "Why This Opportunity Matters Now",
+      "insightsSubtitle": "Multiple converging trends create an unprecedented window for AirPower's revolutionary technology",
+      "insightsTitleCards": {
+        "growthMarkets": {
+          "title": "Explosive Growth Markets",
+          "description": "Multi-billion dollar industries with double-digit growth rates"
+        },
+        "globalDeployment": {
+          "title": "Global Deployment Opportunity",
+          "description": "Serving markets from developed infrastructure to emerging regions"
+        },
+        "techConvergence": {
+          "title": "Technology Convergence",
+          "description": "First solution to address generator, storage, and grid challenges simultaneously"
+        }
+      },
+      "tamTitle": "Total Addressable Market",
+      "tamCopy": "Conservative estimate combining generator replacement, EV infrastructure, and battery storage markets. AirPower's unique position enables capture across all three verticals.",
+      "cta": "Ready to disrupt three industries at once?"
+    },
     "investorCta": {
       "thanks": "Thank You for Your Interest",
       "thanksBody": "Your investor packet request has been received. Our team will review your submission and respond within 24 hours.",
