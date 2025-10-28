@@ -66,6 +66,21 @@
       "statOnDemand": "On-Demand Power",
       "statBess": "BESS Optional",
       "statExhaust": "-35°C Exhaust"
+    },
+    "modular": {
+      "badge": "Flexible Deployment",
+      "titleTop": "Modular Power,",
+      "titleBottom": "Anywhere You Need It",
+      "subtitle": "Multiple deployment formats. Same breakthrough system.",
+      "intro1": "The AirPower Station isn't just one product — it's a flexible energy platform that adapts to your mission. Whether truck-mounted or available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized configurations, each unit delivers our full CAE + generator system, with optional BESS for battery storage.",
+      "intro2": "From mobile operations to permanent grid support, AirPower's modular design means clean, scalable power — wherever it's needed most.",
+      "features": "Key Features",
+      "statFormats": "Deployment Formats",
+      "statHomes": "Homes Powered Daily",
+      "statLocations": "Deployment Locations",
+      "statSetup": "Min Setup Time",
+      "cta": "Choose your deployment strategy",
+      "contact": "Contact Our Team"
     }
   }
 }

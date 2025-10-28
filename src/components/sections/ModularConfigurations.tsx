@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { 
   Truck,
@@ -104,6 +105,7 @@ const configurations = [
 
 export default function ModularConfigurations() {
   const [isMobile, setIsMobile] = useState(false);
+  const t = useTranslations('home.modular');
 
   useEffect(() => {
     const checkMobile = () => {
@@ -120,28 +122,25 @@ export default function ModularConfigurations() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="secondary" className="mb-4">
-            Flexible Deployment
+            {t('badge', { default: 'Flexible Deployment' })}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-6xl">
-            Modular Power,
+            {t('titleTop', { default: 'Modular Power,' })}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              Anywhere You Need It
+              {t('titleBottom', { default: 'Anywhere You Need It' })}
             </span>
           </h2>
           <p className="mt-6 text-lg sm:text-xl leading-8 text-muted-foreground">
-            Multiple deployment formats. Same breakthrough system.
+            {t('subtitle', { default: 'Multiple deployment formats. Same breakthrough system.' })}
           </p>
           
           {/* Intro Copy */}
           <div className="mt-8 p-6 rounded-xl bg-background/50 border border-border">
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-              The AirPower Station isn't just one product — it's a flexible energy platform that adapts to your mission. 
-              Whether truck-mounted or available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized configurations, each unit delivers our full CAE + generator system, 
-              with optional BESS for battery storage.
+              {t('intro1', { default: "The AirPower Station isn't just one product — it's a flexible energy platform that adapts to your mission. Whether truck-mounted or available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized configurations, each unit delivers our full CAE + generator system, with optional BESS for battery storage." })}
             </p>
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mt-4">
-              From mobile operations to permanent grid support, AirPower's modular design means clean, scalable power — 
-              wherever it's needed most.
+              {t('intro2', { default: "From mobile operations to permanent grid support, AirPower's modular design means clean, scalable power — wherever it's needed most." })}
             </p>
           </div>
         </div>
@@ -272,7 +271,7 @@ export default function ModularConfigurations() {
                   {/* Features */}
                   <div className="space-y-2">
                     <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                      Key Features
+                      {t('features', { default: 'Key Features' })}
                     </div>
                     <div className="flex flex-wrap gap-1 sm:gap-2">
                       {config.features.map((feature, index) => (
@@ -296,28 +295,28 @@ export default function ModularConfigurations() {
                 <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
               </div>
               <div className="text-xl sm:text-2xl font-bold text-foreground">5</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Deployment Formats</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('statFormats', { default: 'Deployment Formats' })}</div>
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mx-auto rounded-lg bg-green-500/10">
                 <Users className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
               </div>
               <div className="text-xl sm:text-2xl font-bold text-foreground">400+</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Homes Powered Daily</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('statHomes', { default: 'Homes Powered Daily' })}</div>
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mx-auto rounded-lg bg-purple-500/10">
                 <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
               </div>
               <div className="text-xl sm:text-2xl font-bold text-foreground">∞</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Deployment Locations</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('statLocations', { default: 'Deployment Locations' })}</div>
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mx-auto rounded-lg bg-orange-500/10">
                 <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500" />
               </div>
               <div className="text-xl sm:text-2xl font-bold text-foreground">15min</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Min Setup Time</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('statSetup', { default: 'Min Setup Time' })}</div>
             </div>
           </div>
         </div>
@@ -326,11 +325,11 @@ export default function ModularConfigurations() {
         <div className="mt-16 text-center">
           <div className="inline-flex items-center space-x-2 text-muted-foreground mb-8">
             <div className="h-px w-8 sm:w-12 bg-border" />
-            <span className="text-xs sm:text-sm font-medium">Choose your deployment strategy</span>
+            <span className="text-xs sm:text-sm font-medium">{t('cta', { default: 'Choose your deployment strategy' })}</span>
             <div className="h-px w-8 sm:w-12 bg-border" />
           </div>
           <Button size="lg" className="bg-primary hover:bg-primary/90">
-            Contact Our Team
+            {t('contact', { default: 'Contact Our Team' })}
           </Button>
         </div>
       </div>

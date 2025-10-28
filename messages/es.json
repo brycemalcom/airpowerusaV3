@@ -66,6 +66,21 @@
       "statOnDemand": "Energía bajo demanda",
       "statBess": "BESS opcional",
       "statExhaust": "Escape a -35°C"
+    },
+    "modular": {
+      "badge": "Despliegue flexible",
+      "titleTop": "Energía modular,",
+      "titleBottom": "donde la necesites",
+      "subtitle": "Varios formatos de despliegue. El mismo sistema revolucionario.",
+      "intro1": "La Estación AirPower no es un único producto — es una plataforma energética flexible que se adapta a tu misión. Ya sea montada en camión o en contenedores de 20 pies (0.5MW) y 40 pies (1.5MW), cada unidad integra nuestro sistema completo CAE + generador, con BESS opcional.",
+      "intro2": "Desde operaciones móviles hasta soporte permanente a la red, el diseño modular de AirPower significa energía limpia y escalable — donde más se necesita.",
+      "features": "Características clave",
+      "statFormats": "Formatos de despliegue",
+      "statHomes": "Hogares abastecidos por día",
+      "statLocations": "Lugares de despliegue",
+      "statSetup": "Tiempo mínimo de instalación",
+      "cta": "Elige tu estrategia de despliegue",
+      "contact": "Contacta a nuestro equipo"
     }
   }
 }
