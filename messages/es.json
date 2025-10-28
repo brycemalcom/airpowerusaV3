@@ -9,8 +9,20 @@
       "videos": "Galería de videos",
       "about": "Acerca de"
     },
+    "menu": {
+      "customers": "Para clientes",
+      "investorsSoon": "Para inversionistas — Próximamente",
+      "faq": "Preguntas frecuentes de inversionistas",
+      "filings": "Declaraciones ante la SEC",
+      "newsroom": "Sala de prensa",
+      "videos": "Galería de videos"
+    },
     "footer": {
-      "rights": "Todos los derechos reservados."
+      "rights": "Todos los derechos reservados.",
+      "company": "Compañía",
+      "support": "Soporte",
+      "privacy": "Política de privacidad",
+      "terms": "Términos del servicio"
     }
   },
   "home": {

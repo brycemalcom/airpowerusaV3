@@ -2,30 +2,32 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Menu, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Technology", href: "/#products" },
-  { name: "Use Cases", href: "/#use-cases" },
-  { name: "Products", href: "/#modular-configurations" },
-  { name: "Newsroom", href: "/newsroom" },
-  { name: "Video Gallery", href: "/videos" },
-  { name: "About", href: "/about" },
-];
+  { key: "technology", href: "/#products" },
+  { key: "useCases", href: "/#use-cases" },
+  { key: "products", href: "/#modular-configurations" },
+  { key: "newsroom", href: "/newsroom" },
+  { key: "videos", href: "/videos" },
+  { key: "about", href: "/about" },
+] as const;
 
 const hamburgerMenu = [
-  { name: "For Customers", href: "/customer", color: "text-blue-400" },
-  { name: "For Investors — Coming Soon", href: "#", color: "text-cyan-400 opacity-70" },
-  { name: "Investor FAQs", href: "/investor-faqs", color: "text-emerald-400" },
-  { name: "SEC Filings", href: "/filings", color: "text-yellow-400" },
-  { name: "Newsroom", href: "/newsroom", color: "text-purple-400" },
-  { name: "Video Gallery", href: "/videos", color: "text-pink-400" },
-];
+  { key: "customers", name: "For Customers", href: "/customer", color: "text-blue-400" },
+  { key: "investorsSoon", name: "For Investors — Coming Soon", href: "#", color: "text-cyan-400 opacity-70" },
+  { key: "faq", name: "Investor FAQs", href: "/investor-faqs", color: "text-emerald-400" },
+  { key: "filings", name: "SEC Filings", href: "/filings", color: "text-yellow-400" },
+  { key: "newsroom", name: "Newsroom", href: "/newsroom", color: "text-purple-400" },
+  { key: "videos", name: "Video Gallery", href: "/videos", color: "text-pink-400" },
+] as const;
 
 export default function Header() {
+  const t = useTranslations('common');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -100,7 +102,7 @@ export default function Header() {
         <div className="hidden lg:flex lg:gap-x-8 xl:gap-x-12">
           {navigation.map((item) => (
             <a
-              key={item.name}
+              key={item.key}
               href={item.href}
               className={`text-sm font-semibold leading-6 transition-colors ${
                 isScrolled
@@ -108,7 +110,7 @@ export default function Header() {
                   : 'text-white/90 hover:text-white'
               }`}
             >
-              {item.name}
+              {t(`nav.${item.key}`, { default: item.key })}
             </a>
           ))}
         </div>
@@ -140,11 +142,11 @@ export default function Header() {
             <div className="space-y-4">
               {hamburgerMenu.map((item) => (
                 <a
-                  key={item.name}
+                  key={item.key}
                   href={item.href}
                   className={`block text-lg font-semibold leading-7 transition-colors hover:opacity-80 ${item.color}`}
                   onClick={(e) => {
-                    if (item.name.startsWith('For Investors')) {
+                    if (item.key === 'investorsSoon') {
                       e.preventDefault();
                       return;
                     }
@@ -152,7 +154,7 @@ export default function Header() {
                   }}
                   aria-disabled={item.name.startsWith('For Investors')}
                 >
-                  {item.name}
+                  {item.key === 'investorsSoon' ? t('menu.investorsSoon', { default: item.name }) : t(`menu.${item.key}`, { default: item.name })}
                 </a>
               ))}
             </div>

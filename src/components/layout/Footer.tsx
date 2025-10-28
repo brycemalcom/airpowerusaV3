@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Zap, Mail, Phone, MapPin } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const navigation = {
   main: [
@@ -17,6 +18,7 @@ const navigation = {
 };
 
 export default function Footer() {
+  const t = useTranslations('common');
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
@@ -49,7 +51,7 @@ export default function Footer() {
           
           {/* Navigation links */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Company</h3>
+            <h3 className="text-sm font-semibold text-foreground">{t('footer.company', { default: 'Company' })}</h3>
             <ul className="mt-4 space-y-2">
               {navigation.main.map((item) => (
                 <li key={item.name}>
@@ -65,7 +67,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Support</h3>
+            <h3 className="text-sm font-semibold text-foreground">{t('footer.support', { default: 'Support' })}</h3>
             <ul className="mt-4 space-y-2">
               {navigation.support.map((item) => (
                 <li key={item.name}>
@@ -89,10 +91,10 @@ export default function Footer() {
           </p>
           <div className="flex space-x-6">
             <a href="#privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
+              {t('footer.privacy', { default: 'Privacy Policy' })}
             </a>
             <a href="#terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Terms of Service
+              {t('footer.terms', { default: 'Terms of Service' })}
             </a>
           </div>
         </div>

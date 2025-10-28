@@ -9,8 +9,20 @@
       "videos": "Video Gallery",
       "about": "About"
     },
+    "menu": {
+      "customers": "For Customers",
+      "investorsSoon": "For Investors — Coming Soon",
+      "faq": "Investor FAQs",
+      "filings": "SEC Filings",
+      "newsroom": "Newsroom",
+      "videos": "Video Gallery"
+    },
     "footer": {
-      "rights": "All rights reserved."
+      "rights": "All rights reserved.",
+      "company": "Company",
+      "support": "Support",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
     }
   },
   "home": {
