@@ -565,6 +565,41 @@
     }
   }
   ,
+  "faqs": {
+    "title": "Investor FAQs",
+    "subtitle": "Get answers to common questions about investing in AirPower USA's Regulation D offering.",
+    "items": {
+      "q1": {"q": "How do I invest in AirPower USA?", "a": "You can invest directly through our current Regulation D offering by completing the subscription agreement and submitting your payment. Once processed, your shares will be recorded with our transfer agent. Contact us at invest@airpowerusa.net for the investor packet and instructions."},
+      "q2": {"q": "Am I eligible to invest?", "a": "Our current round is open to accredited investors under SEC Regulation D, Rule 506(c). You'll need to meet accreditation criteria such as income or net worth thresholds."},
+      "q3": {"q": "What payment types are accepted?", "a": "We accept wire transfers and ACH payments for U.S.-based investors. International investors may also use bank wire. (Exact payment instructions are provided in your subscription packet.)"},
+      "q4": {"q": "What is the price per share?", "a": "In Round 1, shares are offered at $3.00 per share with a $10,000 minimum investment."},
+      "q5": {"q": "What is the minimum to invest?", "a": "$10,000 in this current round."},
+      "q6": {"q": "What is the maximum I can invest?", "a": "There is no hard maximum for accredited investors under Reg D. Investments over certain thresholds may require additional compliance review."},
+      "q7": {"q": "Can I invest in AirPower USA if I am a resident in another country?", "a": "Yes, non-U.S. residents may invest, subject to applicable local laws and completion of required compliance documentation."},
+      "q8": {"q": "Where can I see my shares?", "a": "Your shares will be recorded with our appointed transfer agent, who will provide you with account access and documentation."},
+      "q9": {"q": "Where can I find more information about AirPower USA?", "a": "Visit airpowerusa.com or contact invest@airpowerusa.net for our executive summary, pitch deck, and Reg D investor documents."},
+      "q10": {"q": "Is there a direct number for the AirPower USA Investor Relations Team?", "a": "Yes — investor inquiries can be made at 214.257.7957."},
+      "q11": {"q": "What platform(s) are AirPower USA investment opportunities available on?", "a": "Our current offering is conducted privately under Reg D and is available directly from the company, not through public crowdfunding platforms."},
+      "q12": {"q": "When is the last day to buy shares?", "a": "Round 1 is open until fully subscribed. Availability is first-come, first-served."},
+      "q13": {"q": "What is AirPower USA's valuation?", "a": "Valuation is based on current offering price and number of shares outstanding. Contact us for current details."},
+      "q14": {"q": "What is the initial projected return on investment (ROI)?", "a": "Projected ROI depends on company growth, product adoption, and potential future liquidity events such as an IPO. ROI is not guaranteed."},
+      "q15": {"q": "Does AirPower USA plan to do an initial public offering (IPO) and if so, when?", "a": "Yes. The company plans to be publicly listed by Q1-Q2 2026, emerging as an NYSE, AMEX, or NASDAQ trading entity."},
+      "q16": {"q": "What happens to my shares if AirPower USA goes public?", "a": "Private shares typically convert to publicly tradable shares after IPO, subject to any lock-up periods or transfer restrictions."},
+      "q17": {"q": "Will the investment draw dividends?", "a": "AirPower USA is currently reinvesting all profits into growth. Dividend payments are not expected in the near term."},
+      "q18": {"q": "What is a Transfer Agent and who is AirPower USA's Transfer Agent?", "a": "A transfer agent maintains records of shareholder ownership. The appointed transfer agent will be disclosed in your investor documentation."},
+      "q19": {"q": "Are AirPower USA shares transferable?", "a": "Shares may be transferable in accordance with applicable securities laws and company bylaws. Restrictions may apply for private securities."},
+      "q20": {"q": "What is an accredited investor?", "a": "An accredited investor meets income or net worth thresholds defined by the SEC (e.g., $200,000 annual income or $1 million net worth excluding primary residence)."},
+      "q21": {"q": "What is Regulation A?", "a": "Regulation A is an SEC exemption that allows certain public offerings to non-accredited investors. AirPower USA is not currently using Reg A."},
+      "q22": {"q": "Where can I find the Regulation D offering memorandum?", "a": "Contact invest@airpowerusa.net to request the full investor packet, which includes the offering memorandum and subscription agreement."},
+      "q23": {"q": "What is the difference between an accredited offering (Reg D) and a non-accredited offering (Reg A)?", "a": "Reg D offerings are limited to accredited investors and allow higher investment amounts with less public disclosure. Reg A offerings can include non-accredited investors but require additional SEC qualification and public filings."}
+    },
+    "bottom": {
+      "title": "Still have questions?",
+      "body": "Contact our investor relations team for personalized assistance with your investment.",
+      "phone": "Phone:"
+    }
+  }
+  ,
   "customer": {
     "hero": {
       "badge": "For Customers",

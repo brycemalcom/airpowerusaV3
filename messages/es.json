@@ -645,6 +645,41 @@
       }
     }
   }
+  ,
+  "faqs": {
+    "title": "Preguntas frecuentes de inversionistas",
+    "subtitle": "Respuestas a preguntas comunes sobre invertir en la oferta bajo la Regulación D de AirPower USA.",
+    "items": {
+      "q1": {"q": "¿Cómo invierto en AirPower USA?", "a": "Puedes invertir directamente a través de nuestra oferta actual bajo la Regulación D completando el acuerdo de suscripción y enviando el pago. Una vez procesado, tus acciones se registrarán con nuestro agente de transferencias. Contáctanos en invest@airpowerusa.net para recibir el paquete de inversionista e instrucciones."},
+      "q2": {"q": "¿Soy elegible para invertir?", "a": "La ronda actual está abierta a inversionistas acreditados bajo la Regulación D, Regla 506(c) de la SEC. Debes cumplir criterios de acreditación como umbrales de ingreso o patrimonio."},
+      "q3": {"q": "¿Qué formas de pago aceptan?", "a": "Aceptamos transferencias bancarias (wire) y ACH para inversionistas en EE. UU. Inversionistas internacionales también pueden usar transferencia bancaria. (Las instrucciones exactas vienen en tu paquete de suscripción)."},
+      "q4": {"q": "¿Cuál es el precio por acción?", "a": "En la Ronda 1, las acciones se ofrecen a $3.00 por acción con una inversión mínima de $10,000."},
+      "q5": {"q": "¿Cuál es la inversión mínima?", "a": "$10,000 en esta ronda."},
+      "q6": {"q": "¿Cuál es la inversión máxima?", "a": "No hay un máximo estricto para inversionistas acreditados bajo Reg D. Inversiones por encima de ciertos umbrales pueden requerir revisión adicional de cumplimiento."},
+      "q7": {"q": "¿Puedo invertir si resido en otro país?", "a": "Sí, los no residentes en EE. UU. pueden invertir, sujeto a las leyes locales aplicables y al cumplimiento de la documentación requerida."},
+      "q8": {"q": "¿Dónde puedo ver mis acciones?", "a": "Tus acciones se registrarán con nuestro agente de transferencias, quien te proporcionará acceso a tu cuenta y documentación."},
+      "q9": {"q": "¿Dónde encuentro más información sobre AirPower USA?", "a": "Visita airpowerusa.com o escribe a invest@airpowerusa.net para solicitar nuestro resumen ejecutivo, presentación y documentos de inversionista Reg D."},
+      "q10": {"q": "¿Hay un número directo para el equipo de Relaciones con Inversionistas?", "a": "Sí — consultas de inversionistas al 214.257.7957."},
+      "q11": {"q": "¿En qué plataformas están disponibles las oportunidades de inversión?", "a": "La oferta actual se realiza de forma privada bajo Reg D y está disponible directamente con la compañía, no mediante plataformas públicas de crowdfunding."},
+      "q12": {"q": "¿Cuál es el último día para comprar acciones?", "a": "La Ronda 1 permanece abierta hasta completar la suscripción. Disponibilidad por orden de llegada."},
+      "q13": {"q": "¿Cuál es la valuación de AirPower USA?", "a": "La valuación se basa en el precio de oferta actual y el número de acciones en circulación. Contáctanos para detalles actuales."},
+      "q14": {"q": "¿Cuál es el rendimiento (ROI) proyectado inicial?", "a": "El ROI proyectado depende del crecimiento de la empresa, adopción del producto y posibles eventos de liquidez futuros como una OPI. El ROI no está garantizado."},
+      "q15": {"q": "¿Planea AirPower USA hacer una OPI y cuándo?", "a": "Sí. La empresa planea cotizar públicamente entre T1–T2 de 2026, en NYSE, AMEX o NASDAQ."},
+      "q16": {"q": "¿Qué sucede con mis acciones si la empresa se hace pública?", "a": "Las acciones privadas suelen convertirse en acciones negociables tras la OPI, sujetas a periodos de bloqueo o restricciones de transferencia."},
+      "q17": {"q": "¿La inversión genera dividendos?", "a": "Actualmente reinvertimos todas las utilidades en crecimiento. No se esperan dividendos en el corto plazo."},
+      "q18": {"q": "¿Qué es un agente de transferencias y quién es el de AirPower USA?", "a": "Un agente de transferencias mantiene registros de propiedad de los accionistas. El agente designado se indicará en tu documentación de inversionista."},
+      "q19": {"q": "¿Las acciones son transferibles?", "a": "Pueden ser transferibles conforme a las leyes de valores aplicables y estatutos de la compañía. Para valores privados pueden aplicar restricciones."},
+      "q20": {"q": "¿Qué es un inversionista acreditado?", "a": "Quien cumple umbrales de ingresos o patrimonio definidos por la SEC (p. ej., $200,000 de ingreso anual o $1 millón de patrimonio neto sin residencia principal)."},
+      "q21": {"q": "¿Qué es la Regulación A?", "a": "Es una exención de la SEC que permite ciertas ofertas públicas a no acreditados. Actualmente no utilizamos Reg A."},
+      "q22": {"q": "¿Dónde encuentro el memorando de la oferta bajo Regulación D?", "a": "Escribe a invest@airpowerusa.net para solicitar el paquete completo, que incluye el memorando de oferta y el acuerdo de suscripción."},
+      "q23": {"q": "¿Diferencia entre una oferta para acreditados (Reg D) y una para no acreditados (Reg A)?", "a": "Reg D se limita a acreditados y permite montos mayores con menos divulgación pública. Reg A puede incluir no acreditados pero requiere calificación adicional de la SEC y presentaciones públicas."}
+    },
+    "bottom": {
+      "title": "¿Aún tienes preguntas?",
+      "body": "Contacta a nuestro equipo de Relaciones con Inversionistas para asistencia personalizada.",
+      "phone": "Tel.:"
+    }
+  }
 }
 
 
