@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Menu, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
@@ -27,6 +28,26 @@ const hamburgerMenu = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Simple locale utilities
+  const computeLocaleSwapLinks = () => {
+    try {
+      const path = pathname || "/";
+      const parts = path.split("/").filter(Boolean);
+      const first = parts[0];
+      const isLocalePrefixed = first === "en" || first === "es";
+      const rest = isLocalePrefixed ? parts.slice(1).join("/") : parts.join("/");
+      const base = rest ? `/${rest}` : "/";
+      return {
+        toEN: `/en${base}`,
+        toES: `/es${base}`,
+      };
+    } catch {
+      return { toEN: "/en", toES: "/es" };
+    }
+  };
+  const { toEN, toES } = computeLocaleSwapLinks();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,6 +113,12 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          {/* Locale toggle (scoped to feature branch usage) */}
+          <div className={`hidden md:flex items-center gap-2 mr-3 ${isScrolled ? 'text-muted-foreground' : 'text-white/90'}`}>
+            <a href={toEN} className="text-sm font-semibold hover:text-foreground">EN</a>
+            <span className="opacity-50">|</span>
+            <a href={toES} className="text-sm font-semibold hover:text-foreground">ES</a>
+          </div>
           <Button
             variant="ghost"
             size="sm"
