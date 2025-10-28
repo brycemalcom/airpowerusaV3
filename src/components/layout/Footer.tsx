@@ -1,3 +1,4 @@
+"use client";
 import { Separator } from "@/components/ui/separator";
 import { Zap, Mail, Phone, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
