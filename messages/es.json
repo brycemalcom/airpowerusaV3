@@ -108,6 +108,72 @@
       "tamTitle": "Mercado total direccionable",
       "tamCopy": "Estimación conservadora que combina reemplazo de generadores, infraestructura de VE y mercados de almacenamiento. La posición única de AirPower permite capturar los tres verticales.",
       "cta": "¿Listo para transformar tres industrias a la vez?"
+    },
+    "investorCta": {
+      "thanks": "Gracias por tu interés",
+      "thanksBody": "Hemos recibido tu solicitud del paquete para inversionistas. Nuestro equipo revisará tu envío y responderá en 24 horas.",
+      "checkSpam": "Por favor revisa tus carpetas de spam, correo no deseado y promociones",
+      "checkTail": "para asegurarte de no perder nuestra respuesta.",
+      "badge": "Oportunidad de inversión",
+      "titleTop": "Oportunidad",
+      "titleBottom": "para inversionistas",
+      "subtitle": "AirPower USA ahora está abierto a inversionistas acreditados.",
+      "p1": "Buscamos inversionistas estratégicos para escalar la producción y atender la demanda. Con más de $30M de interés activo y una plataforma tecnológica probada, AirPower está posicionada para un crecimiento rápido.",
+      "p2": "Únete a nosotros para llevar energía limpia de aire comprimido al mundo.",
+      "formTitle": "Solicitar paquete para inversionistas",
+      "fullName": "Nombre completo *",
+      "phName": "Ingresa tu nombre completo",
+      "email": "Correo electrónico *",
+      "phEmail": "Ingresa tu correo electrónico",
+      "phone": "Teléfono",
+      "optional": "(opcional)",
+      "message": "Mensaje / Notas",
+      "phMessage": "Cuéntanos sobre tus intereses de inversión o cualquier pregunta...",
+      "confirm": "Confirmo que soy un inversionista acreditado *",
+      "submitting": "Enviando...",
+      "submit": "Solicitar paquete para inversionistas",
+      "disclaimer": "Aviso legal:",
+      "disclaimerBody": "Esta oferta está limitada a inversionistas acreditados bajo la Regulación D de la SEC. Todos los envíos son confidenciales. Al enviar este formulario, reconoces que entiendes los riesgos de invertir en empresas en etapa temprana."
+    },
+    "videos": {
+      "badge": "Contenido en video",
+      "titleTop": "Galería",
+      "titleBottom": "de videos",
+      "subtitle": "Mira la tecnología de AirPower en acción con demostraciones y contenido detrás de cámaras.",
+      "watch": "Ver video →"
+    },
+    "newsroom": {
+      "hero": {
+        "badge": "Centro de medios",
+        "title": "Sala de prensa",
+        "subtitle": "Últimas noticias, comunicados, videos y cobertura mediática desde la vanguardia de la energía limpia.",
+        "video": "Galería de videos",
+        "press": "Comunicados",
+        "coverage": "Cobertura mediática",
+        "updates": "Actualizaciones de la compañía"
+      },
+      "sections": {
+        "press": {
+          "badge": "Actualizaciones oficiales",
+          "titleTop": "Comunicados",
+          "titleBottom": "de prensa",
+          "subtitle": "Los anuncios oficiales más recientes y novedades de AirPower USA.",
+          "read": "Leer comunicado"
+        },
+        "insights": {
+          "badge": "Lecturas recomendadas",
+          "titleTop": "Perspectivas",
+          "titleBottom": "del sector",
+          "subtitle": "Artículos y explicadores de expertos que recomendamos. Los enlaces externos se abren en una nueva pestaña.",
+          "read": "Leer artículo"
+        },
+        "coverage": {
+          "badge": "Cobertura externa",
+          "titleTop": "Cobertura",
+          "titleBottom": "mediática",
+          "subtitle": "Medios e industrias que cubren la tecnología y el impacto de AirPower."
+        }
+      }
     }
   }
 }

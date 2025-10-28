@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, ExternalLink, FileText, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 // Placeholder news data - professional "coming soon" placeholders
 type PressRelease = {
@@ -111,6 +112,7 @@ export default function NewsSection() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations('newsroom.sections');
   
   // Sort newest first by parsed date string (e.g., "October 6, 2025")
   const sortedPressReleases = [...pressReleases].sort((a, b) => {
@@ -152,16 +154,16 @@ export default function NewsSection() {
         <div className="mb-20">
           <div className="mx-auto max-w-3xl text-center mb-12">
             <Badge variant="secondary" className="mb-4">
-              Official Updates
+              {t('press.badge', { default: 'Official Updates' })}
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Press
+              {t('press.titleTop', { default: 'Press' })}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                Releases
+                {t('press.titleBottom', { default: 'Releases' })}
               </span>
             </h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Latest official announcements and company updates from AirPower USA.
+              {t('press.subtitle', { default: 'Latest official announcements and company updates from AirPower USA.' })}
             </p>
           </div>
 
@@ -208,7 +210,7 @@ export default function NewsSection() {
                       }}
                     >
                       <FileText className="w-4 h-4 mr-2" />
-                      Read Full Release
+                      {t('press.read', { default: 'Read Full Release' })}
                     </Button>
                   )}
                 </CardContent>
@@ -221,16 +223,16 @@ export default function NewsSection() {
         <div className="mt-4 mb-20">
           <div className="mx-auto max-w-3xl text-center mb-12">
             <Badge variant="secondary" className="mb-4">
-              Curated Reads
+              {t('insights.badge', { default: 'Curated Reads' })}
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Industry
+              {t('insights.titleTop', { default: 'Industry' })}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-300">
-                Insights
+                {t('insights.titleBottom', { default: 'Insights' })}
               </span>
             </h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Expert articles and explainers we recommend. External links open in a new tab.
+              {t('insights.subtitle', { default: 'Expert articles and explainers we recommend. External links open in a new tab.' })}
             </p>
           </div>
 
@@ -263,7 +265,7 @@ export default function NewsSection() {
                   >
                     <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      Read Article
+                      {t('insights.read', { default: 'Read Article' })}
                     </Button>
                   </a>
                 </CardContent>
@@ -276,16 +278,16 @@ export default function NewsSection() {
         <div>
           <div className="mx-auto max-w-3xl text-center mb-12">
             <Badge variant="secondary" className="mb-4">
-              External Coverage
+              {t('coverage.badge', { default: 'External Coverage' })}
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Media
+              {t('coverage.titleTop', { default: 'Media' })}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-300">
-                Coverage
+                {t('coverage.titleBottom', { default: 'Coverage' })}
               </span>
             </h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Industry publications and media outlets covering AirPower's technology and market impact.
+              {t('coverage.subtitle', { default: "Industry publications and media outlets covering AirPower's technology and market impact." })}
             </p>
           </div>
 

@@ -81,6 +81,72 @@
       "statSetup": "Min Setup Time",
       "cta": "Choose your deployment strategy",
       "contact": "Contact Our Team"
+    },
+    "investorCta": {
+      "thanks": "Thank You for Your Interest",
+      "thanksBody": "Your investor packet request has been received. Our team will review your submission and respond within 24 hours.",
+      "checkSpam": "Please check your spam, junk, and promotions folders",
+      "checkTail": "to ensure you don't miss our response.",
+      "badge": "Investment Opportunity",
+      "titleTop": "Investor",
+      "titleBottom": "Opportunity",
+      "subtitle": "AirPower USA is now open to accredited investors.",
+      "p1": "We're seeking strategic investors to help scale production and meet demand. With over $30M in active interest and a proven technology platform, AirPower is positioned for rapid growth.",
+      "p2": "Join us as we bring clean, compressed-air energy to the world.",
+      "formTitle": "Request Investor Packet",
+      "fullName": "Full Name *",
+      "phName": "Enter your full name",
+      "email": "Email Address *",
+      "phEmail": "Enter your email address",
+      "phone": "Phone Number",
+      "optional": "(optional)",
+      "message": "Message / Notes",
+      "phMessage": "Tell us about your investment interests or any questions you have...",
+      "confirm": "I confirm that I am an accredited investor *",
+      "submitting": "Submitting...",
+      "submit": "Request Investor Packet",
+      "disclaimer": "Disclaimer:",
+      "disclaimerBody": "This offering is limited to accredited investors under SEC Regulation D. All submissions are confidential. By submitting this form, you acknowledge that you understand the risks associated with investing in early-stage companies."
+    },
+    "videos": {
+      "badge": "Video Content",
+      "titleTop": "Video",
+      "titleBottom": "Gallery",
+      "subtitle": "See AirPower technology in action with product demonstrations and behind-the-scenes content.",
+      "watch": "Watch Video →"
+    },
+    "newsroom": {
+      "hero": {
+        "badge": "Media Hub",
+        "title": "Newsroom",
+        "subtitle": "Latest news, press releases, video content, and media coverage from the forefront of clean energy innovation.",
+        "video": "Video Gallery",
+        "press": "Press Releases",
+        "coverage": "Media Coverage",
+        "updates": "Company Updates"
+      },
+      "sections": {
+        "press": {
+          "badge": "Official Updates",
+          "titleTop": "Press",
+          "titleBottom": "Releases",
+          "subtitle": "Latest official announcements and company updates from AirPower USA.",
+          "read": "Read Full Release"
+        },
+        "insights": {
+          "badge": "Curated Reads",
+          "titleTop": "Industry",
+          "titleBottom": "Insights",
+          "subtitle": "Expert articles and explainers we recommend. External links open in a new tab.",
+          "read": "Read Article"
+        },
+        "coverage": {
+          "badge": "External Coverage",
+          "titleTop": "Media",
+          "titleBottom": "Coverage",
+          "subtitle": "Industry publications and media outlets covering AirPower's technology and market impact."
+        }
+      }
     }
   }
 }

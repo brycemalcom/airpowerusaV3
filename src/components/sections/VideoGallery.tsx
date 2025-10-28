@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Play, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 // Video data - you can update these with your actual video files and metadata
 const videos = [
@@ -85,6 +86,7 @@ const videos = [
 export default function VideoGallery() {
   const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
   const searchParams = useSearchParams();
+  const t = useTranslations('videos');
 
   // Open a specific video when linked like /videos?videoId=7
   useEffect(() => {
@@ -102,16 +104,16 @@ export default function VideoGallery() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="secondary" className="mb-4">
-            Video Content
+            {t('badge', { default: 'Video Content' })}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Video
+            {t('titleTop', { default: 'Video' })}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
-              Gallery
+              {t('titleBottom', { default: 'Gallery' })}
             </span>
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            See AirPower technology in action with product demonstrations and behind-the-scenes content.
+            {t('subtitle', { default: 'See AirPower technology in action with product demonstrations and behind-the-scenes content.' })}
           </p>
         </div>
 
@@ -188,7 +190,7 @@ export default function VideoGallery() {
                     {video.views} views
                   </div>
                   <div className="text-primary font-medium">
-                    Watch Video →
+                    {t('watch', { default: 'Watch Video →' })}
                   </div>
                 </div>
               </div>

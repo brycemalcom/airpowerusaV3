@@ -2,8 +2,10 @@
 
 import { Badge } from "@/components/ui/badge";
 import { FileText, Video, Newspaper, Users } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function NewsroomHero() {
+  const t = useTranslations('newsroom.hero');
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Background overlay */}
@@ -15,7 +17,7 @@ export default function NewsroomHero() {
         <div className="mb-8">
           <Badge className="bg-gradient-to-r from-purple-500 to-violet-500 text-white px-6 py-3 text-sm font-bold uppercase tracking-wide">
             <Newspaper className="mr-2 h-4 w-4" />
-            Media Hub
+            {t('badge', { default: 'Media Hub' })}
           </Badge>
         </div>
 
@@ -31,7 +33,7 @@ export default function NewsroomHero() {
               WebkitTextStroke: '1px rgba(255,255,255,0.1)'
             }}
           >
-            Newsroom
+            {t('title', { default: 'Newsroom' })}
           </span>
         </h1>
         
@@ -40,26 +42,26 @@ export default function NewsroomHero() {
           className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl lg:text-2xl font-light"
           style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6)' }}
         >
-          Latest news, press releases, video content, and media coverage from the forefront of clean energy innovation.
+          {t('subtitle', { default: 'Latest news, press releases, video content, and media coverage from the forefront of clean energy innovation.' })}
         </p>
 
         {/* Quick navigation */}
         <div className="mt-12 flex flex-wrap justify-center gap-6">
           <div className="flex items-center space-x-2 text-white/80">
             <Video className="h-5 w-5 text-purple-400" />
-            <span className="text-sm font-medium">Video Gallery</span>
+            <span className="text-sm font-medium">{t('video', { default: 'Video Gallery' })}</span>
           </div>
           <div className="flex items-center space-x-2 text-white/80">
             <FileText className="h-5 w-5 text-violet-400" />
-            <span className="text-sm font-medium">Press Releases</span>
+            <span className="text-sm font-medium">{t('press', { default: 'Press Releases' })}</span>
           </div>
           <div className="flex items-center space-x-2 text-white/80">
             <Newspaper className="h-5 w-5 text-blue-400" />
-            <span className="text-sm font-medium">Media Coverage</span>
+            <span className="text-sm font-medium">{t('coverage', { default: 'Media Coverage' })}</span>
           </div>
           <div className="flex items-center space-x-2 text-white/80">
             <Users className="h-5 w-5 text-cyan-400" />
-            <span className="text-sm font-medium">Company Updates</span>
+            <span className="text-sm font-medium">{t('updates', { default: 'Company Updates' })}</span>
           </div>
         </div>
       </div>
