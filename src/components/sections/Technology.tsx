@@ -40,97 +40,64 @@ type ImageStackVisual = {
 
 type Visual = ImageVisual | VideoVisual | ImageStackVisual;
 
-type Step = {
-  number: string;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  visual: Visual;
-};
+type StepMeta = { number: string; icon: LucideIcon; key: string };
 
-const steps: Step[] = [
-  {
-    number: "01",
-    icon: Wind,
-    title: "Ambient Air Compression",
-    description: "Air is drawn from the atmosphere and compressed into onboard storage tanks using an integrated compressor system. The tanks in the AirPower Station fill in just 3 minutes to power the CAE for up to 16 hours runtime per fill cycle.",
-    visual: {
-      type: "image",
-      src: "/media/images/air_tanks.png",
-      description: "High-pressure air storage tanks in the AirPower Station",
-      placeholder: "Air Storage Tanks"
-    }
-  },
-  {
-    number: "02",
-    icon: Zap,
-    title: "Engine Activation",
-    description: "Stored compressed air powers our proprietary compressed air engine (CAE), which converts air pressure into mechanical energy.",
-    visual: {
-      type: "video",
-      src: "/media/videos/howitworks_02.mp4",
-      description: "CAE engine operation and belt movement",
-      placeholder: "CAE Engine Operation"
-    }
-  },
-  {
-    number: "03",
-    icon: Database,
-    title: "Power Generation",
-    description: "The engine drives an integrated generator to produce on-demand electricity — powering external equipment or charging the onboard battery storage system.",
-    visual: {
-      type: "video",
-      src: "/media/videos/howitworks_03.mp4",
-      description: "Power generation process with lights activating",
-      placeholder: "Power Generation Process"
-    }
-  },
-  {
-    number: "04",
-    icon: Thermometer,
-    title: "Cold Air Exhaust",
-    description: "As the engine operates, it releases only cold, dry air — no combustion, no emissions. Temperatures can reach below -35°C, making it ideal for industrial cooling applications.",
-    visual: {
-      type: "video",
-      src: "/media/videos/howitworks_04.mp4",
-      description: "Cold exhaust venting with visible temperature effects",
-      placeholder: "Cold Air Exhaust (-35°C)"
-    }
-  },
-  {
-    number: "05",
-    icon: Battery,
-    title: "Optional Battery Storage (BESS)",
-    description: "Excess energy generated is stored in an integrated 1.5MW lithium or graphene battery system for continuous uptime or backup use.",
-    visual: {
-      type: "image",
-      src: "/media/images/bess.room.jpg",
-      description: "1.5MW BESS battery storage system with visible battery racks",
-      placeholder: "BESS Battery System"
-    }
-  },
-  {
-    number: "06",
-    icon: Truck,
-    title: "Deployment & Use",
-    description: "The AirPower Station can be installed on-site, mounted on trucks, or delivered to remote locations. It's built to power everything from data centers and grow operations to disaster relief zones and off-grid microgrids.",
-    visual: {
-      type: "imageStack",
-      sources: [
-        {
-          src: "/media/images/trailer.airport2.png",
-          alt: "Towable trailer-mounted generator unit"
-        },
-        {
-          src: "/media/images/airpack.png",
-          alt: "Truck-mounted AirPower Station"
-        }
-      ],
-      description: "Truck and trailer-mounted deployment configurations",
-      placeholder: "Deployment Configurations"
-    }
-  }
+const stepsMeta: StepMeta[] = [
+  { number: "01", icon: Wind, key: "s1" },
+  { number: "02", icon: Zap, key: "s2" },
+  { number: "03", icon: Database, key: "s3" },
+  { number: "04", icon: Thermometer, key: "s4" },
+  { number: "05", icon: Battery, key: "s5" },
+  { number: "06", icon: Truck, key: "s6" }
 ];
+
+const visualsByKey: Record<string, Visual> = {
+  s1: {
+    type: "image",
+    src: "/media/images/air_tanks.png",
+    description: "High-pressure air storage tanks in the AirPower Station",
+    placeholder: "Air Storage Tanks"
+  },
+  s2: {
+    type: "video",
+    src: "/media/videos/howitworks_02.mp4",
+    description: "CAE engine operation and belt movement",
+    placeholder: "CAE Engine Operation"
+  },
+  s3: {
+    type: "video",
+    src: "/media/videos/howitworks_03.mp4",
+    description: "Power generation process with lights activating",
+    placeholder: "Power Generation Process"
+  },
+  s4: {
+    type: "video",
+    src: "/media/videos/howitworks_04.mp4",
+    description: "Cold exhaust venting with visible temperature effects",
+    placeholder: "Cold Air Exhaust (-35°C)"
+  },
+  s5: {
+    type: "image",
+    src: "/media/images/bess.room.jpg",
+    description: "1.5MW BESS battery storage system with visible battery racks",
+    placeholder: "BESS Battery System"
+  },
+  s6: {
+    type: "imageStack",
+    sources: [
+      {
+        src: "/media/images/trailer.airport2.png",
+        alt: "Towable trailer-mounted generator unit"
+      },
+      {
+        src: "/media/images/airpack.png",
+        alt: "Truck-mounted AirPower Station"
+      }
+    ],
+    description: "Truck and trailer-mounted deployment configurations",
+    placeholder: "Deployment Configurations"
+  }
+};
 
 export default function Technology() {
   const [isMobile, setIsMobile] = useState(false);
@@ -190,8 +157,9 @@ export default function Technology() {
 
         {/* Steps Grid */}
         <div className="space-y-12 mb-20">
-          {steps.map((step, index) => {
+          {stepsMeta.map((step, index) => {
             const Icon = step.icon;
+            const visual = visualsByKey[step.key];
             const isEven = index % 2 === 0;
             
             return (
@@ -211,17 +179,17 @@ export default function Technology() {
                   
                   <div>
                     <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
-                      {step.title}
+                      {t(`steps.${step.key}.title`)}
                     </h3>
                     <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-                      {step.description}
+                      {t(`steps.${step.key}.description`)}
                     </p>
                   </div>
                   
                   {/* Step indicator */}
                   <div className="flex items-center space-x-2">
                     <div className="h-1 w-12 bg-primary rounded-full" />
-                    <span className="text-sm text-muted-foreground">Step {step.number}</span>
+                    <span className="text-sm text-muted-foreground">{t('stepLabel', { number: step.number })}</span>
                   </div>
                 </div>
 
@@ -230,11 +198,11 @@ export default function Technology() {
                   <Card className="overflow-hidden">
                     <div className="aspect-[4/3] relative bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
                       {/* Conditional rendering based on visual type */}
-                      {step.visual.type === "image" && step.visual.src ? (
+                      {visual.type === "image" && (visual as ImageVisual).src ? (
                         <>
                           <img
-                            src={step.visual.src}
-                            alt={step.visual.description}
+                            src={(visual as ImageVisual).src}
+                            alt={visual.description}
                             style={{
                               width: '100%',
                               height: '100%',
@@ -245,16 +213,16 @@ export default function Technology() {
                           {/* Subtle gradient overlay for better text contrast if needed */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                         </>
-                      ) : step.visual.type === "imageStack" && Array.isArray(step.visual.sources) ? (
+                      ) : visual.type === "imageStack" && Array.isArray((visual as ImageStackVisual).sources) ? (
                         <>
                           <div className="absolute inset-0 p-2 flex flex-col gap-2">
-                            {step.visual.sources.map((img, idx, arr) => {
+                            {(visual as ImageStackVisual).sources.map((img, idx, arr) => {
                               const isBottomImage = idx === arr.length - 1;
                               return (
                                 <div key={idx} className="relative flex-1">
                                   <img
                                     src={img.src}
-                                    alt={img.alt || step.visual.description}
+                                    alt={img.alt || visual.description}
                                     style={{
                                       width: '100%',
                                       height: '100%',
@@ -269,7 +237,7 @@ export default function Technology() {
                           </div>
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                         </>
-                      ) : step.visual.type === "video" && step.visual.src ? (
+                      ) : visual.type === "video" && (visual as VideoVisual).src ? (
                         <>
                           {/* Video for desktop */}
                           {!isMobile ? (
@@ -286,7 +254,7 @@ export default function Technology() {
                                 }
                                 playsInline
                               >
-                                <source src={`${step.visual.src}?v=2024-12-19`} type="video/mp4" />
+                                <source src={`${(visual as VideoVisual).src}?v=2024-12-19`} type="video/mp4" />
                                 Your browser does not support the video tag.
                               </video>
                               
@@ -332,10 +300,10 @@ export default function Technology() {
                             <div className="text-center p-8">
                               <Icon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
                               <h4 className="font-semibold text-foreground mb-2">
-                                {step.visual.placeholder}
+                                {visual.placeholder}
                               </h4>
                               <p className="text-sm text-muted-foreground">
-                                {step.visual.description}
+                                {visual.description}
                               </p>
                               <Badge variant="outline" className="mt-4">
                                 VIDEO
@@ -351,13 +319,13 @@ export default function Technology() {
                           <div className="text-center p-8">
                             <Icon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
                             <h4 className="font-semibold text-foreground mb-2">
-                              {step.visual.placeholder}
+                              {visual.placeholder}
                             </h4>
                             <p className="text-sm text-muted-foreground">
-                              {step.visual.description}
+                              {visual.description}
                             </p>
                             <Badge variant="outline" className="mt-4">
-                              {step.visual.type.toUpperCase()}
+                              {visual.type.toUpperCase()}
                             </Badge>
                           </div>
                           

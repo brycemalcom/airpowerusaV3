@@ -48,7 +48,34 @@
       "titleBottom": "AirPower Station Works",
       "subtitle": "From compressed air to clean, continuous energy.",
       "intro": "AirPower's patented system transforms ambient air into clean, on-demand power using a closed-loop cycle. With no fuel, no combustion, and only cold air as its byproduct, the AirPower Station redefines how energy is generated, stored, and delivered — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms.",
-      "clickToHear": "Click to hear audio"
+      "clickToHear": "Click to hear audio",
+      "stepLabel": "Step {number}",
+      "steps": {
+        "s1": {
+          "title": "Ambient Air Compression",
+          "description": "Air is drawn from the atmosphere and compressed into onboard storage tanks using an integrated compressor system. The tanks in the AirPower Station fill in just 3 minutes to power the CAE for up to 16 hours runtime per fill cycle."
+        },
+        "s2": {
+          "title": "Engine Activation",
+          "description": "Stored compressed air powers our proprietary compressed air engine (CAE), which converts air pressure into mechanical energy."
+        },
+        "s3": {
+          "title": "Power Generation",
+          "description": "The engine drives an integrated generator to produce on-demand electricity — powering external equipment or charging the onboard battery storage system."
+        },
+        "s4": {
+          "title": "Cold Air Exhaust",
+          "description": "As the engine operates, it releases only cold, dry air — no combustion, no emissions. Temperatures can reach below -35°C, making it ideal for industrial cooling applications."
+        },
+        "s5": {
+          "title": "Optional Battery Storage (BESS)",
+          "description": "Excess energy generated is stored in an integrated 1.5MW lithium or graphene battery system for continuous uptime or backup use."
+        },
+        "s6": {
+          "title": "Deployment & Use",
+          "description": "The AirPower Station can be installed on-site, mounted on trucks, or delivered to remote locations. It's built to power everything from data centers and grow operations to disaster relief zones and off-grid microgrids."
+        }
+      }
     },
     "useCases": {
       "badge": "Real-World Applications",
