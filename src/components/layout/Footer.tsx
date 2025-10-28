@@ -30,8 +30,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-foreground">AirPower USA</span>
             </div>
             <p className="text-muted-foreground max-w-md">
-              Revolutionary compressed air engine technology delivering zero-emission power solutions 
-              for a sustainable future. From mobile units to industrial-scale stations.
+              {t('footer.blurb', { default: 'Revolutionary compressed air engine technology delivering zero-emission power solutions for a sustainable future. From mobile units to industrial-scale stations.' })}
             </p>
             <div className="mt-6 space-y-2">
               <div className="flex items-center text-sm text-muted-foreground">
@@ -87,7 +86,7 @@ export default function Footer() {
         
         <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
           <p className="text-sm text-muted-foreground">
-            © 2025 AirPower USA. All rights reserved.
+            © 2025 AirPower USA. {t('footer.rights', { default: 'All rights reserved.' })}
           </p>
           <div className="flex space-x-6">
             <a href="#privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
