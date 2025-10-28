@@ -15,6 +15,7 @@ import {
   VolumeX,
   Volume2
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 // import Image from "next/image"; // Uncomment when adding the actual image
 
 const features = [
@@ -62,6 +63,7 @@ const features = [
 
 export default function ProductIntro() {
   const [isVideoMuted, setIsVideoMuted] = useState(true);
+  const t = useTranslations('home.productIntro');
 
   const toggleVideoSound = () => {
     setIsVideoMuted(!isVideoMuted);
@@ -73,16 +75,16 @@ export default function ProductIntro() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="secondary" className="mb-4">
-            Revolutionary Technology
+            {t('badge', { default: 'Revolutionary Technology' })}
           </Badge>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Introducing the
+            {t('titleTop', { default: 'Introducing the' })}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              AirPower Station
+              {t('titleBottom', { default: 'AirPower Station' })}
             </span>
           </h2>
           <p className="mt-6 text-xl leading-8 text-muted-foreground">
-            The fully integrated, containerized energy platform.
+            {t('subtitle', { default: 'The fully integrated, containerized energy platform.' })}
           </p>
         </div>
 
@@ -120,7 +122,7 @@ export default function ProductIntro() {
               {isVideoMuted && (
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="bg-black/70 rounded-lg px-4 py-2 text-white text-sm font-medium">
-                    Click to hear how quiet it is
+                    {t('click', { default: 'Click to hear how quiet it is' })}
                   </div>
                 </div>
               )}
@@ -131,17 +133,17 @@ export default function ProductIntro() {
               <div className="flex items-center gap-6">
                 <div className="text-center">
                   <div className="text-lg font-bold text-foreground">3 min</div>
-                  <div className="text-xs text-muted-foreground">Fill Time <span className="text-primary font-medium">(full capacity)</span></div>
+                  <div className="text-xs text-muted-foreground">{t('fillTime', { default: 'Fill Time' })} <span className="text-primary font-medium">{t('fullCapacity', { default: '(full capacity)' })}</span></div>
                 </div>
                 <div className="w-px h-12 bg-border"></div>
                 <div className="text-center">
                   <div className="text-lg font-bold text-foreground">16 hrs</div>
-                  <div className="text-xs text-muted-foreground">Runtime <span className="text-primary font-medium">(full capacity)</span></div>
+                  <div className="text-xs text-muted-foreground">{t('runtime', { default: 'Runtime' })} <span className="text-primary font-medium">{t('fullCapacity', { default: '(full capacity)' })}</span></div>
                 </div>
                 <div className="w-px h-12 bg-border"></div>
                 <div className="text-center">
                   <div className="text-lg font-bold text-primary">0.5–1.5MW</div>
-                  <div className="text-xs text-muted-foreground">Output Capacity</div>
+                  <div className="text-xs text-muted-foreground">{t('output', { default: 'Output Capacity' })}</div>
                 </div>
               </div>
             </Card>
@@ -151,13 +153,13 @@ export default function ProductIntro() {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Zero-emission, closed-loop energy solution
+                {t('headline', { default: 'Zero-emission, closed-loop energy solution' })}
               </h3>
               <p className="text-lg leading-relaxed text-muted-foreground">
-                The AirPower Station is a zero-emission, closed-loop energy solution — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms and ready to deploy anywhere. It includes our proprietary compressed air engine (CAE), integrated generator, air tanks, and optional BESS (Battery Energy Storage System).
+                {t('p1', { default: 'The AirPower Station is a zero-emission, closed-loop energy solution — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms and ready to deploy anywhere. It includes our proprietary compressed air engine (CAE), integrated generator, air tanks, and optional BESS (Battery Energy Storage System).' })}
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground mt-4">
-                Designed to run continuously with cold air as its only exhaust, the AirPower Station delivers scalable, on-demand power wherever it's needed — without fuel, without emissions, and without compromise. With just a 3-minute air tank fill, it provides up to 16 hours runtime per fill cycle.
+                {t('p2', { default: "Designed to run continuously with cold air as its only exhaust, the AirPower Station delivers scalable, on-demand power wherever it's needed — without fuel, without emissions, and without compromise. With just a 3-minute air tank fill, it provides up to 16 hours runtime per fill cycle." })}
               </p>
             </div>
 
@@ -186,7 +188,7 @@ export default function ProductIntro() {
         {/* Features Grid */}
         <div className="border-t border-border pt-16">
           <h3 className="text-2xl font-bold text-center text-foreground mb-12">
-            Technical Specifications & Features
+            {t('specs', { default: 'Technical Specifications & Features' })}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => {

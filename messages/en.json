@@ -47,6 +47,25 @@
       "intro": "AirPower delivers high-capacity, zero-emission energy across industries. Whether powering infrastructure, operations, or innovation, the AirPower Station makes clean energy accessible in places traditional power cannot reach.",
       "all": "All Industries",
       "cta": "Ready to deploy clean energy?"
+    },
+    "productIntro": {
+      "badge": "Revolutionary Technology",
+      "titleTop": "Introducing the",
+      "titleBottom": "AirPower Station",
+      "subtitle": "The fully integrated, containerized energy platform.",
+      "click": "Click to hear how quiet it is",
+      "fillTime": "Fill Time",
+      "fullCapacity": "(full capacity)",
+      "runtime": "Runtime",
+      "output": "Output Capacity",
+      "headline": "Zero-emission, closed-loop energy solution",
+      "p1": "The AirPower Station is a zero-emission, closed-loop energy solution — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms and ready to deploy anywhere. It includes our proprietary compressed air engine (CAE), integrated generator, air tanks, and optional BESS (Battery Energy Storage System).",
+      "p2": "Designed to run continuously with cold air as its only exhaust, the AirPower Station delivers scalable, on-demand power wherever it's needed — without fuel, without emissions, and without compromise. With just a 3-minute air tank fill, it provides up to 16 hours runtime per fill cycle.",
+      "specs": "Technical Specifications & Features",
+      "statZero": "Zero Emissions",
+      "statOnDemand": "On-Demand Power",
+      "statBess": "BESS Optional",
+      "statExhaust": "-35°C Exhaust"
     }
   }
 }

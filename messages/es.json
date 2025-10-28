@@ -47,6 +47,25 @@
       "intro": "AirPower ofrece energía de alta capacidad y cero emisiones en múltiples industrias. Ya sea para infraestructura, operaciones o innovación, la Estación AirPower hace accesible la energía limpia en lugares donde la energía tradicional no llega.",
       "all": "Todas las industrias",
       "cta": "¿Listo para desplegar energía limpia?"
+    },
+    "productIntro": {
+      "badge": "Tecnología revolucionaria",
+      "titleTop": "Presentamos la",
+      "titleBottom": "Estación AirPower",
+      "subtitle": "La plataforma energética contenedorizada e integrada.",
+      "click": "Haz clic para oír qué tan silenciosa es",
+      "fillTime": "Tiempo de llenado",
+      "fullCapacity": "(capacidad total)",
+      "runtime": "Autonomía",
+      "output": "Capacidad de salida",
+      "headline": "Solución energética de cero emisiones y ciclo cerrado",
+      "p1": "La Estación AirPower es una solución energética de cero emisiones y ciclo cerrado — disponible en plataformas contenedorizadas de 20 pies (0.5MW) y 40 pies (1.5MW), lista para desplegarse en cualquier lugar. Incluye nuestro motor de aire comprimido (CAE) patentado, generador integrado, tanques de aire y BESS opcional.",
+      "p2": "Diseñada para operar de forma continua con aire frío como único escape, la Estación AirPower ofrece energía escalable y bajo demanda donde se necesite — sin combustible, sin emisiones y sin compromisos. Con solo 3 minutos de llenado, proporciona hasta 16 horas de autonomía por ciclo.",
+      "specs": "Especificaciones técnicas y características",
+      "statZero": "Cero emisiones",
+      "statOnDemand": "Energía bajo demanda",
+      "statBess": "BESS opcional",
+      "statExhaust": "Escape a -35°C"
     }
   }
 }
