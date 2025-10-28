@@ -12,37 +12,13 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const benefits = [
-  {
-    icon: MapPin,
-    title: "Works in remote or off-grid locations",
-    description: "No grid tie-in or fuel source required"
-  },
-  {
-    icon: Thermometer,
-    title: "Operates in extreme heat or cold",
-    description: "Cold-air exhaust doubles as climate advantage"
-  },
-  {
-    icon: Wind,
-    title: "Zero-emission + low acoustic signature",
-    description: "No fumes, no noise, no heat pollution"
-  },
-  {
-    icon: Truck,
-    title: "Easy to deploy + re-deploy",
-    description: "Truck, trailer, or container-mounted formats"
-  },
-  {
-    icon: Zap,
-    title: "Instant startup, reliable uptime",
-    description: "Compressed air engine never idles or clogs"
-  },
-  {
-    icon: Shield,
-    title: "Built for rugged terrains + mission-critical ops",
-    description: "Military-grade durability with low maintenance"
-  }
+const benefitMeta = [
+  { key: 'remote', icon: MapPin },
+  { key: 'extremes', icon: Thermometer },
+  { key: 'silent', icon: Wind },
+  { key: 'deploy', icon: Truck },
+  { key: 'startup', icon: Zap },
+  { key: 'rugged', icon: Shield }
 ];
 
 
@@ -84,7 +60,7 @@ export default function WhyItWorks() {
             {t('advantages', { default: 'Competitive Advantages' })}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => {
+            {benefitMeta.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
                 <Card 
@@ -99,11 +75,11 @@ export default function WhyItWorks() {
                   <div className="flex items-center justify-center mb-3">
                     <div className="h-2 w-2 rounded-full bg-gradient-to-r from-primary to-cyan-400 mr-3" />
                     <h4 className="font-bold text-foreground leading-tight">
-                      {benefit.title}
+                      {t(`benefits.${benefit.key}.title`)}
                     </h4>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    {benefit.description}
+                    {t(`benefits.${benefit.key}.description`)}
                   </p>
                 </Card>
               );

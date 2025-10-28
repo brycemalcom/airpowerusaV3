@@ -9,6 +9,45 @@
       "videos": "Video Gallery",
       "about": "About"
     },
+    "why": {
+      "badge": "Universal Reliability",
+      "titleTop": "Why It Works",
+      "titleBottom": "Everywhere",
+      "subtitle": "Built to operate in extreme conditions — from military zones to mountain villages.",
+      "intro1": "The AirPower Station was engineered for the harshest environments and the most demanding missions. Unlike solar or diesel systems, it delivers instant, on-demand energy that's reliable, portable, and safe.",
+      "intro2": "With zero emissions, silent operation, and cold air as its only exhaust — this platform outperforms traditional generators in every category that matters.",
+      "advantages": "Competitive Advantages",
+      "benefits": {
+        "remote": {
+          "title": "Works in remote or off-grid locations",
+          "description": "No grid tie-in or fuel source required"
+        },
+        "extremes": {
+          "title": "Operates in extreme heat or cold",
+          "description": "Cold-air exhaust doubles as climate advantage"
+        },
+        "silent": {
+          "title": "Zero-emission + low acoustic signature",
+          "description": "No fumes, no noise, no heat pollution"
+        },
+        "deploy": {
+          "title": "Easy to deploy + re-deploy",
+          "description": "Truck, trailer, or container-mounted formats"
+        },
+        "startup": {
+          "title": "Instant startup, reliable uptime",
+          "description": "Compressed air engine never idles or clogs"
+        },
+        "rugged": {
+          "title": "Built for rugged terrains + mission-critical ops",
+          "description": "Military-grade durability with low maintenance"
+        }
+      },
+      "statRange": "to +50°C Operating Range",
+      "statUptime": "Continuous Operation",
+      "statFuel": "Fuel Requirements",
+      "statReady": "Mission Ready"
+    },
     "menu": {
       "customers": "For Customers",
       "investorsSoon": "For Investors — Coming Soon",

@@ -363,6 +363,32 @@
       "intro1": "La Estación AirPower fue diseñada para los entornos más duros y las misiones más exigentes. A diferencia de los sistemas solares o diésel, entrega energía instantánea y bajo demanda: fiable, portátil y segura.",
       "intro2": "Con cero emisiones, funcionamiento silencioso y aire frío como único escape — esta plataforma supera a los generadores tradicionales en todas las categorías que importan.",
       "advantages": "Ventajas competitivas",
+      "benefits": {
+        "remote": {
+          "title": "Funciona en ubicaciones remotas o fuera de la red",
+          "description": "Sin conexión a red ni fuente de combustible"
+        },
+        "extremes": {
+          "title": "Opera en calor o frío extremos",
+          "description": "El escape de aire frío también es una ventaja climática"
+        },
+        "silent": {
+          "title": "Cero emisiones + baja firma acústica",
+          "description": "Sin humos, sin ruido, sin calor residual"
+        },
+        "deploy": {
+          "title": "Fácil de desplegar y re‑desplegar",
+          "description": "Formatos en camión, remolque o contenedor"
+        },
+        "startup": {
+          "title": "Arranque instantáneo, alta fiabilidad",
+          "description": "El motor de aire comprimido nunca ralentiza ni se atasca"
+        },
+        "rugged": {
+          "title": "Construida para terrenos difíciles y misiones críticas",
+          "description": "Durabilidad de grado militar con bajo mantenimiento"
+        }
+      },
       "statRange": "a +50°C de rango operativo",
       "statUptime": "Operación continua",
       "statFuel": "Requerimientos de combustible",
