@@ -1,0 +1,25 @@
+{
+  "common": {
+    "brand": "AirPower USA",
+    "nav": {
+      "technology": "Technology",
+      "useCases": "Use Cases",
+      "products": "Products",
+      "newsroom": "Newsroom",
+      "videos": "Video Gallery",
+      "about": "About"
+    },
+    "footer": {
+      "rights": "All rights reserved."
+    }
+  },
+  "home": {
+    "headlineTop": "Clean power from",
+    "headlineBottom": "thin air.",
+    "subheadline": "Deployable zero-emission energy. Powered by compressed air. Engineered for anywhere the grid can't reach.",
+    "ctaCustomers": "For Customers",
+    "ctaInvestors": "For Investors"
+  }
+}
+
+

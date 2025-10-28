@@ -1,0 +1,25 @@
+{
+  "common": {
+    "brand": "AirPower USA",
+    "nav": {
+      "technology": "Tecnología",
+      "useCases": "Casos de uso",
+      "products": "Productos",
+      "newsroom": "Sala de prensa",
+      "videos": "Galería de videos",
+      "about": "Acerca de"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados."
+    }
+  },
+  "home": {
+    "headlineTop": "Energía limpia desde",
+    "headlineBottom": "el aire.",
+    "subheadline": "Energía de cero emisiones desplegable. Impulsada por aire comprimido. Diseñada para donde la red no llega.",
+    "ctaCustomers": "Para clientes",
+    "ctaInvestors": "Para inversionistas"
+  }
+}
+
+
