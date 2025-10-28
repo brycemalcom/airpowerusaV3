@@ -22,7 +22,17 @@
       "company": "Company",
       "support": "Support",
       "privacy": "Privacy Policy",
-      "terms": "Terms of Service"
+      "terms": "Terms of Service",
+      "links": {
+        "technology": "Technology",
+        "products": "Products",
+        "useCases": "Use Cases",
+        "about": "About",
+        "documentation": "Documentation",
+        "contact": "Contact",
+        "investorRelations": "Investor Relations",
+        "investorFaqs": "Investor FAQs"
+      }
     }
   },
   "home": {
@@ -146,6 +156,12 @@
           "titleBottom": "Coverage",
           "subtitle": "Industry publications and media outlets covering AirPower's technology and market impact."
         }
+      }
+      ,
+      "cta": {
+        "title": "Stay Connected with AirPower USA",
+        "body": "This newsroom will feature the latest updates on our technology breakthroughs, partnerships, and market developments. Check back regularly for announcements.",
+        "note": "News updates coming soon"
       }
     }
   }

@@ -22,7 +22,17 @@
       "company": "Compañía",
       "support": "Soporte",
       "privacy": "Política de privacidad",
-      "terms": "Términos del servicio"
+      "terms": "Términos del servicio",
+      "links": {
+        "technology": "Tecnología",
+        "products": "Productos",
+        "useCases": "Casos de uso",
+        "about": "Acerca de",
+        "documentation": "Documentación",
+        "contact": "Contacto",
+        "investorRelations": "Relaciones con inversionistas",
+        "investorFaqs": "Preguntas frecuentes de inversionistas"
+      }
     }
   },
   "home": {
@@ -173,6 +183,12 @@
           "titleBottom": "mediática",
           "subtitle": "Medios e industrias que cubren la tecnología y el impacto de AirPower."
         }
+      }
+      ,
+      "cta": {
+        "title": "Mantente conectado con AirPower USA",
+        "body": "Esta sala de prensa presentará las últimas novedades sobre nuestros avances tecnológicos, alianzas y evolución del mercado. Vuelve pronto para ver nuevos anuncios.",
+        "note": "Actualizaciones próximamente"
       }
     }
   }

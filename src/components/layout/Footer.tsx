@@ -4,16 +4,16 @@ import { useTranslations } from "next-intl";
 
 const navigation = {
   main: [
-    { name: "Technology", href: "#technology" },
-    { name: "Products", href: "#products" },
-    { name: "Use Cases", href: "#use-cases" },
-    { name: "About", href: "/about" },
+    { key: "technology", name: "Technology", href: "#technology" },
+    { key: "products", name: "Products", href: "#products" },
+    { key: "useCases", name: "Use Cases", href: "#use-cases" },
+    { key: "about", name: "About", href: "/about" },
   ],
   support: [
-    { name: "Documentation", href: "/filings" },
-    { name: "Contact", href: "/contact" },
-    { name: "Investor Relations", href: "/invest" },
-    { name: "Investor FAQs", href: "/investor-faqs" },
+    { key: "documentation", name: "Documentation", href: "/filings" },
+    { key: "contact", name: "Contact", href: "/contact" },
+    { key: "investorRelations", name: "Investor Relations", href: "/invest" },
+    { key: "investorFaqs", name: "Investor FAQs", href: "/investor-faqs" },
   ],
 };
 
@@ -59,7 +59,7 @@ export default function Footer() {
                     href={item.href}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {item.name}
+                    {t(`footer.links.${(item as any).key}`, { default: item.name })}
                   </a>
                 </li>
               ))}
@@ -75,7 +75,7 @@ export default function Footer() {
                     href={item.href}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {item.name}
+                    {t(`footer.links.${(item as any).key}`, { default: item.name })}
                   </a>
                 </li>
               ))}
