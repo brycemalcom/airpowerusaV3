@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const withNextIntl = require('next-intl/plugin')();
 const nextConfig = {
   // Image optimization settings
   images: {
@@ -141,4 +142,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);
