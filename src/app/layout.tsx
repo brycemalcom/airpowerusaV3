@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "@/components/common/PerformanceMonitor";
 import ScrollToTop from "@/components/common/ScrollToTop";
-import { NextIntlClientProvider } from "next-intl";
-import enMessages from "../../messages/en.json";
+import DefaultIntlProvider from "@/components/i18n/DefaultIntlProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -67,9 +66,7 @@ export default function RootLayout({
       >
         <ScrollToTop />
         {/* Default English provider ensures components using useTranslations work on non-locale routes */}
-        <NextIntlClientProvider locale="en" messages={enMessages as any}>
-          {children}
-        </NextIntlClientProvider>
+        <DefaultIntlProvider>{children}</DefaultIntlProvider>
         <PerformanceMonitor />
       </body>
     </html>
