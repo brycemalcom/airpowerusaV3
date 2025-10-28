@@ -600,6 +600,76 @@
     }
   }
   ,
+  "filings": {
+    "hero": {
+      "titleTop": "SEC",
+      "titleBottom": "Filings",
+      "subtitle": "Transparent regulatory disclosures and official SEC documentation for our Regulation D offering.",
+      "kpiTotalOffering": "Total Offering",
+      "kpiMinInvestment": "Min Investment",
+      "kpiRule": "Rule"
+    },
+    "overview": {
+      "badge": "Official SEC Documentation",
+      "title": "Current SEC Form D Filing",
+      "body": "Our official Form D filing with the Securities and Exchange Commission for our Regulation D offering. All information is publicly available through the SEC's EDGAR database."
+    },
+    "details": {
+      "title": "Filing Details",
+      "body": "Official SEC Form D information and filing metadata",
+      "formType": "Form Type",
+      "filingDate": "Filing Date",
+      "accession": "Accession Number",
+      "cik": "Company CIK",
+      "viewSec": "View Official SEC Filing"
+    },
+    "quick": {
+      "title": "Quick Access",
+      "body": "Direct links to different formats of our SEC filing",
+      "xml": "XML Format (Official)",
+      "html": "HTML Format",
+      "text": "Text Format",
+      "footnote": "All formats link directly to SEC.gov official sources"
+    },
+    "notice": {
+      "title": "Official SEC Documentation",
+      "bodyPrefix": "This Form D filing is the official record of our Regulation D offering filed with the U.S. Securities and Exchange Commission. The information is publicly available through the SEC's EDGAR database and represents our commitment to regulatory compliance and transparency with investors.",
+      "link": "View the complete filing on SEC.gov"
+    },
+    "summary": {
+      "badge": "Filing Summary",
+      "title": "Form D Summary",
+      "bodyPrefix": "Key information from our SEC Form D filing. For complete details and the most current information,",
+      "link": "refer to the official SEC filing",
+      "cardTitle": "Regulation D Offering Information",
+      "offeringDetails": "Offering Details",
+      "federalExemption": "Federal Exemption",
+      "industryGroup": "Industry Group",
+      "securityType": "Security Type",
+      "securityEquity": "Equity",
+      "totalOffering": "Total Offering",
+      "minInvestment": "Min Investment",
+      "companyInfo": "Company Information",
+      "entityName": "Entity Name",
+      "entityType": "Entity Type",
+      "yearOfInc": "Year of Inc",
+      "jurisdiction": "Jurisdiction",
+      "revenueRange": "Revenue Range",
+      "offeringProgress": "Offering Progress",
+      "totalAuthorized": "Total Authorized",
+      "amountSold": "Amount Sold",
+      "remaining": "Remaining",
+      "authorizedRep": "Authorized Representative",
+      "name": "Name",
+      "title": "Title",
+      "roles": "Roles",
+      "important": "Important:",
+      "disclaimerPrefix": "This summary is provided for convenience only. For complete and legally binding information, including all terms, conditions, and disclosures, please refer to the",
+      "disclaimerLink": "official Form D filing on SEC.gov",
+      "disclaimerSuffix": "All investment decisions should be based on the complete SEC documentation and consultation with qualified financial advisors."
+    }
+  }
+  ,
   "customer": {
     "hero": {
       "badge": "For Customers",

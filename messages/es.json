@@ -680,6 +680,76 @@
       "phone": "Tel.:"
     }
   }
+  ,
+  "filings": {
+    "hero": {
+      "titleTop": "SEC",
+      "titleBottom": "Filings",
+      "subtitle": "Divulgaciones regulatorias transparentes y documentación oficial de la SEC para nuestra oferta bajo Regulación D.",
+      "kpiTotalOffering": "Oferta total",
+      "kpiMinInvestment": "Inversión mínima",
+      "kpiRule": "Regla"
+    },
+    "overview": {
+      "badge": "Documentación oficial de la SEC",
+      "title": "Presentación actual del Formulario D ante la SEC",
+      "body": "Nuestra presentación oficial del Formulario D ante la Comisión de Bolsa y Valores (SEC) para la oferta bajo Regulación D. Toda la información está disponible públicamente en la base EDGAR de la SEC."
+    },
+    "details": {
+      "title": "Detalles de la presentación",
+      "body": "Información oficial del Formulario D y metadatos de la presentación",
+      "formType": "Tipo de formulario",
+      "filingDate": "Fecha de presentación",
+      "accession": "Número de acceso",
+      "cik": "CIK de la compañía",
+      "viewSec": "Ver presentación oficial en SEC.gov"
+    },
+    "quick": {
+      "title": "Acceso rápido",
+      "body": "Enlaces directos a diferentes formatos de nuestra presentación",
+      "xml": "Formato XML (oficial)",
+      "html": "Formato HTML",
+      "text": "Formato de texto",
+      "footnote": "Todos los formatos enlazan directamente a fuentes oficiales de SEC.gov"
+    },
+    "notice": {
+      "title": "Documentación oficial de la SEC",
+      "bodyPrefix": "Esta presentación del Formulario D es el registro oficial de nuestra oferta bajo Regulación D ante la SEC. La información aquí contenida está disponible públicamente en la base EDGAR de la SEC y representa nuestro compromiso con el cumplimiento regulatorio y la transparencia con los inversionistas.",
+      "link": "Ver la presentación completa en SEC.gov"
+    },
+    "summary": {
+      "badge": "Resumen de la presentación",
+      "title": "Resumen del Formulario D",
+      "bodyPrefix": "Información clave de nuestra presentación del Formulario D ante la SEC. Para obtener detalles completos y la información más reciente,",
+      "link": "consulta la presentación oficial en SEC.gov",
+      "cardTitle": "Información de la oferta (Regulación D)",
+      "offeringDetails": "Detalles de la oferta",
+      "federalExemption": "Exención federal",
+      "industryGroup": "Grupo industrial",
+      "securityType": "Tipo de valor",
+      "securityEquity": "Accionario",
+      "totalOffering": "Oferta total",
+      "minInvestment": "Inversión mínima",
+      "companyInfo": "Información de la compañía",
+      "entityName": "Nombre de la entidad",
+      "entityType": "Tipo de entidad",
+      "yearOfInc": "Año de constitución",
+      "jurisdiction": "Jurisdicción",
+      "revenueRange": "Rango de ingresos",
+      "offeringProgress": "Progreso de la oferta",
+      "totalAuthorized": "Total autorizado",
+      "amountSold": "Monto vendido",
+      "remaining": "Restante",
+      "authorizedRep": "Representante autorizado",
+      "name": "Nombre",
+      "title": "Cargo",
+      "roles": "Roles",
+      "important": "Importante:",
+      "disclaimerPrefix": "Este resumen se proporciona solo para conveniencia. Para información completa y legalmente vinculante, incluidos todos los términos, condiciones y divulgaciones, consulta la",
+      "disclaimerLink": "presentación oficial del Formulario D en SEC.gov",
+      "disclaimerSuffix": "Todas las decisiones de inversión deben basarse en la documentación completa de la SEC y en la consulta con asesores financieros calificados."
+    }
+  }
 }
 
 
