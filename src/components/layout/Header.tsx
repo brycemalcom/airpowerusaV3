@@ -42,14 +42,28 @@ export default function Header() {
       const rest = isLocalePrefixed ? parts.slice(1).join("/") : parts.join("/");
       const base = rest ? `/${rest}` : "/";
       return {
+        currentLocale: isLocalePrefixed ? first : "en",
         toEN: `/en${base}`,
         toES: `/es${base}`,
       };
     } catch {
-      return { toEN: "/en", toES: "/es" };
+      return { currentLocale: "en", toEN: "/en", toES: "/es" } as const;
     }
   };
-  const { toEN, toES } = computeLocaleSwapLinks();
+  const { toEN, toES, currentLocale } = computeLocaleSwapLinks();
+
+  const localizeHref = (href: string) => {
+    try {
+      if (!href.startsWith("/")) return href;
+      // external anchors handled earlier; prefix locale for internal links & section anchors
+      if (href.startsWith("/#")) return `/${currentLocale}${href}`;
+      // already locale-prefixed
+      if (href.startsWith("/en/") || href.startsWith("/es/")) return href;
+      return `/${currentLocale}${href}`;
+    } catch {
+      return href;
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,7 +84,7 @@ export default function Header() {
         isScrolled ? 'px-4 sm:px-6 py-2 sm:py-3' : 'px-4 sm:px-6 py-4 sm:py-6'
       }`} aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
+          <Link href={`/${currentLocale}`} className="-m-1.5 p-1.5 flex items-center space-x-2">
             <Image
               src="/media/images/airpowerlogowhite2.png"
               alt="AirPower USA Logo"
@@ -103,7 +117,7 @@ export default function Header() {
           {navigation.map((item) => (
             <a
               key={item.key}
-              href={item.href}
+              href={localizeHref(item.href)}
               className={`text-sm font-semibold leading-6 transition-colors ${
                 isScrolled
                   ? 'text-muted-foreground hover:text-foreground'
@@ -143,7 +157,7 @@ export default function Header() {
               {hamburgerMenu.map((item) => (
                 <a
                   key={item.key}
-                  href={item.href}
+                  href={localizeHref(item.href)}
                   className={`block text-lg font-semibold leading-7 transition-colors hover:opacity-80 ${item.color}`}
                   onClick={(e) => {
                     if (item.key === 'investorsSoon') {
