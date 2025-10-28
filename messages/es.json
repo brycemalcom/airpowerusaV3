@@ -84,6 +84,101 @@
       "subtitle": "De granjas a laboratorios de IA — energía limpia donde se necesita.",
       "intro": "AirPower ofrece energía de alta capacidad y cero emisiones en múltiples industrias. Ya sea para infraestructura, operaciones o innovación, la Estación AirPower hace accesible la energía limpia en lugares donde la energía tradicional no llega.",
       "all": "Todas las industrias",
+      "categories": {
+        "agriculture": "Agricultura",
+        "technology": "Tecnología",
+        "emergency": "Emergencias",
+        "community": "Comunidad",
+        "marine": "Marina",
+        "industrial": "Industrial",
+        "transportation": "Transporte",
+        "healthcare": "Salud",
+        "utility": "Servicios públicos",
+        "defense": "Defensa"
+      },
+      "tags": {
+        "zeroEmissions": "Cero emisiones",
+        "climateControl": "Control climático",
+        "integratedCooling": "Refrigeración integrada",
+        "rapidDeployment": "Despliegue rápido",
+        "mobileReady": "Listo para movilidad",
+        "gridIndependence": "Independencia de la red",
+        "marineProven": "Probado en marina",
+        "ruggedDesign": "Diseño robusto",
+        "futureReady": "Preparado para el futuro",
+        "criticalBackup": "Respaldo crítico",
+        "coldStorage": "Almacenamiento en frío",
+        "gridStability": "Estabilidad de la red",
+        "utilityScale": "Escala de servicios",
+        "militaryGrade": "Grado militar",
+        "offGridPower": "Energía fuera de red",
+        "maritimePower": "Energía marítima",
+        "coldAirCooling": "Refrigeración por aire frío",
+        "mobileSupport": "Soporte móvil",
+        "communicationsReady": "Listo para comunicaciones"
+      },
+      "applications": {
+        "grow": {
+          "title": "Instalaciones de cultivo",
+          "subtitle": "Agricultura interior con control climático",
+          "description": "Energía continua y salida de aire frío ideal para operaciones de cultivo de alta eficiencia y control ambiental."
+        },
+        "dataCenters": {
+          "title": "Centros de datos",
+          "subtitle": "Infraestructura siempre activa para IA, cripto y nube",
+          "description": "Entrega energía resistente fuera de red con refrigeración integrada para cargas intensivas como laboratorios de IA, minería cripto y HPC."
+        },
+        "disasterRelief": {
+          "title": "Ayuda ante desastres",
+          "subtitle": "Despliegue móvil en zonas críticas",
+          "description": "Energiza operaciones de emergencia con energía móvil y fuera de red que puede desplegarse por camión o entregarse en sitio."
+        },
+        "remoteCommunities": {
+          "title": "Comunidades remotas",
+          "subtitle": "Independencia de redes poco fiables",
+          "description": "Ideal para tierras tribales, naciones insulares y zonas rurales donde la energía limpia e independiente es esencial."
+        },
+        "marine": {
+          "title": "Aplicaciones marinas",
+          "subtitle": "Energía sobre el agua",
+          "description": "El motor de aire comprimido demuestra viabilidad marina real — escalable para propulsión de embarcaciones o fuerabordas."
+        },
+        "construction": {
+          "title": "Construcción fuera de red",
+          "subtitle": "Energía en obra donde la red no llega",
+          "description": "Alimenta equipos, herramientas e instalaciones temporales en obras remotas. Construye infraestructura sin esperar conexión a la red."
+        },
+        "evInfra": {
+          "title": "Infraestructura para VE",
+          "subtitle": "Soluciones de carga de vanguardia",
+          "description": "Sistemas desplegables para alimentar hubs de carga de VE — sin esperar expansión de la red."
+        },
+        "healthcare": {
+          "title": "Médico y salud",
+          "subtitle": "Energía crítica + frío para equipos médicos",
+          "description": "Respaldo para equipos médicos, hospitales de campaña, almacenamiento de vacunas y unidades móviles que requieren energía y refrigeración."
+        },
+        "microgrid": {
+          "title": "Microred y respaldo",
+          "subtitle": "Soporte de red a escala de servicios",
+          "description": "Soluciones de estabilidad de red para utilities, infraestructura de telecom y centros críticos que requieren respaldo fiable y almacenamiento."
+        },
+        "militaryBase": {
+          "title": "Base militar y campo",
+          "subtitle": "Energía segura y fuera de red para el éxito de la misión",
+          "description": "Sistemas autosuficientes de energía y refrigeración para bases, puestos avanzados y despliegues — cero emisiones y baja firma térmica."
+        },
+        "navalDefense": {
+          "title": "Defensa naval y marítima",
+          "subtitle": "Energía y refrigeración a bordo y en muelle",
+          "description": "Sistemas impulsados por aire para bases navales, astilleros y operaciones — energía limpia, aire frío y respaldo crítico en mar o puerto."
+        },
+        "tactical": {
+          "title": "Soporte táctico de vehículos y equipos",
+          "subtitle": "Energía en movimiento para operaciones de defensa",
+          "description": "Unidades generadoras y almacenamiento para vehículos blindados, radares, comunicaciones y otros activos militares críticos."
+        }
+      },
       "cta": "¿Listo para desplegar energía limpia?"
     },
     "productIntro": {

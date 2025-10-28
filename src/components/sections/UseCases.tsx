@@ -18,226 +18,22 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const applications = [
-  {
-    id: 1,
-    title: "Grow Facilities",
-    subtitle: "Climate-controlled indoor agriculture",
-    description: "Continuous power and cold air output ideal for high-efficiency grow operations and environmental control.",
-    icon: Leaf,
-    category: "Agriculture",
-    visual: {
-      type: "image",
-      src: "/media/images/agriculture.jpeg",
-      alt: "Indoor grow facility with AirPower Station providing climate control"
-    },
-    categoryColor: "bg-green-500",
-    tags: [
-      { color: "bg-green-400", label: "Zero Emissions" },
-      { color: "bg-blue-400", label: "Climate Control" }
-    ]
-  },
-  {
-    id: 2,
-    title: "Data Centers",
-    subtitle: "Always-on infrastructure for AI, crypto, and cloud computing",
-    description: "Delivers resilient off-grid power with integrated cooling to support energy-intensive workloads including AI labs, crypto mining operations, and high-performance computing clusters.",
-    icon: Server,
-    category: "Technology",
-    visual: {
-      type: "image",
-      src: "/media/images/server_room.jpeg",
-      alt: "Server room with advanced computing infrastructure powered by AirPower Station"
-    },
-    categoryColor: "bg-blue-500",
-    tags: [
-      { color: "bg-green-400", label: "Zero Emissions" },
-      { color: "bg-blue-400", label: "Integrated Cooling" }
-    ]
-  },
-  {
-    id: 3,
-    title: "Disaster Relief",
-    subtitle: "Mobile deployment in critical zones",
-    description: "Power up emergency operations with off-grid, mobile-ready energy that can be deployed by truck or dropped on-site.",
-    icon: Heart,
-    category: "Emergency",
-    visual: {
-      type: "image",
-      src: "/media/images/disaster_relief.jpeg",
-      alt: "Emergency response operation powered by mobile AirPower Station"
-    },
-    categoryColor: "bg-red-500",
-    tags: [
-      { color: "bg-orange-400", label: "Rapid Deployment" },
-      { color: "bg-purple-400", label: "Mobile-Ready" }
-    ]
-  },
-  {
-    id: 4,
-    title: "Remote Communities",
-    subtitle: "Independence from unreliable grids",
-    description: "Ideal for tribal lands, island nations, and rural sites where clean, independent energy matters most.",
-    icon: Home,
-    category: "Community",
-    visual: {
-      type: "image",
-      src: "/media/images/remote.jpeg",
-      alt: "Remote off-grid community powered by AirPower Station"
-    },
-    categoryColor: "bg-purple-500",
-    tags: [
-      { color: "bg-green-400", label: "Zero Emissions" },
-      { color: "bg-cyan-400", label: "Grid Independence" }
-    ]
-  },
-  {
-    id: 5,
-    title: "Marine Applications",
-    subtitle: "Power on water",
-    description: "Compressed air engine proves real-world marine viability — scalable for outboard or vessel propulsion.",
-    icon: Ship,
-    category: "Marine",
-    visual: {
-      type: "image",
-      src: "/media/images/marine_app.jpeg",
-      alt: "Marine application with AirPower Station technology for water-based operations"
-    },
-    categoryColor: "bg-cyan-500",
-    tags: [
-      { color: "bg-purple-400", label: "Mobile-Ready" },
-      { color: "bg-blue-400", label: "Marine Proven" }
-    ]
-  },
-  {
-    id: 6,
-    title: "Off-Grid Construction",
-    subtitle: "Jobsite power where the grid can't reach",
-    description: "Power construction equipment, tools, and temporary facilities at remote jobsites. Build infrastructure anywhere without requiring grid connection first.",
-    icon: HardHat,
-    category: "Industrial",
-    visual: {
-      type: "image",
-      src: "/media/images/construction_site.jpeg",
-      alt: "Construction site powered by AirPower Station"
-    },
-    categoryColor: "bg-orange-500",
-    tags: [
-      { color: "bg-orange-400", label: "Rapid Deployment" },
-      { color: "bg-yellow-400", label: "Rugged Design" }
-    ]
-  },
-  {
-    id: 7,
-    title: "EV Infrastructure",
-    subtitle: "Future-forward charging solutions",
-    description: "Deployable systems to power EV charging hubs — without waiting for grid expansion.",
-    icon: Car,
-    category: "Transportation",
-    visual: {
-      type: "image",
-      src: "/media/images/ev_charging.jpeg",
-      alt: "EV charging station powered by AirPower Station technology"
-    },
-    categoryColor: "bg-emerald-500",
-    tags: [
-      { color: "bg-green-400", label: "Zero Emissions" },
-      { color: "bg-emerald-400", label: "Future-Ready" }
-    ]
-  },
-  {
-    id: 8,
-    title: "Medical & Healthcare",
-    subtitle: "Critical power + cold storage for medical equipment",
-    description: "Emergency medical equipment backup, field hospitals, vaccine cold storage, and mobile medical units requiring both power and cooling.",
-    icon: Stethoscope,
-    category: "Healthcare",
-    visual: {
-      type: "image",
-      src: "/media/images/medical.jpeg",
-      alt: "Medical equipment and healthcare facility powered by AirPower Station"
-    },
-    categoryColor: "bg-teal-500",
-    tags: [
-      { color: "bg-red-400", label: "Critical Backup" },
-      { color: "bg-blue-400", label: "Cold Storage" }
-    ]
-  },
-  {
-    id: 9,
-    title: "Microgrid & Backup Power",
-    subtitle: "Utility-scale grid support and backup systems",
-    description: "Grid stability solutions for utilities, telecommunications infrastructure, and critical facilities requiring reliable backup power and energy storage.",
-    icon: Zap,
-    category: "Utility",
-    visual: {
-      type: "image",
-      src: "/media/images/grid.jpeg",
-      alt: "Microgrid and backup power infrastructure with AirPower Station"
-    },
-    categoryColor: "bg-indigo-500",
-    tags: [
-      { color: "bg-yellow-400", label: "Grid Stability" },
-      { color: "bg-indigo-400", label: "Utility-Scale" }
-    ]
-  },
-  {
-    id: 10,
-    title: "Military Base & Field Power",
-    subtitle: "Secure, off-grid energy for mission success",
-    description: "Fully self-sustaining power and cooling systems for military bases, forward operating posts, and field deployments — zero emissions with minimal heat signature.",
-    icon: Shield,
-    category: "Defense",
-    visual: {
-      type: "image",
-      src: "/media/images/base.jpeg",
-      alt: "Military base powered by AirPower Station with secure off-grid energy systems"
-    },
-    categoryColor: "bg-slate-600",
-    tags: [
-      { color: "bg-slate-400", label: "Military-Grade" },
-      { color: "bg-green-400", label: "Off-Grid Power" }
-    ]
-  },
-  {
-    id: 11,
-    title: "Naval & Maritime Defense",
-    subtitle: "Shipboard + dockside power & cooling",
-    description: "Air-powered systems for naval bases, shipyards, and vessel operations — delivering clean power, cold air, and mission-critical backup at sea or in port.",
-    icon: Anchor,
-    category: "Defense",
-    visual: {
-      type: "image",
-      src: "/media/images/navy.jpeg",
-      alt: "Naval defense operations powered by AirPower Station for maritime and shipboard applications"
-    },
-    categoryColor: "bg-slate-600",
-    tags: [
-      { color: "bg-blue-400", label: "Maritime Power" },
-      { color: "bg-cyan-400", label: "Cold Air Cooling" }
-    ]
-  },
-  {
-    id: 12,
-    title: "Tactical Vehicle & Equipment Support",
-    subtitle: "Power on the move for defense operations",
-    description: "Deployable generator units and energy storage for armored vehicles, radar systems, communications hubs, and other mission-critical military assets.",
-    icon: Truck,
-    category: "Defense",
-    visual: {
-      type: "image",
-      src: "/media/images/tactical_vehicle.jpeg",
-      alt: "Tactical vehicle with AirPower Station for mobile defense operations"
-    },
-    categoryColor: "bg-slate-600",
-    tags: [
-      { color: "bg-orange-400", label: "Mobile Support" },
-      { color: "bg-purple-400", label: "Communications Ready" }
-    ]
-  }
+const applicationsMeta = [
+  { id: 1, key: 'grow', icon: Leaf, categoryKey: 'agriculture', visual: { type: 'image', src: '/media/images/agriculture.jpeg', alt: 'Indoor grow facility with AirPower Station providing climate control' }, categoryColor: 'bg-green-500', tags: [ { color: 'bg-green-400', labelKey: 'zeroEmissions' }, { color: 'bg-blue-400', labelKey: 'climateControl' } ] },
+  { id: 2, key: 'dataCenters', icon: Server, categoryKey: 'technology', visual: { type: 'image', src: '/media/images/server_room.jpeg', alt: 'Server room with advanced computing infrastructure powered by AirPower Station' }, categoryColor: 'bg-blue-500', tags: [ { color: 'bg-green-400', labelKey: 'zeroEmissions' }, { color: 'bg-blue-400', labelKey: 'integratedCooling' } ] },
+  { id: 3, key: 'disasterRelief', icon: Heart, categoryKey: 'emergency', visual: { type: 'image', src: '/media/images/disaster_relief.jpeg', alt: 'Emergency response operation powered by mobile AirPower Station' }, categoryColor: 'bg-red-500', tags: [ { color: 'bg-orange-400', labelKey: 'rapidDeployment' }, { color: 'bg-purple-400', labelKey: 'mobileReady' } ] },
+  { id: 4, key: 'remoteCommunities', icon: Home, categoryKey: 'community', visual: { type: 'image', src: '/media/images/remote.jpeg', alt: 'Remote off-grid community powered by AirPower Station' }, categoryColor: 'bg-purple-500', tags: [ { color: 'bg-green-400', labelKey: 'zeroEmissions' }, { color: 'bg-cyan-400', labelKey: 'gridIndependence' } ] },
+  { id: 5, key: 'marine', icon: Ship, categoryKey: 'marine', visual: { type: 'image', src: '/media/images/marine_app.jpeg', alt: 'Marine application with AirPower Station technology for water-based operations' }, categoryColor: 'bg-cyan-500', tags: [ { color: 'bg-purple-400', labelKey: 'mobileReady' }, { color: 'bg-blue-400', labelKey: 'marineProven' } ] },
+  { id: 6, key: 'construction', icon: HardHat, categoryKey: 'industrial', visual: { type: 'image', src: '/media/images/construction_site.jpeg', alt: 'Construction site powered by AirPower Station' }, categoryColor: 'bg-orange-500', tags: [ { color: 'bg-orange-400', labelKey: 'rapidDeployment' }, { color: 'bg-yellow-400', labelKey: 'ruggedDesign' } ] },
+  { id: 7, key: 'evInfra', icon: Car, categoryKey: 'transportation', visual: { type: 'image', src: '/media/images/ev_charging.jpeg', alt: 'EV charging station powered by AirPower Station technology' }, categoryColor: 'bg-emerald-500', tags: [ { color: 'bg-green-400', labelKey: 'zeroEmissions' }, { color: 'bg-emerald-400', labelKey: 'futureReady' } ] },
+  { id: 8, key: 'healthcare', icon: Stethoscope, categoryKey: 'healthcare', visual: { type: 'image', src: '/media/images/medical.jpeg', alt: 'Medical equipment and healthcare facility powered by AirPower Station' }, categoryColor: 'bg-teal-500', tags: [ { color: 'bg-red-400', labelKey: 'criticalBackup' }, { color: 'bg-blue-400', labelKey: 'coldStorage' } ] },
+  { id: 9, key: 'microgrid', icon: Zap, categoryKey: 'utility', visual: { type: 'image', src: '/media/images/grid.jpeg', alt: 'Microgrid and backup power infrastructure with AirPower Station' }, categoryColor: 'bg-indigo-500', tags: [ { color: 'bg-yellow-400', labelKey: 'gridStability' }, { color: 'bg-indigo-400', labelKey: 'utilityScale' } ] },
+  { id: 10, key: 'militaryBase', icon: Shield, categoryKey: 'defense', visual: { type: 'image', src: '/media/images/base.jpeg', alt: 'Military base powered by AirPower Station with secure off-grid energy systems' }, categoryColor: 'bg-slate-600', tags: [ { color: 'bg-slate-400', labelKey: 'militaryGrade' }, { color: 'bg-green-400', labelKey: 'offGridPower' } ] },
+  { id: 11, key: 'navalDefense', icon: Anchor, categoryKey: 'defense', visual: { type: 'image', src: '/media/images/navy.jpeg', alt: 'Naval defense operations powered by AirPower Station for maritime and shipboard applications' }, categoryColor: 'bg-slate-600', tags: [ { color: 'bg-blue-400', labelKey: 'maritimePower' }, { color: 'bg-cyan-400', labelKey: 'coldAirCooling' } ] },
+  { id: 12, key: 'tactical', icon: Truck, categoryKey: 'defense', visual: { type: 'image', src: '/media/images/tactical_vehicle.jpeg', alt: 'Tactical vehicle with AirPower Station for mobile defense operations' }, categoryColor: 'bg-slate-600', tags: [ { color: 'bg-orange-400', labelKey: 'mobileSupport' }, { color: 'bg-purple-400', labelKey: 'communicationsReady' } ] }
 ];
 
-const categories = [...new Set(applications.map(app => app.category))];
+const categories = [...new Set(applicationsMeta.map(app => app.categoryKey))];
 
 export default function UseCases() {
   const t = useTranslations('home.useCases');
@@ -274,14 +70,14 @@ export default function UseCases() {
           </Badge>
           {categories.map((category) => (
             <Badge key={category} variant="outline" className="px-3 py-2 text-xs sm:text-sm font-medium">
-              {category}
+              {t(`categories.${category}`)}
             </Badge>
           ))}
         </div>
 
         {/* Applications Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {applications.map((app) => {
+          {applicationsMeta.map((app) => {
             const Icon = app.icon;
             return (
               <Card 
@@ -340,16 +136,16 @@ export default function UseCases() {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-bold text-foreground text-base sm:text-lg leading-tight">
-                        {app.title}
+                        {t(`applications.${app.key}.title`)}
                       </h3>
                       <p className="text-xs sm:text-sm text-primary font-medium">
-                        {app.subtitle}
+                        {t(`applications.${app.key}.subtitle`)}
                       </p>
                     </div>
                   </div>
                   
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    {app.description}
+                    {t(`applications.${app.key}.description`)}
                   </p>
                   
                   {/* Benefits indicator */}
@@ -357,7 +153,7 @@ export default function UseCases() {
                     {app.tags.map((tag, index) => (
                       <div key={index} className="flex items-center space-x-2">
                         <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 ${tag.color} rounded-full`} />
-                        <span className="text-xs text-muted-foreground">{tag.label}</span>
+                        <span className="text-xs text-muted-foreground">{t(`tags.${tag.labelKey}`)}</span>
                       </div>
                     ))}
                   </div>

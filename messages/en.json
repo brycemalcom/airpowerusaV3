@@ -84,6 +84,101 @@
       "subtitle": "From farms to AI labs — clean power, anywhere it's needed.",
       "intro": "AirPower delivers high-capacity, zero-emission energy across industries. Whether powering infrastructure, operations, or innovation, the AirPower Station makes clean energy accessible in places traditional power cannot reach.",
       "all": "All Industries",
+      "categories": {
+        "agriculture": "Agriculture",
+        "technology": "Technology",
+        "emergency": "Emergency",
+        "community": "Community",
+        "marine": "Marine",
+        "industrial": "Industrial",
+        "transportation": "Transportation",
+        "healthcare": "Healthcare",
+        "utility": "Utility",
+        "defense": "Defense"
+      },
+      "tags": {
+        "zeroEmissions": "Zero Emissions",
+        "climateControl": "Climate Control",
+        "integratedCooling": "Integrated Cooling",
+        "rapidDeployment": "Rapid Deployment",
+        "mobileReady": "Mobile-Ready",
+        "gridIndependence": "Grid Independence",
+        "marineProven": "Marine Proven",
+        "ruggedDesign": "Rugged Design",
+        "futureReady": "Future-Ready",
+        "criticalBackup": "Critical Backup",
+        "coldStorage": "Cold Storage",
+        "gridStability": "Grid Stability",
+        "utilityScale": "Utility-Scale",
+        "militaryGrade": "Military-Grade",
+        "offGridPower": "Off-Grid Power",
+        "maritimePower": "Maritime Power",
+        "coldAirCooling": "Cold Air Cooling",
+        "mobileSupport": "Mobile Support",
+        "communicationsReady": "Communications Ready"
+      },
+      "applications": {
+        "grow": {
+          "title": "Grow Facilities",
+          "subtitle": "Climate-controlled indoor agriculture",
+          "description": "Continuous power and cold air output ideal for high-efficiency grow operations and environmental control."
+        },
+        "dataCenters": {
+          "title": "Data Centers",
+          "subtitle": "Always-on infrastructure for AI, crypto, and cloud computing",
+          "description": "Delivers resilient off-grid power with integrated cooling to support energy-intensive workloads including AI labs, crypto mining operations, and high-performance computing clusters."
+        },
+        "disasterRelief": {
+          "title": "Disaster Relief",
+          "subtitle": "Mobile deployment in critical zones",
+          "description": "Power up emergency operations with off-grid, mobile-ready energy that can be deployed by truck or dropped on-site."
+        },
+        "remoteCommunities": {
+          "title": "Remote Communities",
+          "subtitle": "Independence from unreliable grids",
+          "description": "Ideal for tribal lands, island nations, and rural sites where clean, independent energy matters most."
+        },
+        "marine": {
+          "title": "Marine Applications",
+          "subtitle": "Power on water",
+          "description": "Compressed air engine proves real-world marine viability — scalable for outboard or vessel propulsion."
+        },
+        "construction": {
+          "title": "Off-Grid Construction",
+          "subtitle": "Jobsite power where the grid can't reach",
+          "description": "Power construction equipment, tools, and temporary facilities at remote jobsites. Build infrastructure anywhere without requiring grid connection first."
+        },
+        "evInfra": {
+          "title": "EV Infrastructure",
+          "subtitle": "Future-forward charging solutions",
+          "description": "Deployable systems to power EV charging hubs — without waiting for grid expansion."
+        },
+        "healthcare": {
+          "title": "Medical & Healthcare",
+          "subtitle": "Critical power + cold storage for medical equipment",
+          "description": "Emergency medical equipment backup, field hospitals, vaccine cold storage, and mobile medical units requiring both power and cooling."
+        },
+        "microgrid": {
+          "title": "Microgrid & Backup Power",
+          "subtitle": "Utility-scale grid support and backup systems",
+          "description": "Grid stability solutions for utilities, telecommunications infrastructure, and critical facilities requiring reliable backup power and energy storage."
+        },
+        "militaryBase": {
+          "title": "Military Base & Field Power",
+          "subtitle": "Secure, off-grid energy for mission success",
+          "description": "Fully self-sustaining power and cooling systems for military bases, forward operating posts, and field deployments — zero emissions with minimal heat signature."
+        },
+        "navalDefense": {
+          "title": "Naval & Maritime Defense",
+          "subtitle": "Shipboard + dockside power & cooling",
+          "description": "Air-powered systems for naval bases, shipyards, and vessel operations — delivering clean power, cold air, and mission-critical backup at sea or in port."
+        },
+        "tactical": {
+          "title": "Tactical Vehicle & Equipment Support",
+          "subtitle": "Power on the move for defense operations",
+          "description": "Deployable generator units and energy storage for armored vehicles, radar systems, communications hubs, and other mission-critical military assets."
+        }
+      },
       "cta": "Ready to deploy clean energy?"
     },
     "productIntro": {
