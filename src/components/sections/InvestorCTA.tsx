@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useTranslations } from "next-intl";
 
 import {
   Form,
@@ -42,26 +43,15 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const highlights = [
-  {
-    icon: DollarSign,
-    title: "$30M+ Active Interest",
-    description: "Strong investor pipeline already established"
-  },
-  {
-    icon: TrendingUp,
-    title: "Proven Technology",
-    description: "Field-tested CAE system with real-world deployments"
-  },
-  {
-    icon: Shield,
-    title: "Patent Protected",
-    description: "Proprietary compressed air engine technology"
-  }
+  { icon: DollarSign, key: 'activeInterest' },
+  { icon: TrendingUp, key: 'provenTech' },
+  { icon: Shield, key: 'patent' }
 ];
 
 export default function InvestorCTA() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const t = useTranslations('home.investorCta');
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -133,13 +123,13 @@ export default function InvestorCTA() {
               <CheckCircle className="w-10 h-10 text-green-500" />
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Thank You for Your Interest
+              {t('thanks', { default: 'Thank You for Your Interest' })}
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Your investor packet request has been received. Our team will review your submission and respond within 24 hours.
+              {t('thanksBody', { default: 'Your investor packet request has been received. Our team will review your submission and respond within 24 hours.' })}
             </p>
             <div className="text-sm text-muted-foreground mb-8">
-              📧 <strong>Please check your spam, junk, and promotions folders</strong> to ensure you don't miss our response.
+              📧 <strong>{t('checkSpam', { default: 'Please check your spam, junk, and promotions folders' })}</strong> {t('checkTail', { default: "to ensure you don't miss our response." })}
             </div>
           </Card>
         </div>
@@ -155,26 +145,25 @@ export default function InvestorCTA() {
           <div className="space-y-8">
             <div>
               <Badge variant="secondary" className="mb-4">
-                Investment Opportunity
+                {t('badge', { default: 'Investment Opportunity' })}
               </Badge>
               <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Investor
+                {t('titleTop', { default: 'Investor' })}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
-                  Opportunity
+                  {t('titleBottom', { default: 'Opportunity' })}
                 </span>
               </h2>
               <p className="mt-6 text-xl leading-8 text-muted-foreground">
-                AirPower USA is now open to accredited investors.
+                {t('subtitle', { default: 'AirPower USA is now open to accredited investors.' })}
               </p>
             </div>
 
             <div className="p-6 rounded-xl bg-background/50 border border-border backdrop-blur-sm">
               <p className="text-lg leading-relaxed text-muted-foreground">
-                We're seeking strategic investors to help scale production and meet demand. With over $30M in active 
-                interest and a proven technology platform, AirPower is positioned for rapid growth.
+                {t('p1', { default: "We're seeking strategic investors to help scale production and meet demand. With over $30M in active interest and a proven technology platform, AirPower is positioned for rapid growth." })}
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground mt-4 font-semibold">
-                Join us as we bring clean, compressed-air energy to the world.
+                {t('p2', { default: 'Join us as we bring clean, compressed-air energy to the world.' })}
               </p>
             </div>
 
@@ -189,10 +178,10 @@ export default function InvestorCTA() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-foreground">
-                        {highlight.title}
+                        {t(`highlights.${highlight.key}.title`)}
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        {highlight.description}
+                        {t(`highlights.${highlight.key}.description`)}
                       </p>
                     </div>
                   </div>
@@ -205,10 +194,10 @@ export default function InvestorCTA() {
           <Card className="p-8 bg-background/50 backdrop-blur-sm border-border">
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-foreground mb-2">
-                Request Investor Packet
+                {t('formTitle', { default: 'Request Investor Packet' })}
               </h3>
               <p className="text-muted-foreground">
-                Use the form below to request our investor packet and schedule a conversation with our team.
+                {t('formIntro', { default: 'Use the form below to request our investor packet and schedule a conversation with our team.' })}
               </p>
             </div>
 
@@ -221,10 +210,10 @@ export default function InvestorCTA() {
                     <FormItem>
                       <FormLabel className="flex items-center space-x-2">
                         <User className="w-4 h-4" />
-                        <span>Full Name *</span>
+                <span>{t('fullName', { default: 'Full Name *' })}</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your full name" {...field} />
+                        <Input placeholder={t('phName', { default: 'Enter your full name' })} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -238,10 +227,10 @@ export default function InvestorCTA() {
                     <FormItem>
                       <FormLabel className="flex items-center space-x-2">
                         <Mail className="w-4 h-4" />
-                        <span>Email Address *</span>
+                        <span>{t('email', { default: 'Email Address *' })}</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your email address" type="email" {...field} />
+                        <Input placeholder={t('phEmail', { default: 'Enter your email address' })} type="email" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -255,11 +244,11 @@ export default function InvestorCTA() {
                     <FormItem>
                       <FormLabel className="flex items-center space-x-2">
                         <Phone className="w-4 h-4" />
-                        <span>Phone Number</span>
-                        <span className="text-muted-foreground text-sm">(optional)</span>
+                        <span>{t('phone', { default: 'Phone Number' })}</span>
+                        <span className="text-muted-foreground text-sm">{t('optional', { default: '(optional)' })}</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your phone number" type="tel" {...field} />
+                        <Input placeholder={t('phPhone', { default: 'Enter your phone number' })} type="tel" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -271,10 +260,10 @@ export default function InvestorCTA() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Message / Notes</FormLabel>
+                      <FormLabel>{t('message', { default: 'Message / Notes' })}</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Tell us about your investment interests or any questions you have..."
+                          placeholder={t('phMessage', { default: 'Tell us about your investment interests or any questions you have...' })}
                           className="min-h-[100px]"
                           {...field}
                         />
@@ -297,7 +286,7 @@ export default function InvestorCTA() {
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel className="font-medium">
-                          I confirm that I am an accredited investor *
+                          {t('confirm', { default: 'I confirm that I am an accredited investor *' })}
                         </FormLabel>
                         <FormMessage />
                       </div>
@@ -310,7 +299,7 @@ export default function InvestorCTA() {
                   className="w-full bg-primary hover:bg-primary/90 py-3"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Request Investor Packet"}
+                  {isSubmitting ? t('submitting', { default: 'Submitting...' }) : t('submit', { default: 'Request Investor Packet' })}
                 </Button>
               </form>
             </Form>
@@ -318,9 +307,7 @@ export default function InvestorCTA() {
             {/* Disclaimer */}
             <div className="mt-6 pt-6 border-t border-border">
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong>Disclaimer:</strong> This offering is limited to accredited investors under SEC Regulation D. 
-                All submissions are confidential. By submitting this form, you acknowledge that you understand the 
-                risks associated with investing in early-stage companies.
+                <strong>{t('disclaimer', { default: 'Disclaimer:' })}</strong> {t('disclaimerBody', { default: 'This offering is limited to accredited investors under SEC Regulation D. All submissions are confidential. By submitting this form, you acknowledge that you understand the risks associated with investing in early-stage companies.' })}
               </p>
             </div>
           </Card>

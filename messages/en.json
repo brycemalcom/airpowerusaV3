@@ -452,11 +452,13 @@
       "p1": "We're seeking strategic investors to help scale production and meet demand. With over $30M in active interest and a proven technology platform, AirPower is positioned for rapid growth.",
       "p2": "Join us as we bring clean, compressed-air energy to the world.",
       "formTitle": "Request Investor Packet",
+      "formIntro": "Use the form below to request our investor packet and schedule a conversation with our team.",
       "fullName": "Full Name *",
       "phName": "Enter your full name",
       "email": "Email Address *",
       "phEmail": "Enter your email address",
       "phone": "Phone Number",
+      "phPhone": "Enter your phone number",
       "optional": "(optional)",
       "message": "Message / Notes",
       "phMessage": "Tell us about your investment interests or any questions you have...",
@@ -465,6 +467,21 @@
       "submit": "Request Investor Packet",
       "disclaimer": "Disclaimer:",
       "disclaimerBody": "This offering is limited to accredited investors under SEC Regulation D. All submissions are confidential. By submitting this form, you acknowledge that you understand the risks associated with investing in early-stage companies."
+      ,
+      "highlights": {
+        "activeInterest": {
+          "title": "$30M+ Active Interest",
+          "description": "Strong investor pipeline already established"
+        },
+        "provenTech": {
+          "title": "Proven Technology",
+          "description": "Field-tested CAE system with real-world deployments"
+        },
+        "patent": {
+          "title": "Patent Protected",
+          "description": "Proprietary compressed air engine technology"
+        }
+      }
     },
     "videos": {
       "badge": "Video Content",
