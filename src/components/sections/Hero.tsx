@@ -2,11 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Users, TrendingUp, ArrowDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRef, useEffect, useState } from "react";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const t = useTranslations();
 
   useEffect(() => {
     // Check if mobile device
@@ -83,7 +85,7 @@ export default function Hero() {
         {/* Main headline with enhanced text shadows */}
         <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-8xl drop-shadow-2xl">
           <span style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)' }}>
-            Clean power from
+            {t('home.headlineTop', { default: 'Clean power from' })}
           </span>
           <span 
             className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300"
@@ -92,7 +94,7 @@ export default function Hero() {
               WebkitTextStroke: '1px rgba(255,255,255,0.1)'
             }}
           >
-            thin air.
+            {t('home.headlineBottom', { default: 'thin air.' })}
           </span>
         </h1>
         
@@ -101,8 +103,7 @@ export default function Hero() {
           className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-white sm:text-xl lg:text-2xl font-light"
           style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6)' }}
         >
-          Deployable zero-emission energy. Powered by compressed air. 
-          Engineered for anywhere the grid can't reach.
+          {t('home.subheadline', { default: "Deployable zero-emission energy. Powered by compressed air. Engineered for anywhere the grid can't reach." })}
         </p>
         
         {/* Enhanced CTA buttons with better contrast */}
@@ -117,7 +118,7 @@ export default function Hero() {
             }}
           >
             <Users className="mr-3 h-5 w-5 sm:h-6 sm:w-6" />
-            For Customers
+            {t('home.ctaCustomers', { default: 'For Customers' })}
           </Button>
           <Button 
             variant="outline" 
