@@ -30,7 +30,24 @@
     "headlineBottom": "thin air.",
     "subheadline": "Deployable zero-emission energy. Powered by compressed air. Engineered for anywhere the grid can't reach.",
     "ctaCustomers": "For Customers",
-    "ctaInvestors": "For Investors"
+    "ctaInvestors": "For Investors",
+    "technology": {
+      "badge": "Patented Technology",
+      "titleTop": "How the",
+      "titleBottom": "AirPower Station Works",
+      "subtitle": "From compressed air to clean, continuous energy.",
+      "intro": "AirPower's patented system transforms ambient air into clean, on-demand power using a closed-loop cycle. With no fuel, no combustion, and only cold air as its byproduct, the AirPower Station redefines how energy is generated, stored, and delivered — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms.",
+      "clickToHear": "Click to hear audio"
+    },
+    "useCases": {
+      "badge": "Real-World Applications",
+      "titleTop": "Powering Real-World",
+      "titleBottom": "Possibilities",
+      "subtitle": "From farms to AI labs — clean power, anywhere it's needed.",
+      "intro": "AirPower delivers high-capacity, zero-emission energy across industries. Whether powering infrastructure, operations, or innovation, the AirPower Station makes clean energy accessible in places traditional power cannot reach.",
+      "all": "All Industries",
+      "cta": "Ready to deploy clean energy?"
+    }
   }
 }
 

@@ -30,7 +30,24 @@
     "headlineBottom": "el aire.",
     "subheadline": "Energía de cero emisiones desplegable. Impulsada por aire comprimido. Diseñada para donde la red no llega.",
     "ctaCustomers": "Para clientes",
-    "ctaInvestors": "Para inversionistas"
+    "ctaInvestors": "Para inversionistas",
+    "technology": {
+      "badge": "Tecnología patentada",
+      "titleTop": "Cómo funciona la",
+      "titleBottom": "Estación AirPower",
+      "subtitle": "Del aire comprimido a energía limpia y continua.",
+      "intro": "El sistema patentado de AirPower transforma el aire ambiente en energía limpia y bajo demanda mediante un ciclo de circuito cerrado. Sin combustible, sin combustión y con aire frío como único subproducto, la Estación AirPower redefine cómo se genera, almacena y entrega la energía — disponible en plataformas contenedorizadas de 20 pies (0.5MW) y 40 pies (1.5MW).",
+      "clickToHear": "Haz clic para oír el audio"
+    },
+    "useCases": {
+      "badge": "Aplicaciones reales",
+      "titleTop": "Impulsando",
+      "titleBottom": "posibilidades reales",
+      "subtitle": "De granjas a laboratorios de IA — energía limpia donde se necesita.",
+      "intro": "AirPower ofrece energía de alta capacidad y cero emisiones en múltiples industrias. Ya sea para infraestructura, operaciones o innovación, la Estación AirPower hace accesible la energía limpia en lugares donde la energía tradicional no llega.",
+      "all": "Todas las industrias",
+      "cta": "¿Listo para desplegar energía limpia?"
+    }
   }
 }
 

@@ -16,6 +16,7 @@ import {
   Anchor,
   Truck
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const applications = [
   {
@@ -239,30 +240,29 @@ const applications = [
 const categories = [...new Set(applications.map(app => app.category))];
 
 export default function UseCases() {
+  const t = useTranslations('home.useCases');
   return (
     <section id="use-cases" className="py-24 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="secondary" className="mb-4">
-            Real-World Applications
+            {t('badge', { default: 'Real-World Applications' })}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-6xl">
-            Powering Real-World
+            {t('titleTop', { default: 'Powering Real-World' })}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              Possibilities
+              {t('titleBottom', { default: 'Possibilities' })}
             </span>
           </h2>
           <p className="mt-6 text-lg sm:text-xl leading-8 text-muted-foreground">
-            From farms to AI labs — clean power, anywhere it's needed.
+            {t('subtitle', { default: "From farms to AI labs — clean power, anywhere it's needed." })}
           </p>
           
           {/* Intro Copy */}
           <div className="mt-8 p-6 rounded-xl bg-card/50 border border-border">
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-              AirPower delivers high-capacity, zero-emission energy across industries. Whether powering 
-              infrastructure, operations, or innovation, the AirPower Station makes clean energy accessible 
-              in places traditional power can't reach.
+              {t('intro', { default: 'AirPower delivers high-capacity, zero-emission energy across industries. Whether powering infrastructure, operations, or innovation, the AirPower Station makes clean energy accessible in places traditional power cannot reach.' })}
             </p>
           </div>
         </div>
@@ -270,7 +270,7 @@ export default function UseCases() {
         {/* Category Filter Pills */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
           <Badge variant="outline" className="px-3 py-2 text-xs sm:text-sm font-medium">
-            All Industries
+            {t('all', { default: 'All Industries' })}
           </Badge>
           {categories.map((category) => (
             <Badge key={category} variant="outline" className="px-3 py-2 text-xs sm:text-sm font-medium">
@@ -371,7 +371,7 @@ export default function UseCases() {
         <div className="mt-16 text-center">
           <div className="inline-flex items-center space-x-2 text-muted-foreground">
             <div className="h-px w-8 sm:w-12 bg-border" />
-            <span className="text-xs sm:text-sm font-medium">Ready to deploy clean energy?</span>
+            <span className="text-xs sm:text-sm font-medium">{t('cta', { default: 'Ready to deploy clean energy?' })}</span>
             <div className="h-px w-8 sm:w-12 bg-border" />
           </div>
         </div>

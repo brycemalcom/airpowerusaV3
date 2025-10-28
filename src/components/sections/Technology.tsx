@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import type { LucideIcon } from "lucide-react";
 import { 
   Wind,
@@ -136,6 +137,7 @@ export default function Technology() {
   const [isEngineVideoMuted, setIsEngineVideoMuted] = useState(true);
   const [isPowerGenVideoMuted, setIsPowerGenVideoMuted] = useState(true);
   const [isColdAirVideoMuted, setIsColdAirVideoMuted] = useState(true);
+  const t = useTranslations('home.technology');
 
   useEffect(() => {
     const checkMobile = () => {
@@ -166,24 +168,22 @@ export default function Technology() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-20">
           <Badge variant="secondary" className="mb-4">
-            Patented Technology
+            {t('badge', { default: 'Patented Technology' })}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-6xl">
-            How the
+            {t('titleTop', { default: 'How the' })}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              AirPower Station Works
+              {t('titleBottom', { default: 'AirPower Station Works' })}
             </span>
           </h2>
           <p className="mt-6 text-lg sm:text-xl leading-8 text-muted-foreground">
-            From compressed air to clean, continuous energy.
+            {t('subtitle', { default: 'From compressed air to clean, continuous energy.' })}
           </p>
           
           {/* Intro Copy */}
           <div className="mt-8 p-6 rounded-xl bg-background/50 border border-border">
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-              AirPower's patented system transforms ambient air into clean, on-demand power using a closed-loop cycle. 
-              With no fuel, no combustion, and only cold air as its byproduct, the AirPower Station redefines how energy 
-              is generated, stored, and delivered — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms.
+              {t('intro', { default: "AirPower's patented system transforms ambient air into clean, on-demand power using a closed-loop cycle. With no fuel, no combustion, and only cold air as its byproduct, the AirPower Station redefines how energy is generated, stored, and delivered — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms." })}
             </p>
           </div>
         </div>
@@ -320,10 +320,7 @@ export default function Technology() {
                                     true) && (
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                                       <div className="bg-black/70 rounded-lg px-4 py-2 text-white text-sm font-medium">
-                                        {step.number === "02" ? "Click to hear the engine" :
-                                         step.number === "03" ? "Click to hear the power generation" :
-                                         step.number === "04" ? "Click here to hear how quiet" :
-                                         "Click to hear audio"}
+                                        {t('clickToHear', { default: 'Click to hear audio' })}
                                       </div>
                                     </div>
                                   )}
