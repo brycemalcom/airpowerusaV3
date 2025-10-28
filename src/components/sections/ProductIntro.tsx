@@ -18,48 +18,16 @@ import {
 import { useTranslations } from "next-intl";
 // import Image from "next/image"; // Uncomment when adding the actual image
 
-const features = [
-  {
-    icon: Container,
-    title: "Available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms",
-    description: "Complete mobility and rapid deployment"
-  },
-  {
-    icon: Zap,
-    title: "Fully integrated CAE + generator",
-    description: "Proprietary compressed air engine technology"
-  },
-  {
-    icon: Battery,
-    title: "Optional 1.5MW BESS battery storage",
-    description: "Enhanced capacity and load balancing"
-  },
-  {
-    icon: Clock,
-    title: "Up to 16 hours runtime per fill cycle",
-    description: "Extended operation without refueling"
-  },
-  {
-    icon: Gauge,
-    title: "3-minute refill time per air tank",
-    description: "Rapid turnaround for continuous operation"
-  },
-  {
-    icon: Truck,
-    title: "Truck-mountable or stationary installation",
-    description: "Maximum flexibility for any deployment"
-  },
-  {
-    icon: Home,
-    title: "Up to 400 homes/day",
-    description: "Industrial-scale clean energy solution"
-  },
-  {
-    icon: Wind,
-    title: "Zero emissions, cold air exhaust",
-    description: "Clean power with useful cooling byproduct"
-  }
-];
+const featureIconByKey: Record<string, any> = {
+  container: Container,
+  caeGenerator: Zap,
+  bess: Battery,
+  runtime: Clock,
+  refill: Gauge,
+  mounting: Truck,
+  homes: Home,
+  zeroEmissions: Wind
+};
 
 export default function ProductIntro() {
   const [isVideoMuted, setIsVideoMuted] = useState(true);
@@ -167,19 +135,19 @@ export default function ProductIntro() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center space-x-3">
                 <div className="h-2 w-2 bg-green-400 rounded-full" />
-                <span className="text-sm font-medium text-foreground">Fully Integrated Platform</span>
+                <span className="text-sm font-medium text-foreground">{t('bullets.integrated')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="h-2 w-2 bg-blue-400 rounded-full" />
-                <span className="text-sm font-medium text-foreground">Rapid Deployment</span>
+                <span className="text-sm font-medium text-foreground">{t('bullets.rapid')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="h-2 w-2 bg-cyan-400 rounded-full" />
-                <span className="text-sm font-medium text-foreground">Scalable Power Output</span>
+                <span className="text-sm font-medium text-foreground">{t('bullets.scalable')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="h-2 w-2 bg-yellow-400 rounded-full" />
-                <span className="text-sm font-medium text-foreground">Cold Air Byproduct</span>
+                <span className="text-sm font-medium text-foreground">{t('bullets.coldAir')}</span>
               </div>
             </div>
           </div>
@@ -191,20 +159,20 @@ export default function ProductIntro() {
             {t('specs', { default: 'Technical Specifications & Features' })}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
+            {["container","caeGenerator","bess","runtime","refill","mounting","homes","zeroEmissions"].map((key) => {
+              const Icon = featureIconByKey[key];
               return (
-                <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow border-border bg-card/50">
+                <Card key={key} className="p-6 text-center hover:shadow-lg transition-shadow border-border bg-card/50">
                   <div className="flex justify-center mb-4">
                     <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                   </div>
                   <h4 className="font-semibold text-foreground mb-2 text-sm leading-tight">
-                    {feature.title}
+                    {t(`features.${key}.title`)}
                   </h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    {feature.description}
+                    {t(`features.${key}.description`)}
                   </p>
                 </Card>
               );

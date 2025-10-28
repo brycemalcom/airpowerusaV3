@@ -72,6 +72,46 @@
       "headline": "Zero-emission, closed-loop energy solution",
       "p1": "The AirPower Station is a zero-emission, closed-loop energy solution — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms and ready to deploy anywhere. It includes our proprietary compressed air engine (CAE), integrated generator, air tanks, and optional BESS (Battery Energy Storage System).",
       "p2": "Designed to run continuously with cold air as its only exhaust, the AirPower Station delivers scalable, on-demand power wherever it's needed — without fuel, without emissions, and without compromise. With just a 3-minute air tank fill, it provides up to 16 hours runtime per fill cycle.",
+      "bullets": {
+        "integrated": "Fully Integrated Platform",
+        "rapid": "Rapid Deployment",
+        "scalable": "Scalable Power Output",
+        "coldAir": "Cold Air Byproduct"
+      },
+      "features": {
+        "container": {
+          "title": "Available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms",
+          "description": "Complete mobility and rapid deployment"
+        },
+        "caeGenerator": {
+          "title": "Fully integrated CAE + generator",
+          "description": "Proprietary compressed air engine technology"
+        },
+        "bess": {
+          "title": "Optional 1.5MW BESS battery storage",
+          "description": "Enhanced capacity and load balancing"
+        },
+        "runtime": {
+          "title": "Up to 16 hours runtime per fill cycle",
+          "description": "Extended operation without refueling"
+        },
+        "refill": {
+          "title": "3-minute refill time per air tank",
+          "description": "Rapid turnaround for continuous operation"
+        },
+        "mounting": {
+          "title": "Truck-mountable or stationary installation",
+          "description": "Maximum flexibility for any deployment"
+        },
+        "homes": {
+          "title": "Up to 400 homes/day",
+          "description": "Industrial-scale clean energy solution"
+        },
+        "zeroEmissions": {
+          "title": "Zero emissions, cold air exhaust",
+          "description": "Clean power with useful cooling byproduct"
+        }
+      },
       "specs": "Technical Specifications & Features",
       "statZero": "Zero Emissions",
       "statOnDemand": "On-Demand Power",

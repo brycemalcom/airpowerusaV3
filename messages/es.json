@@ -72,6 +72,46 @@
       "headline": "Solución energética de cero emisiones y ciclo cerrado",
       "p1": "La Estación AirPower es una solución energética de cero emisiones y ciclo cerrado — disponible en plataformas contenedorizadas de 20 pies (0.5MW) y 40 pies (1.5MW), lista para desplegarse en cualquier lugar. Incluye nuestro motor de aire comprimido (CAE) patentado, generador integrado, tanques de aire y BESS opcional.",
       "p2": "Diseñada para operar de forma continua con aire frío como único escape, la Estación AirPower ofrece energía escalable y bajo demanda donde se necesite — sin combustible, sin emisiones y sin compromisos. Con solo 3 minutos de llenado, proporciona hasta 16 horas de autonomía por ciclo.",
+      "bullets": {
+        "integrated": "Plataforma totalmente integrada",
+        "rapid": "Despliegue rápido",
+        "scalable": "Potencia escalable",
+        "coldAir": "Subproducto de aire frío"
+      },
+      "features": {
+        "container": {
+          "title": "Disponible en plataformas contenedorizadas de 20 pies (0.5MW) y 40 pies (1.5MW)",
+          "description": "Movilidad total y despliegue rápido"
+        },
+        "caeGenerator": {
+          "title": "CAE + generador totalmente integrados",
+          "description": "Tecnología patentada de motor de aire comprimido"
+        },
+        "bess": {
+          "title": "Almacenamiento BESS opcional de 1.5MW",
+          "description": "Mayor capacidad y balanceo de carga"
+        },
+        "runtime": {
+          "title": "Hasta 16 horas de autonomía por ciclo de llenado",
+          "description": "Operación prolongada sin reabastecimiento"
+        },
+        "refill": {
+          "title": "Tiempo de relleno de 3 minutos por tanque de aire",
+          "description": "Rápida rotación para operación continua"
+        },
+        "mounting": {
+          "title": "Montaje en camión o instalación estacionaria",
+          "description": "Máxima flexibilidad para cualquier despliegue"
+        },
+        "homes": {
+          "title": "Hasta 400 hogares/día",
+          "description": "Solución de energía limpia a escala industrial"
+        },
+        "zeroEmissions": {
+          "title": "Cero emisiones, escape de aire frío",
+          "description": "Energía limpia con un subproducto útil de refrigeración"
+        }
+      },
       "specs": "Especificaciones técnicas y características",
       "statZero": "Cero emisiones",
       "statOnDemand": "Energía bajo demanda",
