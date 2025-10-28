@@ -12,7 +12,9 @@ const videos = [
   {
     id: 7,
     title: "IUCN Abu Dhabi 2025 — Conference Walkthrough",
+    titleEs: "IUCN Abu Dabi 2025 — Recorrido por la conferencia",
     description: "On-the-ground look at Air Power USA’s presence at the IUCN Conference in Abu Dhabi—brand visuals across event screens and exhibits, plus venue walkthrough footage as we introduce our ‘Thin Air to Clean Energy’ platform to regional stakeholders.",
+    descriptionEs: "Vistazo en terreno de la presencia de Air Power USA en la IUCN de Abu Dabi: marca en pantallas y stands, y recorrido por el recinto mientras presentamos nuestra plataforma «Del aire a la energía limpia» a actores regionales.",
     src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/abudhabi_2025.mp4",
     thumbnail: "https://airpowe-videos.s3.us-east-2.amazonaws.com/abudhabi_2025.mp4",
     thumbnailType: "video",
@@ -22,7 +24,9 @@ const videos = [
   {
     id: 1,
     title: "AirPower Station 20ft Unit Walkthrough",
+    titleEs: "Recorrido por unidad de 20 pies de la AirPower Station",
     description: "Complete walkthrough of the 20-foot AirPower Station showcasing compact setup, easy panel operations, and remarkably quiet generator operation.",
+    descriptionEs: "Recorrido completo con montaje compacto, manejo sencillo de paneles y funcionamiento notablemente silencioso del generador.",
     src: "/media/videos/airpowerstation.mp4",
     thumbnail: "/media/videos/airpowerstation.mp4", // Using video itself for thumbnail
     thumbnailType: "video", // video or image
@@ -32,7 +36,9 @@ const videos = [
   {
     id: 2,
     title: "AirPower CAE Start-Up & Power Demonstration",
+    titleEs: "Puesta en marcha del CAE y demostración de potencia",
     description: "Watch the AirPower Compressed Air Engine come online in our controlled test environment. This demo features full system start-up, cold air exhaust venting at -20°C, and sequential activation of high-output industrial lighting—proof of the platform's rapid response, stable output, and clean, reliable power delivery.",
+    descriptionEs: "Arranque completo del motor de aire comprimido, escape de aire frío a −20 °C y encendido secuencial de luminarias de alta potencia: respuesta rápida, salida estable y energía limpia.",
     src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/cae_startup2.mp4",
     thumbnail: "/media/images/tech_thumbnail.png",
     thumbnailType: "image",
@@ -42,7 +48,9 @@ const videos = [
   {
     id: 3,
     title: "Compact AirPower Unit — Scaled-Down System Demonstration",
+    titleEs: "Unidad AirPower compacta (demostración a escala)",
     description: "Step inside our French R&D facility for a demonstration of the scaled-down AirPower CAE platform. This compact unit delivers the same zero-emission performance in a reduced footprint—running quietly, powering industrial loads, and producing -35°C cold air exhaust for versatile applications from mobile power to microgrid deployment.",
+    descriptionEs: "Demostración del sistema a escala reducida: funcionamiento silencioso, alimentación de cargas industriales y escape de aire a −35 °C para usos móviles y microredes.",
     src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/cae_rd.mp4",
     thumbnail: "/media/images/rd_thumbnail.png",
     thumbnailType: "image",
@@ -52,7 +60,9 @@ const videos = [
   {
     id: 4,
     title: "AirPower Vehicle Integration — Engine Build & Field Test",
+    titleEs: "Integración vehicular AirPower — armado y prueba en campo",
     description: "Go behind the scenes of our prototype vehicle integration. Watch the complete CAE installation process—engine assembly, component integration, and full vehicle rebuild—followed by real-world test drive. See how our zero-emission technology delivers seamless power and whisper-quiet operation on the road.",
+    descriptionEs: "Ensamble del motor, integración de componentes y reconstrucción del vehículo, seguido de prueba de manejo: potencia continua y operación silenciosa en ruta.",
     src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/airpower_prototype.mp4",
     thumbnail: "/media/images/field_thumbnail.png",
     thumbnailType: "image",
@@ -63,7 +73,9 @@ const videos = [
   {
     id: 5,
     title: "Compressed-Air Minibus — European Mobility Week Road Demo",
+    titleEs: "Microbús de aire comprimido — Semana Europea de la Movilidad",
     description: "Shot in Rouen during European Mobility Week 2020, this clip shows our 14-seat compressed-air minibus in real-world operation—exterior walk-arounds and drive sequences highlighting quiet running, instant torque, and cold, clean air exhaust. A practical proof of our retrofit pathway that converts existing ICE platforms into zero-emission passenger transport.",
+    descriptionEs: "Rodado en Rouen durante la Semana Europea de la Movilidad 2020: exterior, tomas en marcha y exhibición de par instantáneo y escape de aire frío y limpio.",
     src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/Airpower_EU_mobility_week.mp4",
     thumbnail: "/media/images/mobilityweek_thumb.png",
     thumbnailType: "image",
@@ -74,7 +86,9 @@ const videos = [
   {
     id: 6,
     title: "Off-Grid Agriculture — Irrigation & Cold Storage with Compressed Air",
+    titleEs: "Agricultura fuera de red — riego y cámara fría",
     description: "A short field piece showing how AirPower enables farmers to pump water for irrigation in remote locations—without diesel or grid power—and capture a second benefit from the same process: naturally cold, clean air for produce storage. Greater independence, longer shelf life, and zero tailpipe emissions for modern agriculture.",
+    descriptionEs: "Cómo los agricultores bombean agua sin diésel ni red y aprovechan el mismo proceso para obtener aire frío y limpio para conservar productos: más autonomía y cero emisiones.",
     src: "https://airpowe-videos.s3.us-east-2.amazonaws.com/Airpower_maroc.mp4",
     thumbnail: "/media/images/agriculture.jpeg",
     thumbnailType: "image",
