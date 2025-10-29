@@ -150,7 +150,7 @@ export default function NewsSection() {
     return () => {
       cancelled = true;
     };
-  }, [selected?.contentUrl]);
+  }, [isEs, selected?.contentUrl, selected?.contentUrlEs]);
   return (
     <section className="py-24 bg-card/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

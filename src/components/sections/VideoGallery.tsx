@@ -8,7 +8,20 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 // Video data - you can update these with your actual video files and metadata
-const videos = [
+type Video = {
+  id: number;
+  title: string;
+  titleEs?: string;
+  description: string;
+  descriptionEs?: string;
+  src: string;
+  thumbnail: string;
+  thumbnailType: "video" | "image";
+  category: string;
+  views: string;
+};
+
+const videos: Video[] = [
   {
     id: 7,
     title: "IUCN Abu Dhabi 2025 — Conference Walkthrough",
@@ -98,20 +111,20 @@ const videos = [
 ];
 
 export default function VideoGallery() {
-  const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const isEs = pathname?.startsWith('/es');
   const t = useTranslations('home.videos');
 
   // Open a specific video when linked like /videos?videoId=7
+  const videoId = searchParams?.get("videoId");
+  const ts = searchParams?.get("ts");
   useEffect(() => {
-    const idParam = searchParams?.get("videoId");
-    if (!idParam) return;
-    const match = videos.find(v => String(v.id) === idParam);
+    if (!videoId) return;
+    const match = videos.find(v => String(v.id) === videoId);
     if (match) setSelectedVideo(match);
-    // also react to a timestamp param to allow same-link re-open without full refresh
-  }, [searchParams?.get('videoId'), searchParams?.get('ts')]);
+  }, [videoId, ts]);
 
   return (
     <section className="py-24 bg-background">
@@ -193,10 +206,10 @@ export default function VideoGallery() {
               {/* Video Info */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {isEs && (video as any).titleEs ? (video as any).titleEs : video.title}
+                  {isEs && video.titleEs ? video.titleEs : video.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {isEs && (video as any).descriptionEs ? (video as any).descriptionEs : video.description}
+                  {isEs && video.descriptionEs ? video.descriptionEs : video.description}
                 </p>
                 
                 {/* Stats */}
@@ -250,10 +263,10 @@ export default function VideoGallery() {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-foreground mb-2">
-                    {isEs && (selectedVideo as any).titleEs ? (selectedVideo as any).titleEs : selectedVideo.title}
+                      {isEs && selectedVideo.titleEs ? selectedVideo.titleEs : selectedVideo.title}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      {isEs && (selectedVideo as any).descriptionEs ? (selectedVideo as any).descriptionEs : selectedVideo.description}
+                      {isEs && selectedVideo.descriptionEs ? selectedVideo.descriptionEs : selectedVideo.description}
                     </p>
                   </div>
                   <Badge variant="outline" className="ml-4">

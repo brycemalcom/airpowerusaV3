@@ -15,10 +15,11 @@ import {
   VolumeX,
   Volume2
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 // import Image from "next/image"; // Uncomment when adding the actual image
 
-const featureIconByKey: Record<string, any> = {
+const featureIconByKey: Record<string, LucideIcon> = {
   container: Container,
   caeGenerator: Zap,
   bess: Battery,
