@@ -4,8 +4,6 @@ import NewsroomHero from "@/components/sections/NewsroomHero";
 import VideoGallery from "@/components/sections/VideoGallery";
 import NewsSection from "@/components/sections/NewsSection";
 import { Suspense } from "react";
-import { getTranslations } from "next-intl/server";
-import { Newspaper } from "lucide-react";
 import NewsroomCta from "@/components/sections/NewsroomCta";
 
 export default async function NewsroomPage() {

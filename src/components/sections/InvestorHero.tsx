@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Download, ArrowRight, TrendingUp, X } from "lucide-react";
+import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
 export default function InvestorHero() {
@@ -211,12 +212,12 @@ export default function InvestorHero() {
           <div className="max-w-2xl mx-auto bg-black/20 backdrop-blur-sm rounded-lg p-4">
             <p className="text-xs text-white/80 text-left leading-relaxed" style={{ fontSize: '12px', opacity: '0.8' }}>
               This offering is available to accredited investors under Regulation D. Please see our{' '}
-              <a 
+              <Link 
                 href="/investor-faqs" 
                 className="text-cyan-400 hover:text-cyan-300 underline transition-colors font-semibold"
               >
                 Investor FAQs here
-              </a>
+              </Link>
               .
             </p>
           </div>

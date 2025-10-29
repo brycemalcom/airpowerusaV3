@@ -15,13 +15,14 @@ import {
   MapPin,
   Clock
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 type Visual = { type: 'image' | 'video'; src: string; alt: string };
 
 type ConfigMeta = {
   id: number;
   key: 'airpack' | 'container' | 'bess' | 'demo';
-  icon: any;
+  icon: LucideIcon;
   categoryKey: 'mobile' | 'industrial' | 'storage' | 'prototype';
   categoryColor: string;
   visual: Visual;

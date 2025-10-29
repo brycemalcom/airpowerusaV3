@@ -13,8 +13,9 @@ import {
   Lightbulb
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import type { LucideIcon } from "lucide-react";
 
-type StatMeta = { key: 'gen'|'evbess'|'storage'|'access'; value: string; growth: string; icon: any };
+type StatMeta = { key: 'gen'|'evbess'|'storage'|'access'; value: string; growth: string; icon: LucideIcon };
 const marketStats: StatMeta[] = [
   { key: 'gen', value: '$28B+', growth: '12% CAGR', icon: Zap },
   { key: 'evbess', value: '$45B+', growth: '25% CAGR', icon: Battery },

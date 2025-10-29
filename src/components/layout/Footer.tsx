@@ -59,7 +59,7 @@ export default function Footer() {
                     href={item.href}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {t(`footer.links.${(item as any).key}`, { default: item.name })}
+                    {t(`footer.links.${item.key}`, { default: item.name })}
                   </a>
                 </li>
               ))}
@@ -75,7 +75,7 @@ export default function Footer() {
                     href={item.href}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {t(`footer.links.${(item as any).key}`, { default: item.name })}
+                    {t(`footer.links.${item.key}`, { default: item.name })}
                   </a>
                 </li>
               ))}
