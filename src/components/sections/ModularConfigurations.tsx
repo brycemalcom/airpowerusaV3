@@ -155,7 +155,7 @@ export default function ModularConfigurations() {
                         style={{
                           width: '100%',
                           height: '100%',
-                          objectFit: config.title === "BESS-Only Module" || config.title === "AirPack - Truck Mounted Station" ? 'contain' : 'cover',
+                          objectFit: config.key === 'bess' || config.key === 'airpack' ? 'contain' : 'cover',
                           display: 'block',
                           position: 'absolute',
                           top: 0,
