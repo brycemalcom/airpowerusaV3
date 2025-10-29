@@ -750,6 +750,45 @@
       "disclaimerSuffix": "Todas las decisiones de inversión deben basarse en la documentación completa de la SEC y en la consulta con asesores financieros calificados."
     }
   }
+  ,
+  "investorForm": {
+    "badge": "Consulta de inversión",
+    "titleTop": "Solicita información para inversionistas o",
+    "titleBottom": "conéctate con nuestro equipo",
+    "subtitle": "Obtén información detallada sobre nuestra oferta bajo Regulación D y la oportunidad de inversión",
+    "cardTitle": "Consulta de inversión",
+    "cardBody": "Completa el formulario y te enviaremos nuestro paquete integral para inversionistas con finanzas, análisis de mercado y términos de la oferta.",
+    "name": "Nombre *",
+    "email": "Correo *",
+    "phone": "Teléfono",
+    "investmentRange": "Rango de inversión *",
+    "message": "Mensaje / Preguntas *",
+    "phName": "Tu nombre completo",
+    "phEmail": "tu.email@empresa.com",
+    "phPhone": "Número de teléfono (opcional)",
+    "phMessage": "Cuéntanos tus intereses de inversión, cronograma y preguntas sobre la oferta...",
+    "ranges": {
+      "placeholder": "Selecciona rango de inversión...",
+      "r1": "$10K – $50K",
+      "r2": "$50K – $250K",
+      "r3": "$250K+"
+    },
+    "submitting": "Enviando...",
+    "submit": "Solicitar paquete para inversionistas",
+    "thanks": "¡Gracias por tu interés!",
+    "thanksBody": "Hemos recibido tu consulta y enviaremos el paquete para inversionistas dentro de 24 horas.",
+    "checkSpam": "Revisa tus carpetas de spam, no deseado y promociones",
+    "checkTail": "para asegurarte de no perder nuestra respuesta.",
+    "submitAnother": "Enviar otra consulta",
+    "footnote": "Air‑Power USA actualmente acepta inversionistas acreditados bajo Regulación D.",
+    "errors": {
+      "name": "El nombre es obligatorio",
+      "email": "El correo es obligatorio",
+      "emailValid": "Ingresa un correo válido",
+      "range": "Selecciona tu rango de inversión",
+      "message": "Describe tus intereses de inversión"
+    }
+  }
 }
 
 

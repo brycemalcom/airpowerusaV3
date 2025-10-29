@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   TrendingUp
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface InvestorFormData {
   name: string;
@@ -22,14 +23,15 @@ interface InvestorFormData {
   message: string;
 }
 
-const investmentRangeOptions = [
-  { value: "", label: "Select investment range..." },
-  { value: "10k-50k", label: "$10K – $50K" },
-  { value: "50k-250k", label: "$50K – $250K" },
-  { value: "250k+", label: "$250K+" }
+const investmentRangeOptions = (t: (k: string) => string) => [
+  { value: "", label: t('ranges.placeholder') },
+  { value: "10k-50k", label: t('ranges.r1') },
+  { value: "50k-250k", label: t('ranges.r2') },
+  { value: "250k+", label: t('ranges.r3') }
 ];
 
 export default function InvestorForm() {
+  const t = useTranslations('investorForm');
   const [formData, setFormData] = useState<InvestorFormData>({
     name: "",
     email: "",
@@ -53,14 +55,14 @@ export default function InvestorForm() {
   const validateForm = (): boolean => {
     const newErrors: Partial<InvestorFormData> = {};
     
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.name.trim()) newErrors.name = t('errors.name');
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t('errors.email');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t('errors.emailValid');
     }
-    if (!formData.investmentRange) newErrors.investmentRange = "Please select your investment range";
-    if (!formData.message.trim()) newErrors.message = "Please provide some details about your investment interests";
+    if (!formData.investmentRange) newErrors.investmentRange = t('errors.range');
+    if (!formData.message.trim()) newErrors.message = t('errors.message');
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -137,20 +139,20 @@ export default function InvestorForm() {
               <CheckCircle2 className="w-10 h-10 text-blue-400" />
             </div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                Thank You for Your Interest!
+                {t('thanks')}
               </h3>
               <p className="text-lg text-white/80 mb-4">
-                We've received your investment inquiry and will send you the investor packet within 24 hours.
+                {t('thanksBody')}
               </p>
               <p className="text-sm text-white/60 mb-6">
-                📧 <strong>Please check your spam, junk, and promotions folders</strong> to ensure you don't miss our response.
+                📧 <strong>{t('checkSpam')}</strong> {t('checkTail')}
               </p>
               <Button 
                 variant="outline" 
                 onClick={() => setIsSubmitted(false)}
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20"
               >
-                Submit Another Inquiry
+                {t('submitAnother')}
               </Button>
             </CardContent>
           </Card>
@@ -166,25 +168,25 @@ export default function InvestorForm() {
         <div className="text-center mb-12">
           <Badge className="mb-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white">
             <DollarSign className="mr-2 h-4 w-4" />
-            Investment Inquiry
+            {t('badge')}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl mb-4">
-            Request Investor Info or
+            {t('titleTop')}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              Connect with Our Team
+              {t('titleBottom')}
             </span>
           </h2>
           <p className="text-lg text-white/80">
-            Get detailed information about our Regulation D offering and investment opportunity
+            {t('subtitle')}
           </p>
         </div>
 
         {/* Form */}
         <Card className="overflow-hidden border-blue-500/20 bg-black/30 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-xl text-white">Investment Inquiry</CardTitle>
+            <CardTitle className="text-xl text-white">{t('cardTitle')}</CardTitle>
             <CardDescription className="text-white/70">
-              Complete the form below and we'll send you our comprehensive investor packet with detailed financials, market analysis, and offering terms.
+              {t('cardBody')}
             </CardDescription>
           </CardHeader>
           
@@ -193,14 +195,14 @@ export default function InvestorForm() {
               {/* Name and Email */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-white">Name *</Label>
+                  <Label htmlFor="name" className="text-white">{t('name')}</Label>
                   <Input
                     id="name"
                     name="name"
                     type="text"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Your full name"
+                    placeholder={t('phName')}
                     className={`bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-blue-500 ${errors.name ? "border-red-500" : ""}`}
                   />
                   {errors.name && (
@@ -209,14 +211,14 @@ export default function InvestorForm() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-white">Email *</Label>
+                  <Label htmlFor="email" className="text-white">{t('email')}</Label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="your.email@company.com"
+                    placeholder={t('phEmail')}
                     className={`bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-blue-500 ${errors.email ? "border-red-500" : ""}`}
                   />
                   {errors.email && (
@@ -228,20 +230,20 @@ export default function InvestorForm() {
               {/* Phone and Investment Range */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-white">Phone</Label>
+                  <Label htmlFor="phone" className="text-white">{t('phone')}</Label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Optional phone number"
+                    placeholder={t('phPhone')}
                     className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-blue-500"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="investmentRange" className="text-white">Investment Range *</Label>
+                  <Label htmlFor="investmentRange" className="text-white">{t('investmentRange')}</Label>
                   <select
                     id="investmentRange"
                     name="investmentRange"
@@ -251,7 +253,7 @@ export default function InvestorForm() {
                       errors.investmentRange ? "border-red-500" : "border-white/20"
                     }`}
                   >
-                    {investmentRangeOptions.map(option => (
+                    {investmentRangeOptions((k) => t(k)).map(option => (
                       <option key={option.value} value={option.value} className="bg-slate-800 text-white">
                         {option.label}
                       </option>
@@ -265,14 +267,14 @@ export default function InvestorForm() {
 
               {/* Message */}
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-white">Message / Questions *</Label>
+                  <Label htmlFor="message" className="text-white">{t('message')}</Label>
                 <Textarea
                   id="message"
                   name="message"
                   rows={4}
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us about your investment interests, timeline, and any specific questions about the offering..."
+                  placeholder={t('phMessage')}
                   className={`bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-blue-500 ${errors.message ? "border-red-500" : ""}`}
                 />
                 {errors.message && (
@@ -290,12 +292,12 @@ export default function InvestorForm() {
                   {isSubmitting ? (
                     <>
                       <div className="animate-spin mr-3 h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
-                      Sending...
+                      {t('submitting')}
                     </>
                   ) : (
                     <>
                       <Send className="mr-3 h-5 w-5" />
-                      Request Investor Packet
+                      {t('submit')}
                     </>
                   )}
                 </Button>
@@ -308,9 +310,7 @@ export default function InvestorForm() {
         <div className="mt-8 text-center">
           <div className="inline-flex items-center space-x-2 text-white/60">
             <TrendingUp className="h-4 w-4" />
-            <span className="text-sm">
-              Air-Power USA is currently accepting accredited investors under Regulation D.
-            </span>
+            <span className="text-sm">{t('footnote')}</span>
           </div>
         </div>
       </div>

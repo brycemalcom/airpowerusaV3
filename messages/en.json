@@ -670,6 +670,45 @@
     }
   }
   ,
+  "investorForm": {
+    "badge": "Investment Inquiry",
+    "titleTop": "Request Investor Info or",
+    "titleBottom": "Connect with Our Team",
+    "subtitle": "Get detailed information about our Regulation D offering and investment opportunity",
+    "cardTitle": "Investment Inquiry",
+    "cardBody": "Complete the form below and we'll send you our comprehensive investor packet with detailed financials, market analysis, and offering terms.",
+    "name": "Name *",
+    "email": "Email *",
+    "phone": "Phone",
+    "investmentRange": "Investment Range *",
+    "message": "Message / Questions *",
+    "phName": "Your full name",
+    "phEmail": "your.email@company.com",
+    "phPhone": "Optional phone number",
+    "phMessage": "Tell us about your investment interests, timeline, and any specific questions about the offering...",
+    "ranges": {
+      "placeholder": "Select investment range...",
+      "r1": "$10K – $50K",
+      "r2": "$50K – $250K",
+      "r3": "$250K+"
+    },
+    "submitting": "Sending...",
+    "submit": "Request Investor Packet",
+    "thanks": "Thank You for Your Interest!",
+    "thanksBody": "We've received your investment inquiry and will send you the investor packet within 24 hours.",
+    "checkSpam": "Please check your spam, junk, and promotions folders",
+    "checkTail": "to ensure you don't miss our response.",
+    "submitAnother": "Submit Another Inquiry",
+    "footnote": "Air-Power USA is currently accepting accredited investors under Regulation D.",
+    "errors": {
+      "name": "Name is required",
+      "email": "Email is required",
+      "emailValid": "Please enter a valid email address",
+      "range": "Please select your investment range",
+      "message": "Please provide some details about your investment interests"
+    }
+  }
+  ,
   "customer": {
     "hero": {
       "badge": "For Customers",
