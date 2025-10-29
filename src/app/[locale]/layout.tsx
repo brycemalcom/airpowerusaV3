@@ -1,4 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
+import type { AbstractIntlMessages } from "next-intl";
 import { getMessages } from "@/i18n/getMessages";
 import { locales, type Locale, defaultLocale } from "@/i18n/locales";
 import type { ReactNode } from "react";
@@ -18,10 +19,10 @@ export default async function LocaleLayout({
   const locale = (rawLocale && locales.includes(rawLocale)) ? rawLocale : defaultLocale;
   if (!locales.includes(locale)) {
     // Fallback to default if an unsupported locale is accessed
-    return children as any;
+    return children;
   }
 
-  const messages = await getMessages(locale);
+  const messages: AbstractIntlMessages = await getMessages(locale);
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       {children}
