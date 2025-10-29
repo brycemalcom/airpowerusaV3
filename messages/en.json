@@ -9,6 +9,39 @@
       "videos": "Video Gallery",
       "about": "About"
     },
+    "menu": {
+      "customers": "For Customers",
+      "investorsSoon": "For Investors — Coming Soon",
+      "faq": "Investor FAQs",
+      "filings": "SEC Filings",
+      "newsroom": "Newsroom",
+      "videos": "Video Gallery"
+    },
+    "footer": {
+      "rights": "All rights reserved.",
+      "company": "Company",
+      "support": "Support",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "blurb": "Revolutionary compressed air engine technology delivering zero-emission power solutions for a sustainable future. From mobile units to industrial-scale stations.",
+      "links": {
+        "technology": "Technology",
+        "products": "Products",
+        "useCases": "Use Cases",
+        "about": "About",
+        "documentation": "Documentation",
+        "contact": "Contact",
+        "investorRelations": "Investor Relations",
+        "investorFaqs": "Investor FAQs"
+      }
+    }
+  },
+  "home": {
+    "headlineTop": "Clean power from",
+    "headlineBottom": "thin air.",
+    "subheadline": "Deployable zero-emission energy. Powered by compressed air. Engineered for anywhere the grid can't reach.",
+    "ctaCustomers": "For Customers",
+    "ctaInvestors": "For Investors",
     "why": {
       "badge": "Universal Reliability",
       "titleTop": "Why It Works",
@@ -48,39 +81,6 @@
       "statFuel": "Fuel Requirements",
       "statReady": "Mission Ready"
     },
-    "menu": {
-      "customers": "For Customers",
-      "investorsSoon": "For Investors — Coming Soon",
-      "faq": "Investor FAQs",
-      "filings": "SEC Filings",
-      "newsroom": "Newsroom",
-      "videos": "Video Gallery"
-    },
-    "footer": {
-      "rights": "All rights reserved.",
-      "company": "Company",
-      "support": "Support",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "blurb": "Revolutionary compressed air engine technology delivering zero-emission power solutions for a sustainable future. From mobile units to industrial-scale stations.",
-      "links": {
-        "technology": "Technology",
-        "products": "Products",
-        "useCases": "Use Cases",
-        "about": "About",
-        "documentation": "Documentation",
-        "contact": "Contact",
-        "investorRelations": "Investor Relations",
-        "investorFaqs": "Investor FAQs"
-      }
-    }
-  },
-  "home": {
-    "headlineTop": "Clean power from",
-    "headlineBottom": "thin air.",
-    "subheadline": "Deployable zero-emission energy. Powered by compressed air. Engineered for anywhere the grid can't reach.",
-    "ctaCustomers": "For Customers",
-    "ctaInvestors": "For Investors",
     "technology": {
       "badge": "Patented Technology",
       "titleTop": "How the",
