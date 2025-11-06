@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "@/components/common/PerformanceMonitor";
 import ScrollToTop from "@/components/common/ScrollToTop";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -66,6 +67,7 @@ export default function RootLayout({
         <ScrollToTop />
         {children}
         <PerformanceMonitor />
+        <Analytics />
       </body>
     </html>
   );
