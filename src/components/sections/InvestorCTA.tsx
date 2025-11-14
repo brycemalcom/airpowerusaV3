@@ -116,7 +116,7 @@ export default function InvestorCTA() {
 
   if (isSubmitted) {
     return (
-      <section className="py-24 bg-gradient-to-br from-primary/5 to-blue-500/5">
+      <section id="contact-form" className="py-24 bg-gradient-to-br from-primary/5 to-blue-500/5">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <Card className="p-12 text-center bg-background/50 backdrop-blur-sm border-primary/20">
             <div className="flex items-center justify-center w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/10">
@@ -138,7 +138,7 @@ export default function InvestorCTA() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-br from-primary/5 to-blue-500/5">
+    <section id="contact-form" className="py-24 bg-gradient-to-br from-primary/5 to-blue-500/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content */}

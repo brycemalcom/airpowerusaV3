@@ -128,8 +128,8 @@ export default function CustomerHero() {
           {t('subtitle')}
         </p>
         
-        {/* Enhanced CTA buttons */}
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        {/* Enhanced CTA button */}
+        <div className="mt-12 flex flex-col items-center justify-center">
           <Button 
             size="lg" 
             className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-8 py-6 text-lg font-bold transition-all duration-300 shadow-2xl hover:shadow-blue-500/25 hover:scale-105"
@@ -141,17 +141,6 @@ export default function CustomerHero() {
           >
             {t('ctaPrimary')}
             <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="group relative border-2 border-white/30 bg-white/10 backdrop-blur-lg hover:bg-white/20 hover:border-white/50 text-white px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-white/20 hover:scale-105"
-            style={{ 
-              textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
-              boxShadow: '0 8px 32px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.1)'
-            }}
-          >
-            {t('ctaSecondary')}
           </Button>
         </div>
       </div>
