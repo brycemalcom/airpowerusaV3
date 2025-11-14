@@ -1,7 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import About from "@/components/sections/About";
-import { useTranslations } from "next-intl";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
