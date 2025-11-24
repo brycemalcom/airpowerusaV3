@@ -19,7 +19,7 @@ const navigation = [
 
 const hamburgerMenu = [
   { key: "customers", name: "For Customers", href: "/customer", color: "text-blue-400" },
-  { key: "investorsSoon", name: "For Investors — Coming Soon", href: "#", color: "text-cyan-400 opacity-70" },
+  { key: "investors", name: "For Investors", href: "/invest", color: "text-cyan-400" },
   { key: "faq", name: "Investor FAQs", href: "/investor-faqs", color: "text-emerald-400" },
   { key: "filings", name: "SEC Filings", href: "/filings", color: "text-yellow-400" },
   { key: "newsroom", name: "Newsroom", href: "/newsroom", color: "text-purple-400" },
@@ -55,6 +55,8 @@ export default function Header() {
   const localizeHref = (href: string) => {
     try {
       if (!href.startsWith("/")) return href;
+      // Do not prefix locale for investor route (only exists at root)
+      if (href.startsWith("/invest")) return href;
       // external anchors handled earlier; prefix locale for internal links & section anchors
       if (href.startsWith("/#")) return `/${currentLocale}${href}`;
       // already locale-prefixed
@@ -159,16 +161,11 @@ export default function Header() {
                   key={item.key}
                   href={localizeHref(item.href)}
                   className={`block text-lg font-semibold leading-7 transition-colors hover:opacity-80 ${item.color}`}
-                  onClick={(e) => {
-                    if (item.key === 'investorsSoon') {
-                      e.preventDefault();
-                      return;
-                    }
-                    setMobileMenuOpen(false);
-                  }}
-                  aria-disabled={item.name.startsWith('For Investors')}
+              onClick={() => {
+                setMobileMenuOpen(false);
+              }}
                 >
-                  {item.key === 'investorsSoon' ? t('menu.investorsSoon', { default: item.name }) : t(`menu.${item.key}`, { default: item.name })}
+              {t(`menu.${item.key}`, { default: item.name })}
                 </a>
               ))}
             </div>
