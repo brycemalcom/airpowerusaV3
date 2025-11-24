@@ -450,8 +450,8 @@
       "titleTop": "Investor",
       "titleBottom": "Opportunity",
       "subtitle": "AirPower USA is now open to accredited investors.",
-      "p1": "We're seeking strategic investors to help scale production and meet demand. With over $30M in active interest and a proven technology platform, AirPower is positioned for rapid growth.",
-      "p2": "Join us as we bring clean, compressed-air energy to the world.",
+      "p1": "We’re scaling domestic production and meeting accelerating demand for clean, off-grid power systems. With over $30M in commercial demand, proven field deployments, and patented compressed-air engine technology, AirPower is positioned for rapid growth.",
+      "p2": "Join us as we build the next generation of zero-emission power.",
       "formTitle": "Request Investor Packet",
       "formIntro": "Use the form below to request our investor packet and schedule a conversation with our team.",
       "fullName": "Full Name *",
@@ -471,16 +471,16 @@
       ,
       "highlights": {
         "activeInterest": {
-          "title": "$30M+ Active Interest",
-          "description": "Strong investor pipeline already established"
+          "title": "$30M+ Commercial Demand Pipeline",
+          "description": "Confirmed requests, quotes, and proposals from global utilities, industrial customers, and government agencies."
         },
         "provenTech": {
-          "title": "Proven Technology",
-          "description": "Field-tested CAE system with real-world deployments"
+          "title": "Field-Tested Technology",
+          "description": "Operational CAE systems with real-world deployments, R&D centers in Europe, and ongoing U.S. certification."
         },
         "patent": {
-          "title": "Patent Protected",
-          "description": "Proprietary compressed air engine technology"
+          "title": "Patented Engine Technology",
+          "description": "Proprietary compressed-air engine with patents on energy generation and storage systems. Additional filings in progress."
         }
       }
     },
