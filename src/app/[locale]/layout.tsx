@@ -11,12 +11,13 @@ export function generateStaticParams() {
 export default async function LocaleLayout({
   children,
   params
-}: {
-  children: ReactNode;
-  params: { locale: Locale };
-}) {
-  const { locale: rawLocale } = params;
-  const locale = (rawLocale && locales.includes(rawLocale)) ? rawLocale : defaultLocale;
+}: any) {
+  // Support Next typed routes that may pass params as a Promise or a plain object
+  const resolved = typeof params?.then === "function" ? await params : params;
+  const rawLocale = resolved?.locale as string | undefined;
+  const locale = (rawLocale && (locales as readonly string[]).includes(rawLocale))
+    ? (rawLocale as Locale)
+    : defaultLocale;
   if (!locales.includes(locale)) {
     // Fallback to default if an unsupported locale is accessed
     return children;
