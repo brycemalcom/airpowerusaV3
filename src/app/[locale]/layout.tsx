@@ -8,22 +8,17 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-type Params = { locale: Locale } | Promise<{ locale: Locale }>;
-
-function isPromise<T>(value: T | Promise<T>): value is Promise<T> {
-  // Narrow using existence of 'then' without using 'any'
-  return typeof (value as Promise<T>).then === "function";
-}
+// Next 15 typed routes pass params as a Promise<any>. Use string for raw locale then validate.
+type RouteParams = Promise<{ locale: string }>;
 
 export default async function LocaleLayout({
   children,
   params
 }: {
   children: ReactNode;
-  params: Params;
+  params: RouteParams;
 }) {
-  const resolved = isPromise(params) ? await params : params;
-  const raw = resolved.locale as string;
+  const { locale: raw } = await params;
   const locale = (locales as readonly string[]).includes(raw) ? (raw as Locale) : defaultLocale;
   if (!locales.includes(locale)) {
     // Fallback to default if an unsupported locale is accessed
