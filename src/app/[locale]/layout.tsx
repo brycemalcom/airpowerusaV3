@@ -8,16 +8,23 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+type Params = { locale: Locale } | Promise<{ locale: Locale }>;
+
+function isPromise<T>(value: T | Promise<T>): value is Promise<T> {
+  // Narrow using existence of 'then' without using 'any'
+  return typeof (value as Promise<T>).then === "function";
+}
+
 export default async function LocaleLayout({
   children,
   params
-}: any) {
-  // Support Next typed routes that may pass params as a Promise or a plain object
-  const resolved = typeof params?.then === "function" ? await params : params;
-  const rawLocale = resolved?.locale as string | undefined;
-  const locale = (rawLocale && (locales as readonly string[]).includes(rawLocale))
-    ? (rawLocale as Locale)
-    : defaultLocale;
+}: {
+  children: ReactNode;
+  params: Params;
+}) {
+  const resolved = isPromise(params) ? await params : params;
+  const raw = resolved.locale as string;
+  const locale = (locales as readonly string[]).includes(raw) ? (raw as Locale) : defaultLocale;
   if (!locales.includes(locale)) {
     // Fallback to default if an unsupported locale is accessed
     return children;
