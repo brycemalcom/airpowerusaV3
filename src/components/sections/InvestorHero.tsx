@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight, Calendar, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
@@ -168,12 +168,12 @@ export default function InvestorHero() {
           </div>
         </div>
 
-        {/* CTA button */}
+        {/* CTA buttons */}
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button
             size="lg"
             className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-10 py-6 text-lg font-bold transition-all duration-300 shadow-2xl hover:shadow-blue-500/25 hover:scale-105"
-            onClick={() => (window.location.href = "https://invest.airpowerusa.net/")}
+            onClick={() => (window.location.href = "/invest#investor-form")}
             style={{
               textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
               boxShadow:
@@ -182,6 +182,15 @@ export default function InvestorHero() {
           >
             Join the Round
             <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="group border-2 border-white/40 bg-white/5 text-white backdrop-blur-sm hover:bg-white/15 hover:text-white px-10 py-6 text-lg font-bold transition-all duration-300"
+            onClick={() => (window.location.href = "/invest#investor-form")}
+          >
+            <Calendar className="mr-2 h-5 w-5" />
+            Book a call
           </Button>
         </div>
 

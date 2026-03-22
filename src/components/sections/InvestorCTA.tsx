@@ -77,7 +77,7 @@ export default function InvestorCTA() {
             <Button
               size="lg"
               className="group relative text-lg sm:text-xl px-12 py-7 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-extrabold shadow-[0_12px_40px_-8px_rgba(59,130,246,0.5)] hover:shadow-[0_16px_48px_-6px_rgba(6,182,212,0.55)]"
-              onClick={() => (window.location.href = "https://invest.airpowerusa.net/")}
+              onClick={() => (window.location.href = "/invest#investor-form")}
             >
               Join the Round
               <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
