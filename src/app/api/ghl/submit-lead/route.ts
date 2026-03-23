@@ -248,6 +248,7 @@ export async function POST(request: NextRequest) {
       phone,
       accredited,
       investmentRange,
+      message,
       landingPageVariant,
     } = body;
 
@@ -281,6 +282,7 @@ export async function POST(request: NextRequest) {
       phone,
       accredited,
       investmentRange,
+      message,
       landingPageVariant: variant,
     };
 
