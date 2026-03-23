@@ -133,7 +133,7 @@ async function upsertContact(
     phone: lead.phone,
     tags,
     source: leadSourceForVariant(variant),
-    customFields: [{ key: "message", value: message }],
+    customFields: [{ key: "form_message", value: message }],
   };
 
   let contactResponse: unknown;
