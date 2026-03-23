@@ -25,6 +25,15 @@ type PressRelease = {
 
 const pressReleases: PressRelease[] = [
   {
+    id: 106,
+    title: "Cyber Enviro-Tech and Air Power USA Agree to Exclusive Manufacturing and Distribution Rights",
+    excerpt:
+      "CETI (OTCQB: CETI) announces a manufacturing and distribution agreement with Air Power USA for compressed-air energy systems across the Middle East, Africa, and Kuwait.",
+    date: "March 23, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-03-23-ceti-airpower-manufacturing-agreement.html",
+  },
+  {
     id: 105,
     title: "Air Power USA Debuts Compressed‑Air Power at IUCN Conference in Abu Dhabi",
     excerpt: "Senior VP Phil Plumley presents the ‘Thin Air to Clean Energy’ platform to UAE stakeholders; watch the brief event walkthrough.",
