@@ -502,6 +502,11 @@
         "updates": "Company Updates"
       },
       "sections": {
+        "featured": {
+          "badge": "Featured",
+          "readRelease": "Read full release",
+          "relatedCoverage": "Related media coverage"
+        },
         "press": {
           "badge": "Official Updates",
           "titleTop": "Press",
@@ -520,14 +525,21 @@
           "badge": "External Coverage",
           "titleTop": "Media",
           "titleBottom": "Coverage",
-          "subtitle": "Industry publications and media outlets covering AirPower's technology and market impact."
+          "subtitle": "Industry publications and media outlets covering AirPower's technology and market impact.",
+          "external": "External",
+          "readArticle": "Read article",
+          "types": {
+            "analysis": "Analysis",
+            "news": "News",
+            "interview": "Interview"
+          }
         }
       }
       ,
       "cta": {
-        "title": "Stay Connected with AirPower USA",
-        "body": "This newsroom will feature the latest updates on our technology breakthroughs, partnerships, and market developments. Check back regularly for announcements.",
-        "note": "News updates coming soon"
+        "title": "Evaluating an investment?",
+        "body": "Reach our investor team through the secure form on our invest page. You can share your details and book a call when you’re ready.",
+        "button": "Go to investor form"
       }
     }
   }

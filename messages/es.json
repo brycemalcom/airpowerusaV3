@@ -502,6 +502,11 @@
         "updates": "Actualizaciones de la compañía"
       },
       "sections": {
+        "featured": {
+          "badge": "Destacado",
+          "readRelease": "Leer comunicado completo",
+          "relatedCoverage": "Cobertura mediática relacionada"
+        },
         "press": {
           "badge": "Actualizaciones oficiales",
           "titleTop": "Comunicados",
@@ -520,14 +525,21 @@
           "badge": "Cobertura externa",
           "titleTop": "Cobertura",
           "titleBottom": "mediática",
-          "subtitle": "Medios e industrias que cubren la tecnología y el impacto de AirPower."
+          "subtitle": "Medios e industrias que cubren la tecnología y el impacto de AirPower.",
+          "external": "Externo",
+          "readArticle": "Leer artículo",
+          "types": {
+            "analysis": "Análisis",
+            "news": "Noticias",
+            "interview": "Entrevista"
+          }
         }
       }
       ,
       "cta": {
-        "title": "Mantente conectado con AirPower USA",
-        "body": "Esta sala de prensa presentará las últimas novedades sobre nuestros avances tecnológicos, alianzas y evolución del mercado. Vuelve pronto para ver nuevos anuncios.",
-        "note": "Actualizaciones próximamente"
+        "title": "¿Estás evaluando una inversión?",
+        "body": "Contacta a nuestro equipo de inversores mediante el formulario seguro en la página de inversión. Puedes enviar tus datos y reservar una llamada cuando quieras.",
+        "button": "Ir al formulario de inversores"
       }
     }
   }
