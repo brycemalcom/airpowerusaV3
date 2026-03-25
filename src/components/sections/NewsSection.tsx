@@ -3,7 +3,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, ExternalLink, FileText, X } from "lucide-react";
+import { Calendar, ExternalLink, FileText, Sparkles, X } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -126,6 +127,20 @@ export default function NewsSection() {
     return bd - ad;
   });
 
+  const featuredRelease =
+    sortedPressReleases[0] &&
+    !sortedPressReleases[0].isPlaceholder &&
+    sortedPressReleases[0].contentUrl
+      ? sortedPressReleases[0]
+      : null;
+  const otherPressReleases = featuredRelease
+    ? sortedPressReleases.filter((r) => r.id !== featuredRelease.id)
+    : sortedPressReleases;
+
+  const featuredMedia =
+    mediaCoverage.find((m) => !m.isPlaceholder && m.link && m.link !== "#") ??
+    null;
+
   useEffect(() => {
     const url = (isEs && selected?.contentUrlEs) ? selected?.contentUrlEs : selected?.contentUrl;
     if (!url) {
@@ -155,7 +170,81 @@ export default function NewsSection() {
   return (
     <section className="py-24 bg-card/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        
+        {featuredRelease && (
+          <div className="mb-16">
+            <div
+              className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/95 via-slate-950 to-blue-950/90 shadow-2xl shadow-blue-950/40"
+              role="article"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,rgba(59,130,246,0.18),transparent_55%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_0%_100%,rgba(6,182,212,0.12),transparent_50%)]" />
+              <div className="relative grid gap-10 p-8 md:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:p-12 items-center">
+                <div>
+                  <div className="mb-5 flex flex-wrap items-center gap-2">
+                    <Badge className="border-0 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+                      <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+                      {t("featured.badge", { default: "Featured" })}
+                    </Badge>
+                    <Badge variant="outline" className="border-white/20 bg-white/5 text-foreground">
+                      {featuredRelease.category}
+                    </Badge>
+                    <span className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="mr-1 h-4 w-4" />
+                      {featuredRelease.date}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl lg:leading-tight">
+                    {isEs && featuredRelease.titleEs
+                      ? featuredRelease.titleEs
+                      : featuredRelease.title}
+                  </h3>
+                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                    {isEs && featuredRelease.excerptEs
+                      ? featuredRelease.excerptEs
+                      : featuredRelease.excerpt}
+                  </p>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-900/30 hover:from-blue-500 hover:to-cyan-500"
+                      onClick={() => setSelected(featuredRelease)}
+                    >
+                      <FileText className="mr-2 h-4 w-4" />
+                      {t("featured.readRelease", { default: "Read full release" })}
+                    </Button>
+                    {featuredMedia && (
+                      <a
+                        href={featuredMedia.link}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        className="inline-flex"
+                      >
+                        <Button size="lg" variant="outline" className="border-white/20 bg-white/5 hover:bg-white/10">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          {t("featured.relatedCoverage", {
+                            default: "Related media coverage",
+                          })}
+                        </Button>
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="relative mx-auto aspect-[4/3] w-full max-w-lg lg:max-w-none">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-slate-950/80 via-transparent to-transparent z-10" />
+                  <Image
+                    src="/media/images/air_tanks.png"
+                    alt=""
+                    fill
+                    className="rounded-2xl object-cover ring-1 ring-white/10"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Press Releases */}
         <div className="mb-20">
           <div className="mx-auto max-w-3xl text-center mb-12">
@@ -174,7 +263,7 @@ export default function NewsSection() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedPressReleases.map((release) => (
+            {otherPressReleases.map((release) => (
               <Card 
                 key={release.id} 
                 className={`group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] ${release.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}
