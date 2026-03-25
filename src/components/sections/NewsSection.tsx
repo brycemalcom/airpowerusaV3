@@ -77,32 +77,14 @@ const pressReleases: PressRelease[] = [
 
 const mediaCoverage = [
   {
-    id: 1,
-    title: "Industry Publications",
-    publication: "Coming Soon",
-    date: "Stay Tuned",
-    excerpt: "Coverage from leading energy and technology publications will be featured here as our story unfolds.",
-    link: "#",
-    isPlaceholder: true
+    id: 101,
+    title: "CETI Bets on Compressed Air for Global Energy Pivot",
+    publication: "BriefGlance",
+    date: "March 23, 2026",
+    excerpt:
+      "Editorial analysis of Cyber Enviro-Tech’s exclusive manufacturing and distribution agreement with Air Power USA—compressed-air technology, target regions, and the path to commercialization.",
+    link: "https://briefglance.com/articles/ceti-bets-on-compressed-air-for-global-energy-pivot",
   },
-  {
-    id: 2,
-    title: "Expert Analysis",
-    publication: "Coming Soon", 
-    date: "Stay Tuned",
-    excerpt: "In-depth analysis and commentary from industry experts and thought leaders in clean energy.",
-    link: "#",
-    isPlaceholder: true
-  },
-  {
-    id: 3,
-    title: "Media Interviews",
-    publication: "Coming Soon",
-    date: "Stay Tuned", 
-    excerpt: "Interviews with our leadership team and technical experts as featured in various media outlets.",
-    link: "#",
-    isPlaceholder: true
-  }
 ];
 
 // Curated external reads (not specifically about AirPower)
@@ -305,7 +287,13 @@ export default function NewsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            className={
+              mediaCoverage.length === 1
+                ? "grid grid-cols-1 gap-8 max-w-xl mx-auto"
+                : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            }
+          >
             {mediaCoverage.map((article) => (
               <Card key={article.id} className={`group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] ${article.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}>
                 <CardHeader>
