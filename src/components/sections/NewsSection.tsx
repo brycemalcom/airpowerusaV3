@@ -233,7 +233,7 @@ export default function NewsSection() {
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-slate-950/80 via-transparent to-transparent z-10" />
                   <Image
                     src="/media/images/air_tanks.png"
-                    alt=""
+                    alt="Air Power USA compressed air energy systems"
                     fill
                     className="rounded-2xl object-cover ring-1 ring-white/10"
                     sizes="(max-width: 1024px) 100vw, 45vw"
