@@ -23,6 +23,16 @@ type PressRelease = {
   contentUrlEs?: string; // Spanish content path
 };
 
+type MediaCoverageItem = {
+  id: number;
+  title: string;
+  publication: string;
+  date: string;
+  excerpt: string;
+  link: string;
+  isPlaceholder?: boolean;
+};
+
 const pressReleases: PressRelease[] = [
   {
     id: 106,
@@ -75,7 +85,7 @@ const pressReleases: PressRelease[] = [
   },
 ];
 
-const mediaCoverage = [
+const mediaCoverage: MediaCoverageItem[] = [
   {
     id: 101,
     title: "CETI Bets on Compressed Air for Global Energy Pivot",
