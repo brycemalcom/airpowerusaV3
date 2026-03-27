@@ -66,21 +66,16 @@ export default function ContactPage() {
       const firstname = nameParts[0] || '';
       const lastname = nameParts.slice(1).join(' ') || '';
       
-      // Prepare payload for HubSpot Customer API
       const payload = {
-        firstname,
-        lastname,
+        inquiryKind: "general" as const,
+        firstName: firstname,
+        lastName: lastname,
         email: formData.email,
-        phone: '', // Contact form doesn't have phone
-        company: 'General Contact', // Default company for contact form
-        location: '', // Contact form doesn't have location
-        message: `Subject: ${formData.subject}\n\nMessage: ${formData.message}`
+        subject: formData.subject,
+        message: formData.message,
       };
 
-      console.log('About to submit contact form payload:', payload);
-
-      // Submit to our customer API route
-      const response = await fetch('/api/hubspot/submit-customer', {
+      const response = await fetch("/api/ghl/submit-inquiry", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,16 +83,13 @@ export default function ContactPage() {
         body: JSON.stringify(payload),
       });
 
-      console.log('Contact API Response status:', response.status);
-
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Contact API Error Response:', errorText);
         throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
       }
 
-      const result = await response.json();
-      console.log('Contact form submitted successfully:', result);
+      await response.json();
       
       setIsSubmitted(true);
       setFormData({

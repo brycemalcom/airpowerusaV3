@@ -77,21 +77,18 @@ export default function InquiryForm() {
       const firstname = nameParts[0] || '';
       const lastname = nameParts.slice(1).join(' ') || '';
       
-      // Prepare payload for HubSpot Customer API
       const payload = {
-        firstname,
-        lastname,
+        inquiryKind: "customer" as const,
+        firstName: firstname,
+        lastName: lastname,
         email: formData.email,
         phone: formData.phone,
         company: formData.organization,
         location: formData.location,
-        message: formData.message
+        message: formData.message,
       };
 
-      console.log('About to submit customer inquiry payload:', payload);
-
-      // Submit to our customer API route
-      const response = await fetch('/api/hubspot/submit-customer', {
+      const response = await fetch("/api/ghl/submit-inquiry", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,16 +96,13 @@ export default function InquiryForm() {
         body: JSON.stringify(payload),
       });
 
-      console.log('Customer API Response status:', response.status);
-
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('Customer API Error Response:', errorText);
+        console.error('Customer inquiry API Error Response:', errorText);
         throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
       }
 
-      const result = await response.json();
-      console.log('Customer inquiry form submitted successfully:', result);
+      await response.json();
       
       setIsSubmitted(true);
       setFormData({
