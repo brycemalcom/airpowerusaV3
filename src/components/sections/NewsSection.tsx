@@ -39,6 +39,15 @@ type MediaCoverageItem = {
 
 const pressReleases: PressRelease[] = [
   {
+    id: 107,
+    title: "Cyber Enviro-Tech Receives Initial Order Inquiry for AirPower Systems in Africa",
+    excerpt:
+      "Following the recent licensing agreement, CETI reports an early-stage inquiry tied to approximately 85 portable 3MW AirPower systems for African infrastructure applications.",
+    date: "March 27, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-03-27-ceti-initial-order-inquiry-africa.html",
+  },
+  {
     id: 106,
     title: "Cyber Enviro-Tech and Air Power USA Agree to Exclusive Manufacturing and Distribution Rights",
     excerpt:
