@@ -54,11 +54,12 @@ async function upsertInquiryContact(
   const { tags, source } = INQUIRY_CONFIG[body.inquiryKind];
   const message = buildFormMessage(body);
   const phone = (body.phone ?? "").trim();
+  const lastName = body.lastName.trim() || "-";
 
   const payload = {
     locationId,
     firstName: body.firstName.trim(),
-    lastName: body.lastName.trim(),
+    lastName,
     email: body.email.trim(),
     phone,
     tags,
@@ -87,6 +88,10 @@ async function upsertInquiryContact(
     pickId((contactResponse as Record<string, unknown>)?.data);
 
   if (!contactId) {
+    console.error(
+      "GHL inquiry: missing contact id in response",
+      JSON.stringify(contactResponse).slice(0, 800)
+    );
     throw new Error("Unable to resolve contact ID from GHL response");
   }
 
@@ -100,7 +105,15 @@ function normalizeInquiryKind(value: unknown): InquiryKind | null {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as InquiryPayload;
+    let body: InquiryPayload;
+    try {
+      body = (await request.json()) as InquiryPayload;
+    } catch {
+      return NextResponse.json(
+        { error: "Invalid JSON body" },
+        { status: 400 }
+      );
+    }
     const inquiryKind = normalizeInquiryKind(body.inquiryKind);
 
     if (!inquiryKind) {

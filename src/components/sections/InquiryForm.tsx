@@ -38,6 +38,7 @@ export default function InquiryForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [submitError, setSubmitError] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -66,7 +67,8 @@ export default function InquiryForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setSubmitError("");
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -89,21 +91,37 @@ export default function InquiryForm() {
       };
 
       const response = await fetch("/api/ghl/submit-inquiry", {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Customer inquiry API Error Response:', errorText);
-        throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
+      const responseText = await response.text();
+      let data: { success?: boolean; error?: string; detail?: string } = {};
+      if (responseText) {
+        try {
+          data = JSON.parse(responseText) as typeof data;
+        } catch {
+          setSubmitError(
+            "We could not read the server response. Please try again or email info@airpowerusa.net."
+          );
+          return;
+        }
       }
 
-      await response.json();
-      
+      if (!response.ok) {
+        const msg =
+          typeof data.detail === "string"
+            ? data.detail
+            : typeof data.error === "string"
+              ? data.error
+              : `Something went wrong (${response.status}). Please try again.`;
+        setSubmitError(msg);
+        return;
+      }
+
       setIsSubmitted(true);
       setFormData({
         name: "",
@@ -114,8 +132,12 @@ export default function InquiryForm() {
         message: ""
       });
     } catch (error) {
-      console.error('Form submission error:', error);
-      // You might want to show an error message to the user here
+      console.error("Form submission error:", error);
+      setSubmitError(
+        error instanceof Error && error.message
+          ? error.message
+          : "Network error. Check your connection and try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -279,6 +301,15 @@ export default function InquiryForm() {
                   <p className="text-sm text-destructive">{errors.message}</p>
                 )}
               </div>
+
+              {submitError ? (
+                <p
+                  className="text-sm rounded-md border border-destructive/50 bg-destructive/10 px-3 py-2 text-destructive"
+                  role="alert"
+                >
+                  {submitError}
+                </p>
+              ) : null}
 
               {/* Submit Button */}
               <div className="flex justify-center pt-6">
