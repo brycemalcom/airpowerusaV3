@@ -100,6 +100,17 @@ const pressReleases: PressRelease[] = [
 
 const mediaCoverage: MediaCoverageItem[] = [
   {
+    id: 102,
+    title:
+      "Cyber Enviro-Tech Receives Initial Order Inquiry for AirPower Systems in Africa",
+    publication: "PR Newswire",
+    date: "March 27, 2026",
+    excerpt:
+      "Wire coverage of CETI’s early-stage inquiry for approximately 85 AirPower 3MW portable power stations in Africa—potential scale, 2026 delivery timing, and support from AirPower USA under the licensing agreement.",
+    link: "https://www.prnewswire.com/news-releases/cyber-enviro-tech-receives-initial-order-inquiry-for-airpower-systems-in-africa-highlighting-early-commercial-traction-following-recent-licensing-agreement-302727219.html",
+    coverageType: "news",
+  },
+  {
     id: 101,
     title: "CETI Bets on Compressed Air for Global Energy Pivot",
     publication: "BriefGlance",
