@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, Phone } from "lucide-react";
 import { getInvestorCalendarUrl } from "@/lib/investor-calendar";
+import {
+  FormAntiSpam,
+  type FormAntiSpamHandle,
+} from "@/components/forms/FormAntiSpam";
 
 export type GhlLandingPageVariant = "lp-a" | "lp-b" | "website";
 
@@ -48,6 +52,7 @@ export default function GhlInvestorLeadForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const antiSpamRef = useRef<FormAntiSpamHandle>(null);
 
   useEffect(() => {
     onSubmittedChange?.(isSubmitted);
@@ -78,6 +83,11 @@ export default function GhlInvestorLeadForm({
     e.preventDefault();
     if (!validate()) return;
     setSubmitError("");
+    if (antiSpamRef.current?.needsTurnstileInteraction()) {
+      setSubmitError("Please complete the security verification below.");
+      return;
+    }
+    const antiSpam = antiSpamRef.current?.getFields() ?? {};
     setIsSubmitting(true);
     try {
       const response = await fetch("/api/ghl/submit-lead", {
@@ -86,6 +96,7 @@ export default function GhlInvestorLeadForm({
         body: JSON.stringify({
           ...formData,
           landingPageVariant,
+          ...antiSpam,
         }),
       });
       if (!response.ok) {
@@ -195,7 +206,7 @@ export default function GhlInvestorLeadForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="relative space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
           <Label
@@ -350,6 +361,8 @@ export default function GhlInvestorLeadForm({
           }`}
         />
       </div>
+
+      <FormAntiSpam ref={antiSpamRef} variant={variant} />
 
       <Button
         type="submit"

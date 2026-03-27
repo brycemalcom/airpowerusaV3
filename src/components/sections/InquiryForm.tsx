@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,10 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import {
+  FormAntiSpam,
+  type FormAntiSpamHandle,
+} from "@/components/forms/FormAntiSpam";
 
 interface FormData {
   name: string;
@@ -39,6 +43,7 @@ export default function InquiryForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [submitError, setSubmitError] = useState("");
+  const antiSpamRef = useRef<FormAntiSpamHandle>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -71,6 +76,12 @@ export default function InquiryForm() {
 
     if (!validateForm()) return;
 
+    if (antiSpamRef.current?.needsTurnstileInteraction()) {
+      setSubmitError("Please complete the security verification below.");
+      return;
+    }
+    const antiSpam = antiSpamRef.current?.getFields() ?? {};
+
     setIsSubmitting(true);
     
     try {
@@ -88,6 +99,7 @@ export default function InquiryForm() {
         company: formData.organization,
         location: formData.location,
         message: formData.message,
+        ...antiSpam,
       };
 
       const response = await fetch("/api/ghl/submit-inquiry", {
@@ -205,7 +217,7 @@ export default function InquiryForm() {
           </CardHeader>
           
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="relative space-y-6">
               {/* Name and Organization */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -301,6 +313,8 @@ export default function InquiryForm() {
                   <p className="text-sm text-destructive">{errors.message}</p>
                 )}
               </div>
+
+              <FormAntiSpam ref={antiSpamRef} variant="light" />
 
               {submitError ? (
                 <p

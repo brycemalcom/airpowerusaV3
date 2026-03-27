@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ghlRequest, pickId } from "@/lib/ghl-client";
+import {
+  runAntiSpamChecks,
+  stripAntiSpamFields,
+} from "@/lib/form-submission-guard";
 
 type InquiryKind = "general" | "customer";
 
@@ -105,15 +109,20 @@ function normalizeInquiryKind(value: unknown): InquiryKind | null {
 
 export async function POST(request: NextRequest) {
   try {
-    let body: InquiryPayload;
+    let rawBody: Record<string, unknown>;
     try {
-      body = (await request.json()) as InquiryPayload;
+      rawBody = (await request.json()) as Record<string, unknown>;
     } catch {
       return NextResponse.json(
         { error: "Invalid JSON body" },
         { status: 400 }
       );
     }
+    const spam = await runAntiSpamChecks(request, rawBody, "ghl_submit_inquiry");
+    if (!spam.ok) {
+      return spam.response;
+    }
+    const body = stripAntiSpamFields(rawBody) as unknown as InquiryPayload;
     const inquiryKind = normalizeInquiryKind(body.inquiryKind);
 
     if (!inquiryKind) {

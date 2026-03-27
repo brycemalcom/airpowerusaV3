@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getJsonArray, ghlRequest, pickId } from "@/lib/ghl-client";
+import {
+  runAntiSpamChecks,
+  stripAntiSpamFields,
+} from "@/lib/form-submission-guard";
 
 const PIPELINE_NAME = "AirPower Investor Pipeline";
 const STAGE_NAME = "New Lead";
@@ -191,7 +195,12 @@ async function createOpportunity(
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as LeadPayload;
+    const rawBody = (await request.json()) as Record<string, unknown>;
+    const spam = await runAntiSpamChecks(request, rawBody, "ghl_submit_lead");
+    if (!spam.ok) {
+      return spam.response;
+    }
+    const body = stripAntiSpamFields(rawBody) as unknown as LeadPayload;
     const {
       firstName,
       lastName,
