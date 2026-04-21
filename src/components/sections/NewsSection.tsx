@@ -266,14 +266,14 @@ export default function NewsSection() {
                     {heroMedia
                       ? heroMedia.title
                       : isEs && featuredRelease!.titleEs
-                        ? featuredRelease.titleEs
+                        ? featuredRelease!.titleEs
                         : featuredRelease!.title}
                   </h3>
                   <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                     {heroMedia
                       ? heroMedia.excerpt
                       : isEs && featuredRelease!.excerptEs
-                        ? featuredRelease.excerptEs
+                        ? featuredRelease!.excerptEs
                         : featuredRelease!.excerpt}
                   </p>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
