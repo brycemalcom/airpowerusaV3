@@ -35,6 +35,8 @@ type MediaCoverageItem = {
   isPlaceholder?: boolean;
   /** Shown as badge (Analysis / News / Interview); omit for generic "External". */
   coverageType?: "analysis" | "news" | "interview";
+  /** When set, this item drives the large featured hero instead of the newest press release. */
+  pinToHero?: boolean;
 };
 
 const pressReleases: PressRelease[] = [
@@ -100,6 +102,18 @@ const pressReleases: PressRelease[] = [
 
 const mediaCoverage: MediaCoverageItem[] = [
   {
+    id: 103,
+    title:
+      "Cyber Enviro-Tech Inc Expands Board with AirPower CEO, Strengthens Leadership and Advances $200M+ Clean Energy Opportunities",
+    publication: "OTC Markets",
+    date: "April 7, 2026",
+    excerpt:
+      "CETI stock news: Brianna Stoecklein, CEO of Air Power USA, joins Cyber Enviro-Tech’s board—aligning leadership with the AirPower licensing path and framing a $200M+ clean energy opportunity set.",
+    link: "https://www.otcmarkets.com/stock/CETI/news/Cyber-Enviro-Tech-Inc-Expands-Board-with-AirPower-CEO-Strengthens-Leadership-and-Advances-200M-Clean-Energy-Opportunitie?id=516473",
+    coverageType: "news",
+    pinToHero: true,
+  },
+  {
     id: 102,
     title:
       "Cyber Enviro-Tech Receives Initial Order Inquiry for AirPower Systems in Africa",
@@ -164,7 +178,13 @@ export default function NewsSection() {
     return bd - ad;
   });
 
+  const heroMedia =
+    mediaCoverage.find(
+      (m) => m.pinToHero && !m.isPlaceholder && m.link && m.link !== "#",
+    ) ?? null;
+
   const featuredRelease =
+    !heroMedia &&
     sortedPressReleases[0] &&
     !sortedPressReleases[0].isPlaceholder &&
     sortedPressReleases[0].contentUrl
@@ -172,8 +192,16 @@ export default function NewsSection() {
       : null;
 
   const featuredMedia =
-    mediaCoverage.find((m) => !m.isPlaceholder && m.link && m.link !== "#") ??
-    null;
+    !heroMedia &&
+    (mediaCoverage.find((m) => !m.isPlaceholder && m.link && m.link !== "#") ?? null);
+
+  const heroSecondaryPressRelease =
+    heroMedia &&
+    sortedPressReleases[0] &&
+    !sortedPressReleases[0].isPlaceholder &&
+    sortedPressReleases[0].contentUrl
+      ? sortedPressReleases[0]
+      : null;
 
   useEffect(() => {
     const url = (isEs && selected?.contentUrlEs) ? selected?.contentUrlEs : selected?.contentUrl;
@@ -204,7 +232,7 @@ export default function NewsSection() {
   return (
     <section className="py-24 bg-gradient-to-b from-background via-slate-950/20 to-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {featuredRelease && (
+        {(heroMedia || featuredRelease) && (
           <motion.div
             className="mb-16"
             initial={{ opacity: 0, y: 22 }}
@@ -225,48 +253,86 @@ export default function NewsSection() {
                       {t("featured.badge")}
                     </Badge>
                     <Badge variant="outline" className="border-white/20 bg-white/5 text-foreground">
-                      {featuredRelease.category}
+                      {heroMedia
+                        ? heroMedia.publication
+                        : featuredRelease!.category}
                     </Badge>
                     <span className="flex items-center text-sm text-muted-foreground">
                       <Calendar className="mr-1 h-4 w-4" />
-                      {featuredRelease.date}
+                      {heroMedia ? heroMedia.date : featuredRelease!.date}
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl lg:leading-tight">
-                    {isEs && featuredRelease.titleEs
-                      ? featuredRelease.titleEs
-                      : featuredRelease.title}
+                    {heroMedia
+                      ? heroMedia.title
+                      : isEs && featuredRelease!.titleEs
+                        ? featuredRelease.titleEs
+                        : featuredRelease!.title}
                   </h3>
                   <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                    {isEs && featuredRelease.excerptEs
-                      ? featuredRelease.excerptEs
-                      : featuredRelease.excerpt}
+                    {heroMedia
+                      ? heroMedia.excerpt
+                      : isEs && featuredRelease!.excerptEs
+                        ? featuredRelease.excerptEs
+                        : featuredRelease!.excerpt}
                   </p>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                    <Button
-                      size="lg"
-                      className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-900/30 hover:from-blue-500 hover:to-cyan-500"
-                      onClick={() => setSelected(featuredRelease)}
-                    >
-                      <FileText className="mr-2 h-4 w-4" />
-                      {t("featured.readRelease")}
-                    </Button>
-                    {featuredMedia && (
-                      <a
-                        href={featuredMedia.link}
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        className="inline-flex"
-                      >
+                    {heroMedia ? (
+                      <>
+                        <a
+                          href={heroMedia.link}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="inline-flex"
+                        >
+                          <Button
+                            size="lg"
+                            className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-900/30 hover:from-blue-500 hover:to-cyan-500"
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            {t("coverage.readArticle")}
+                          </Button>
+                        </a>
+                        {heroSecondaryPressRelease && (
+                          <Button
+                            size="lg"
+                            variant="outline"
+                            className="border-white/20 bg-white/5 hover:bg-white/10"
+                            onClick={() => setSelected(heroSecondaryPressRelease)}
+                          >
+                            <FileText className="mr-2 h-4 w-4" />
+                            {t("featured.readRelease")}
+                          </Button>
+                        )}
+                      </>
+                    ) : (
+                      <>
                         <Button
                           size="lg"
-                          variant="outline"
-                          className="border-white/20 bg-white/5 hover:bg-white/10"
+                          className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-900/30 hover:from-blue-500 hover:to-cyan-500"
+                          onClick={() => setSelected(featuredRelease!)}
                         >
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          {t("featured.relatedCoverage")}
+                          <FileText className="mr-2 h-4 w-4" />
+                          {t("featured.readRelease")}
                         </Button>
-                      </a>
+                        {featuredMedia && (
+                          <a
+                            href={featuredMedia.link}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            className="inline-flex"
+                          >
+                            <Button
+                              size="lg"
+                              variant="outline"
+                              className="border-white/20 bg-white/5 hover:bg-white/10"
+                            >
+                              <ExternalLink className="mr-2 h-4 w-4" />
+                              {t("featured.relatedCoverage")}
+                            </Button>
+                          </a>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
