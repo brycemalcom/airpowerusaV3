@@ -41,6 +41,16 @@ type MediaCoverageItem = {
 
 const pressReleases: PressRelease[] = [
   {
+    id: 108,
+    title:
+      "Cyber Enviro-Tech Positions AirPower Technology Agreement to Support U.S. Energy Independence Following April 2026 Presidential Actions",
+    excerpt:
+      "CETI highlights how its AirPower licensing agreement aligns with April 2026 Presidential Actions on U.S. energy infrastructure, grid resilience, and scalable domestic energy solutions.",
+    date: "April 21, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-04-21-ceti-airpower-us-energy-independence-presidential-actions.html",
+  },
+  {
     id: 107,
     title: "Cyber Enviro-Tech Receives Initial Order Inquiry for AirPower Systems in Africa",
     excerpt:
@@ -102,6 +112,17 @@ const pressReleases: PressRelease[] = [
 
 const mediaCoverage: MediaCoverageItem[] = [
   {
+    id: 104,
+    title:
+      "Cyber Enviro-Tech Positions AirPower Technology Agreement to Support U.S. Energy Independence Following April 2026 Presidential Actions",
+    publication: "PR Newswire",
+    date: "April 21, 2026",
+    excerpt:
+      "Wire: CETI frames its AirPower platform alongside April 2026 Presidential Actions on U.S. energy infrastructure, grid resilience, and domestically deployable clean energy solutions.",
+    link: "https://www.prnewswire.com/news-releases/cyber-enviro-tech-positions-airpower-technology-agreement-to-support-us-energy-independence-following-april-2026-presidential-actions-302749051.html",
+    coverageType: "news",
+  },
+  {
     id: 103,
     title:
       "Cyber Enviro-Tech Inc Expands Board with AirPower CEO, Strengthens Leadership and Advances $200M+ Clean Energy Opportunities",
@@ -111,7 +132,6 @@ const mediaCoverage: MediaCoverageItem[] = [
       "CETI stock news: Brianna Stoecklein, CEO of Air Power USA, joins Cyber Enviro-Tech’s board—aligning leadership with the AirPower licensing path and framing a $200M+ clean energy opportunity set.",
     link: "https://www.otcmarkets.com/stock/CETI/news/Cyber-Enviro-Tech-Inc-Expands-Board-with-AirPower-CEO-Strengthens-Leadership-and-Advances-200M-Clean-Energy-Opportunitie?id=516473",
     coverageType: "news",
-    pinToHero: true,
   },
   {
     id: 102,
