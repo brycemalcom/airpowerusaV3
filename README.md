@@ -1,123 +1,64 @@
-# AirPower USA - Revolutionary Clean Energy Website
+# AirPower USA Media Hub
 
-A modern, responsive website built with Next.js, Tailwind CSS, and ShadCN UI to showcase AirPower USA's revolutionary compressed air engine technology.
+This repo currently hosts the AirPower USA public website, customer and investor funnels, newsroom, filings, videos, and campaign landing pages. It is being expanded into a broader marketing and media workspace for AirPower USA, CETI / Cyber Enviro-Tech, and future Drax Industries work.
 
-## 🚀 Technology Stack
+Canonical public domain:
 
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS v4 with dark theme
-- **UI Components**: ShadCN UI with Slate color palette
-- **Fonts**: Inter (primary), Roboto Mono (monospace)
-- **Icons**: Lucide React
-- **Animations**: Framer Motion (ready for implementation)
-
-## 🎨 Design Philosophy
-
-- **Dark Mode First**: Professional, tech-focused aesthetic
-- **High Contrast**: Clean, readable typography
-- **Modern Grid Layouts**: Responsive design for all devices
-- **Media-Heavy**: Optimized for MP4 backgrounds, GIFs, and high-res images
-- **Tesla-Inspired**: Competing with top tech brand standards
-
-## 📁 Project Structure
-
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout with dark theme
-│   ├── page.tsx            # Main homepage
-│   └── globals.css         # Global styles and theme
-├── components/
-│   ├── layout/
-│   │   ├── Header.tsx      # Modern navigation header
-│   │   └── Footer.tsx      # Company info footer
-│   ├── sections/           # Modular page sections
-│   │   ├── Hero.tsx        # Landing hero section
-│   │   ├── Technology.tsx  # How it works (placeholder)
-│   │   ├── Products.tsx    # Product lineup (placeholder)
-│   │   └── UseCases.tsx    # Applications (placeholder)
-│   └── ui/                 # ShadCN components
-public/
-└── media/                  # Media assets directory
-    ├── videos/             # MP4 background videos
-    ├── images/             # High-resolution images
-    └── gifs/               # Animated GIFs
+```text
+airpowerusa.net
 ```
 
-## 🛠️ Current Features
+Start every session here:
 
-### ✅ Complete Foundation
-- [x] Next.js 15 with App Router
-- [x] Tailwind CSS v4 configuration
-- [x] ShadCN UI components (Button, Card, Badge, Separator)
-- [x] Dark theme implementation
-- [x] Responsive navigation header
-- [x] Hero section with gradient backgrounds
-- [x] Modular section components
-- [x] Professional footer
-- [x] Media directory structure
+```text
+GOVERNANCE/START_HERE.md
+```
 
-### ✅ Hero Section
-- [x] Compelling headline with gradient text
-- [x] Key technology benefits
-- [x] Call-to-action buttons
-- [x] Performance statistics
-- [x] Animated scroll indicator
+## Stack
 
-### ✅ Navigation
-- [x] Fixed header with backdrop blur
-- [x] Mobile-responsive menu
-- [x] Smooth scroll navigation
-- [x] Professional branding
+- Next.js 15 App Router
+- React 19
+- TypeScript
+- Tailwind CSS
+- next-intl
+- Vercel Analytics
+- GoHighLevel / LeadConnector forms
+- Optional Cloudflare Turnstile form protection
 
-## 🎯 Ready for Section Development
+## Local Development
 
-The foundation is complete and ready for sequential section building:
-
-1. **Technology Section** - How compressed air engines work
-2. **Products Section** - 50kW mobile units and 1.5MW stations
-3. **Use Cases Section** - Data centers, crypto, grow ops applications
-4. **About Section** - Company story and team
-5. **Contact/Investor Section** - Lead capture and investor relations
-
-## 🚀 Getting Started
-
-```bash
-# Install dependencies
+```powershell
 npm install
-
-# Start development server
 npm run dev
+```
 
-# Build for production
+Default local URL:
+
+```text
+http://localhost:3000
+```
+
+## Validation
+
+```powershell
+npm run lint
+npx tsc --noEmit
 npm run build
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see the website.
+## Deployment
 
-## 📝 Next Steps
+Owner-reported deployment:
 
-1. **Content Development**: Add detailed content to placeholder sections
-2. **Media Integration**: Add MP4 backgrounds, product images, and GIFs
-3. **Animations**: Implement Framer Motion for scroll animations
-4. **Forms**: Add contact and investor lead capture forms
-5. **Performance**: Optimize images and implement lazy loading
+- Platform: Vercel
+- Production branch: `master`
+- GitHub repo: `https://github.com/brycemalcom/airpowerusaV3`
+- Vercel project/account: `airpowerusa-v3`
 
-## 🎨 Color Palette
+The local Vercel CLI currently shows a different visible scope, so dashboard validation is still recorded in governance.
 
-The website uses a professional dark theme with the Slate color palette:
-- Primary: Modern slate blue
-- Background: Deep dark
-- Text: High contrast white/gray
-- Accents: Blue, green, yellow for features
+## Governance
 
-## 📱 Responsive Design
+The active source of truth lives in `GOVERNANCE/`.
 
-- Mobile-first approach
-- Breakpoints: sm, md, lg, xl
-- Touch-friendly navigation
-- Optimized typography scaling
-
----
-
-**AirPower USA** - Powering the future with compressed air technology.
+Archived or stale handoffs live under `GOVERNANCE/artifacts/` and are not active instructions unless promoted into current governance docs.
