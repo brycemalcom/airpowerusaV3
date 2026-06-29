@@ -16,7 +16,6 @@ export default async function NewsroomPage() {
         <VideoGallery />
       </Suspense>
       
-      {/* Stay Connected CTA */}
       <NewsroomCta />
       
       <Footer />

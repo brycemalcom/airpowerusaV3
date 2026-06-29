@@ -1,6 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
@@ -13,7 +14,8 @@ import {
   Database,
   Truck,
   VolumeX,
-  Volume2
+  Volume2,
+  X
 } from "lucide-react";
 
 type ImageVisual = {
@@ -104,6 +106,7 @@ export default function Technology() {
   const [isEngineVideoMuted, setIsEngineVideoMuted] = useState(true);
   const [isPowerGenVideoMuted, setIsPowerGenVideoMuted] = useState(true);
   const [isColdAirVideoMuted, setIsColdAirVideoMuted] = useState(true);
+  const [isDiagramOpen, setIsDiagramOpen] = useState(false);
   const t = useTranslations('home.technology');
 
   useEffect(() => {
@@ -114,6 +117,15 @@ export default function Technology() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEffect(() => {
+    if (!isDiagramOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsDiagramOpen(false);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [isDiagramOpen]);
 
   const toggleEngineVideoSound = () => {
     setIsEngineVideoMuted(!isEngineVideoMuted);
@@ -153,6 +165,7 @@ export default function Technology() {
               {t('intro', { default: "AirPower's patented system transforms ambient air into clean, on-demand power using a closed-loop cycle. With no fuel, no combustion, and only cold air as its byproduct, the AirPower Station redefines how energy is generated, stored, and delivered — available in 20-foot (0.5MW) and 40-foot (1.5MW) containerized platforms." })}
             </p>
           </div>
+
         </div>
 
         {/* Steps Grid */}
@@ -343,6 +356,57 @@ export default function Technology() {
 
 
       </div>
+
+      {/* Diagram CTA at end of section */}
+      <div className="mt-10 text-center">
+        <Button
+          variant="outline"
+          size="lg"
+          className="px-8 py-4 text-lg sm:text-xl font-semibold"
+          onClick={() => setIsDiagramOpen(true)}
+        >
+          View System Diagram
+        </Button>
+      </div>
+
+      {/* Lightbox modal for system diagram */}
+      {isDiagramOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+          onClick={() => setIsDiagramOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative w-full max-w-6xl bg-background/5 rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              aria-label="Close"
+              className="absolute top-3 right-3 inline-flex items-center justify-center rounded-md bg-black/50 hover:bg-black/70 p-2 text-white z-10"
+              onClick={() => setIsDiagramOpen(false)}
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="max-h-[85vh] max-w-[90vw] overflow-hidden p-2">
+              <div className="w-full h-full flex items-center justify-center">
+                <img
+                  src="/media/images/CAE_flowchart_final.png"
+                  alt="AirPower Station system diagram"
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '80vh',
+                    width: 'auto',
+                    height: 'auto',
+                    display: 'block',
+                    objectFit: 'contain'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 } 

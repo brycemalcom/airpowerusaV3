@@ -4,6 +4,7 @@ import "./globals.css";
 import PerformanceMonitor from "@/components/common/PerformanceMonitor";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import DefaultIntlProvider from "@/components/i18n/DefaultIntlProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,6 +69,7 @@ export default function RootLayout({
         {/* Default English provider ensures components using useTranslations work on non-locale routes */}
         <DefaultIntlProvider>{children}</DefaultIntlProvider>
         <PerformanceMonitor />
+        <Analytics />
       </body>
     </html>
   );

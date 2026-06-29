@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,10 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import {
+  FormAntiSpam,
+  type FormAntiSpamHandle,
+} from "@/components/forms/FormAntiSpam";
 
 interface FormData {
   name: string;
@@ -38,6 +42,8 @@ export default function InquiryForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [submitError, setSubmitError] = useState("");
+  const antiSpamRef = useRef<FormAntiSpamHandle>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -66,8 +72,15 @@ export default function InquiryForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setSubmitError("");
+
     if (!validateForm()) return;
+
+    if (antiSpamRef.current?.needsTurnstileInteraction()) {
+      setSubmitError("Please complete the security verification below.");
+      return;
+    }
+    const antiSpam = antiSpamRef.current?.getFields() ?? {};
 
     setIsSubmitting(true);
     
@@ -77,39 +90,50 @@ export default function InquiryForm() {
       const firstname = nameParts[0] || '';
       const lastname = nameParts.slice(1).join(' ') || '';
       
-      // Prepare payload for HubSpot Customer API
       const payload = {
-        firstname,
-        lastname,
+        inquiryKind: "customer" as const,
+        firstName: firstname,
+        lastName: lastname,
         email: formData.email,
         phone: formData.phone,
         company: formData.organization,
         location: formData.location,
-        message: formData.message
+        message: formData.message,
+        ...antiSpam,
       };
 
-      console.log('About to submit customer inquiry payload:', payload);
-
-      // Submit to our customer API route
-      const response = await fetch('/api/hubspot/submit-customer', {
-        method: 'POST',
+      const response = await fetch("/api/ghl/submit-inquiry", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
-      console.log('Customer API Response status:', response.status);
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Customer API Error Response:', errorText);
-        throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
+      const responseText = await response.text();
+      let data: { success?: boolean; error?: string; detail?: string } = {};
+      if (responseText) {
+        try {
+          data = JSON.parse(responseText) as typeof data;
+        } catch {
+          setSubmitError(
+            "We could not read the server response. Please try again or email info@airpowerusa.net."
+          );
+          return;
+        }
       }
 
-      const result = await response.json();
-      console.log('Customer inquiry form submitted successfully:', result);
-      
+      if (!response.ok) {
+        const msg =
+          typeof data.detail === "string"
+            ? data.detail
+            : typeof data.error === "string"
+              ? data.error
+              : `Something went wrong (${response.status}). Please try again.`;
+        setSubmitError(msg);
+        return;
+      }
+
       setIsSubmitted(true);
       setFormData({
         name: "",
@@ -120,8 +144,12 @@ export default function InquiryForm() {
         message: ""
       });
     } catch (error) {
-      console.error('Form submission error:', error);
-      // You might want to show an error message to the user here
+      console.error("Form submission error:", error);
+      setSubmitError(
+        error instanceof Error && error.message
+          ? error.message
+          : "Network error. Check your connection and try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -189,7 +217,7 @@ export default function InquiryForm() {
           </CardHeader>
           
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="relative space-y-6">
               {/* Name and Organization */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -285,6 +313,17 @@ export default function InquiryForm() {
                   <p className="text-sm text-destructive">{errors.message}</p>
                 )}
               </div>
+
+              <FormAntiSpam ref={antiSpamRef} variant="light" />
+
+              {submitError ? (
+                <p
+                  className="text-sm rounded-md border border-destructive/50 bg-destructive/10 px-3 py-2 text-destructive"
+                  role="alert"
+                >
+                  {submitError}
+                </p>
+              ) : null}
 
               {/* Submit Button */}
               <div className="flex justify-center pt-6">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import {
+  FormAntiSpam,
+  type FormAntiSpamHandle,
+} from "@/components/forms/FormAntiSpam";
 
 interface ContactFormData {
   name: string;
@@ -27,6 +31,8 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
+  const [submitError, setSubmitError] = useState("");
+  const antiSpamRef = useRef<FormAntiSpamHandle>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -55,8 +61,15 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setSubmitError("");
+
     if (!validateForm()) return;
+
+    if (antiSpamRef.current?.needsTurnstileInteraction()) {
+      setSubmitError("Please complete the security verification below.");
+      return;
+    }
+    const antiSpam = antiSpamRef.current?.getFields() ?? {};
 
     setIsSubmitting(true);
     
@@ -66,38 +79,47 @@ export default function ContactPage() {
       const firstname = nameParts[0] || '';
       const lastname = nameParts.slice(1).join(' ') || '';
       
-      // Prepare payload for HubSpot Customer API
       const payload = {
-        firstname,
-        lastname,
+        inquiryKind: "general" as const,
+        firstName: firstname,
+        lastName: lastname,
         email: formData.email,
-        phone: '', // Contact form doesn't have phone
-        company: 'General Contact', // Default company for contact form
-        location: '', // Contact form doesn't have location
-        message: `Subject: ${formData.subject}\n\nMessage: ${formData.message}`
+        subject: formData.subject,
+        message: formData.message,
+        ...antiSpam,
       };
 
-      console.log('About to submit contact form payload:', payload);
-
-      // Submit to our customer API route
-      const response = await fetch('/api/hubspot/submit-customer', {
-        method: 'POST',
+      const response = await fetch("/api/ghl/submit-inquiry", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
-      console.log('Contact API Response status:', response.status);
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Contact API Error Response:', errorText);
-        throw new Error(`Failed to submit form: ${response.status} - ${errorText}`);
+      const responseText = await response.text();
+      let data: { error?: string; detail?: string } = {};
+      if (responseText) {
+        try {
+          data = JSON.parse(responseText) as typeof data;
+        } catch {
+          setSubmitError(
+            "We could not read the server response. Please try again or email info@airpowerusa.net."
+          );
+          return;
+        }
       }
 
-      const result = await response.json();
-      console.log('Contact form submitted successfully:', result);
+      if (!response.ok) {
+        setSubmitError(
+          typeof data.detail === "string"
+            ? data.detail
+            : typeof data.error === "string"
+              ? data.error
+              : `Something went wrong (${response.status}). Please try again.`
+        );
+        return;
+      }
       
       setIsSubmitted(true);
       setFormData({
@@ -107,8 +129,12 @@ export default function ContactPage() {
         message: ""
       });
     } catch (error) {
-      console.error('Form submission error:', error);
-      // You might want to show an error message to the user here
+      console.error("Form submission error:", error);
+      setSubmitError(
+        error instanceof Error && error.message
+          ? error.message
+          : "Network error. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -200,7 +226,7 @@ export default function ContactPage() {
                 <Phone className="h-6 w-6 text-primary mt-1" />
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">Phone</h3>
-                  <p className="text-muted-foreground">214.257.7957</p>
+                  <p className="text-muted-foreground">214.885.2657</p>
                 </div>
               </div>
 
@@ -227,7 +253,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <Card className="p-8 bg-background/50 backdrop-blur-sm border border-border">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="relative space-y-6">
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-6">Send us a message</h3>
               </div>
@@ -296,6 +322,17 @@ export default function ContactPage() {
                   <p className="text-sm text-red-400 mt-1">{errors.message}</p>
                 )}
               </div>
+
+              <FormAntiSpam ref={antiSpamRef} variant="light" />
+
+              {submitError ? (
+                <p
+                  className="text-sm rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-red-200"
+                  role="alert"
+                >
+                  {submitError}
+                </p>
+              ) : null}
 
               <Button 
                 type="submit" 

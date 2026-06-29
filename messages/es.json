@@ -12,6 +12,7 @@
     "menu": {
       "customers": "Para clientes",
       "investorsSoon": "Para inversionistas — Próximamente",
+      "investors": "Para inversionistas",
       "faq": "Preguntas frecuentes de inversionistas",
       "filings": "Declaraciones ante la SEC",
       "newsroom": "Sala de prensa",
@@ -501,6 +502,11 @@
         "updates": "Actualizaciones de la compañía"
       },
       "sections": {
+        "featured": {
+          "badge": "Destacado",
+          "readRelease": "Leer comunicado completo",
+          "relatedCoverage": "Cobertura mediática relacionada"
+        },
         "press": {
           "badge": "Actualizaciones oficiales",
           "titleTop": "Comunicados",
@@ -519,14 +525,21 @@
           "badge": "Cobertura externa",
           "titleTop": "Cobertura",
           "titleBottom": "mediática",
-          "subtitle": "Medios e industrias que cubren la tecnología y el impacto de AirPower."
+          "subtitle": "Medios e industrias que cubren la tecnología y el impacto de AirPower.",
+          "external": "Externo",
+          "readArticle": "Leer artículo",
+          "types": {
+            "analysis": "Análisis",
+            "news": "Noticias",
+            "interview": "Entrevista"
+          }
         }
       }
       ,
       "cta": {
-        "title": "Mantente conectado con AirPower USA",
-        "body": "Esta sala de prensa presentará las últimas novedades sobre nuestros avances tecnológicos, alianzas y evolución del mercado. Vuelve pronto para ver nuevos anuncios.",
-        "note": "Actualizaciones próximamente"
+        "title": "¿Estás evaluando una inversión?",
+        "body": "Contacta a nuestro equipo de inversores mediante el formulario seguro en la página de inversión. Puedes enviar tus datos y reservar una llamada cuando quieras.",
+        "button": "Ir al formulario de inversores"
       }
     }
   }
@@ -659,7 +672,7 @@
       "q7": {"q": "¿Puedo invertir si resido en otro país?", "a": "Sí, los no residentes en EE. UU. pueden invertir, sujeto a las leyes locales aplicables y al cumplimiento de la documentación requerida."},
       "q8": {"q": "¿Dónde puedo ver mis acciones?", "a": "Tus acciones se registrarán con nuestro agente de transferencias, quien te proporcionará acceso a tu cuenta y documentación."},
       "q9": {"q": "¿Dónde encuentro más información sobre AirPower USA?", "a": "Visita airpowerusa.com o escribe a invest@airpowerusa.net para solicitar nuestro resumen ejecutivo, presentación y documentos de inversionista Reg D."},
-      "q10": {"q": "¿Hay un número directo para el equipo de Relaciones con Inversionistas?", "a": "Sí — consultas de inversionistas al 214.257.7957."},
+      "q10": {"q": "¿Hay un número directo para el equipo de Relaciones con Inversionistas?", "a": "Sí — consultas de inversionistas al 214.885.2657."},
       "q11": {"q": "¿En qué plataformas están disponibles las oportunidades de inversión?", "a": "La oferta actual se realiza de forma privada bajo Reg D y está disponible directamente con la compañía, no mediante plataformas públicas de crowdfunding."},
       "q12": {"q": "¿Cuál es el último día para comprar acciones?", "a": "La Ronda 1 permanece abierta hasta completar la suscripción. Disponibilidad por orden de llegada."},
       "q13": {"q": "¿Cuál es la valuación de AirPower USA?", "a": "La valuación se basa en el precio de oferta actual y el número de acciones en circulación. Contáctanos para detalles actuales."},

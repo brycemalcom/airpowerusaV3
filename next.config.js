@@ -129,17 +129,7 @@ const nextConfig = {
       },
     ];
   },
-  
-  // Temporary redirect to hide Investors page
-  async redirects() {
-    return [
-      {
-        source: '/invest',
-        destination: '/',
-        permanent: false,
-      },
-    ];
-  },
+
 };
 
 module.exports = withNextIntl(nextConfig);

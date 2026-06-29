@@ -313,12 +313,18 @@ export default function ModularConfigurations() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center space-x-2 text-muted-foreground mb-8">
-            <div className="h-px w-8 sm:w-12 bg-border" />
-            <span className="text-xs sm:text-sm font-medium">{t('cta', { default: 'Choose your deployment strategy' })}</span>
-            <div className="h-px w-8 sm:w-12 bg-border" />
-          </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90"
+            onClick={() => {
+              const el = document.getElementById('contact-form');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              } else {
+                window.location.hash = 'contact-form';
+              }
+            }}
+          >
             {t('contact', { default: 'Contact Our Team' })}
           </Button>
         </div>

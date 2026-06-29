@@ -3,7 +3,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, ExternalLink, FileText, X } from "lucide-react";
+import { Calendar, ExternalLink, FileText, Sparkles, X } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -23,7 +25,59 @@ type PressRelease = {
   contentUrlEs?: string; // Spanish content path
 };
 
+type MediaCoverageItem = {
+  id: number;
+  title: string;
+  publication: string;
+  date: string;
+  excerpt: string;
+  link: string;
+  isPlaceholder?: boolean;
+  /** Shown as badge (Analysis / News / Interview); omit for generic "External". */
+  coverageType?: "analysis" | "news" | "interview";
+  /** When set, this item drives the large featured hero instead of the newest press release. */
+  pinToHero?: boolean;
+};
+
 const pressReleases: PressRelease[] = [
+  {
+    id: 109,
+    title:
+      "Cyber Enviro-Tech, Inc. Highlights AirPower Relationship and Global Clean Energy Market Opportunity",
+    excerpt:
+      "CETI highlights its AirPower relationship and exclusive territory rights, positioning to pursue commercial opportunities across a described $2.4T clean energy and $847B off-grid market.",
+    date: "June 29, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-06-29-ceti-airpower-global-clean-energy-market-opportunity.html",
+  },
+  {
+    id: 108,
+    title:
+      "Cyber Enviro-Tech Positions AirPower Technology Agreement to Support U.S. Energy Independence Following April 2026 Presidential Actions",
+    excerpt:
+      "CETI highlights how its AirPower licensing agreement aligns with April 2026 Presidential Actions on U.S. energy infrastructure, grid resilience, and scalable domestic energy solutions.",
+    date: "April 21, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-04-21-ceti-airpower-us-energy-independence-presidential-actions.html",
+  },
+  {
+    id: 107,
+    title: "Cyber Enviro-Tech Receives Initial Order Inquiry for AirPower Systems in Africa",
+    excerpt:
+      "Following the recent licensing agreement, CETI reports an early-stage inquiry tied to approximately 85 portable 3MW AirPower systems for African infrastructure applications.",
+    date: "March 27, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-03-27-ceti-initial-order-inquiry-africa.html",
+  },
+  {
+    id: 106,
+    title: "Cyber Enviro-Tech and Air Power USA Agree to Exclusive Manufacturing and Distribution Rights",
+    excerpt:
+      "CETI (OTCQB: CETI) announces a manufacturing and distribution agreement with Air Power USA for compressed-air energy systems across the Middle East, Africa, and Kuwait.",
+    date: "March 23, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-03-23-ceti-airpower-manufacturing-agreement.html",
+  },
   {
     id: 105,
     title: "Air Power USA Debuts Compressed‑Air Power at IUCN Conference in Abu Dhabi",
@@ -66,35 +120,64 @@ const pressReleases: PressRelease[] = [
   },
 ];
 
-const mediaCoverage = [
+const mediaCoverage: MediaCoverageItem[] = [
   {
-    id: 1,
-    title: "Industry Publications",
-    publication: "Coming Soon",
-    date: "Stay Tuned",
-    excerpt: "Coverage from leading energy and technology publications will be featured here as our story unfolds.",
-    link: "#",
-    isPlaceholder: true
+    id: 104,
+    title:
+      "Cyber Enviro-Tech Positions AirPower Technology Agreement to Support U.S. Energy Independence Following April 2026 Presidential Actions",
+    publication: "PR Newswire",
+    date: "April 21, 2026",
+    excerpt:
+      "Wire: CETI frames its AirPower platform alongside April 2026 Presidential Actions on U.S. energy infrastructure, grid resilience, and domestically deployable clean energy solutions.",
+    link: "https://www.prnewswire.com/news-releases/cyber-enviro-tech-positions-airpower-technology-agreement-to-support-us-energy-independence-following-april-2026-presidential-actions-302749051.html",
+    coverageType: "news",
   },
   {
-    id: 2,
-    title: "Expert Analysis",
-    publication: "Coming Soon", 
-    date: "Stay Tuned",
-    excerpt: "In-depth analysis and commentary from industry experts and thought leaders in clean energy.",
-    link: "#",
-    isPlaceholder: true
+    id: 103,
+    title:
+      "Cyber Enviro-Tech Inc Expands Board with AirPower CEO, Strengthens Leadership and Advances $200M+ Clean Energy Opportunities",
+    publication: "OTC Markets",
+    date: "April 7, 2026",
+    excerpt:
+      "CETI stock news: Brianna Stoecklein, CEO of Air Power USA, joins Cyber Enviro-Tech’s board—aligning leadership with the AirPower licensing path and framing a $200M+ clean energy opportunity set.",
+    link: "https://www.otcmarkets.com/stock/CETI/news/Cyber-Enviro-Tech-Inc-Expands-Board-with-AirPower-CEO-Strengthens-Leadership-and-Advances-200M-Clean-Energy-Opportunitie?id=516473",
+    coverageType: "news",
   },
   {
-    id: 3,
-    title: "Media Interviews",
-    publication: "Coming Soon",
-    date: "Stay Tuned", 
-    excerpt: "Interviews with our leadership team and technical experts as featured in various media outlets.",
-    link: "#",
-    isPlaceholder: true
-  }
+    id: 102,
+    title:
+      "Cyber Enviro-Tech Receives Initial Order Inquiry for AirPower Systems in Africa",
+    publication: "PR Newswire",
+    date: "March 27, 2026",
+    excerpt:
+      "Wire coverage of CETI’s early-stage inquiry for approximately 85 AirPower 3MW portable power stations in Africa—potential scale, 2026 delivery timing, and support from AirPower USA under the licensing agreement.",
+    link: "https://www.prnewswire.com/news-releases/cyber-enviro-tech-receives-initial-order-inquiry-for-airpower-systems-in-africa-highlighting-early-commercial-traction-following-recent-licensing-agreement-302727219.html",
+    coverageType: "news",
+  },
+  {
+    id: 101,
+    title: "CETI Bets on Compressed Air for Global Energy Pivot",
+    publication: "BriefGlance",
+    date: "March 23, 2026",
+    excerpt:
+      "Editorial analysis of Cyber Enviro-Tech’s exclusive manufacturing and distribution agreement with Air Power USA—compressed-air technology, target regions, and the path to commercialization.",
+    link: "https://briefglance.com/articles/ceti-bets-on-compressed-air-for-global-energy-pivot",
+    coverageType: "analysis",
+  },
 ];
+
+const pressGridContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.06 } },
+};
+const pressGridItem = {
+  hidden: { opacity: 0, y: 14 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
 // Curated external reads (not specifically about AirPower)
 const industryInsights = [
@@ -125,6 +208,31 @@ export default function NewsSection() {
     return bd - ad;
   });
 
+  const heroMedia =
+    mediaCoverage.find(
+      (m) => m.pinToHero && !m.isPlaceholder && m.link && m.link !== "#",
+    ) ?? null;
+
+  const featuredRelease =
+    !heroMedia &&
+    sortedPressReleases[0] &&
+    !sortedPressReleases[0].isPlaceholder &&
+    sortedPressReleases[0].contentUrl
+      ? sortedPressReleases[0]
+      : null;
+
+  const featuredMedia =
+    !heroMedia &&
+    (mediaCoverage.find((m) => !m.isPlaceholder && m.link && m.link !== "#") ?? null);
+
+  const heroSecondaryPressRelease =
+    heroMedia &&
+    sortedPressReleases[0] &&
+    !sortedPressReleases[0].isPlaceholder &&
+    sortedPressReleases[0].contentUrl
+      ? sortedPressReleases[0]
+      : null;
+
   useEffect(() => {
     const url = (isEs && selected?.contentUrlEs) ? selected?.contentUrlEs : selected?.contentUrl;
     if (!url) {
@@ -152,11 +260,130 @@ export default function NewsSection() {
     };
   }, [isEs, selected?.contentUrl, selected?.contentUrlEs]);
   return (
-    <section className="py-24 bg-card/50">
+    <section className="py-24 bg-gradient-to-b from-background via-slate-950/20 to-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        
+        {(heroMedia || featuredRelease) && (
+          <motion.div
+            className="mb-16"
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div
+              className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/95 via-slate-950 to-blue-950/90 shadow-2xl shadow-blue-950/40"
+              role="article"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,rgba(59,130,246,0.18),transparent_55%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_0%_100%,rgba(6,182,212,0.12),transparent_50%)]" />
+              <div className="relative grid gap-10 p-8 md:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:p-12 items-center">
+                <div>
+                  <div className="mb-5 flex flex-wrap items-center gap-2">
+                    <Badge className="border-0 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+                      <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+                      {t("featured.badge")}
+                    </Badge>
+                    <Badge variant="outline" className="border-white/20 bg-white/5 text-foreground">
+                      {heroMedia
+                        ? heroMedia.publication
+                        : featuredRelease!.category}
+                    </Badge>
+                    <span className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="mr-1 h-4 w-4" />
+                      {heroMedia ? heroMedia.date : featuredRelease!.date}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl lg:leading-tight">
+                    {heroMedia
+                      ? heroMedia.title
+                      : isEs && featuredRelease!.titleEs
+                        ? featuredRelease!.titleEs
+                        : featuredRelease!.title}
+                  </h3>
+                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                    {heroMedia
+                      ? heroMedia.excerpt
+                      : isEs && featuredRelease!.excerptEs
+                        ? featuredRelease!.excerptEs
+                        : featuredRelease!.excerpt}
+                  </p>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                    {heroMedia ? (
+                      <>
+                        <a
+                          href={heroMedia.link}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="inline-flex"
+                        >
+                          <Button
+                            size="lg"
+                            className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-900/30 hover:from-blue-500 hover:to-cyan-500"
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            {t("coverage.readArticle")}
+                          </Button>
+                        </a>
+                        {heroSecondaryPressRelease && (
+                          <Button
+                            size="lg"
+                            variant="outline"
+                            className="border-white/20 bg-white/5 hover:bg-white/10"
+                            onClick={() => setSelected(heroSecondaryPressRelease)}
+                          >
+                            <FileText className="mr-2 h-4 w-4" />
+                            {t("featured.readRelease")}
+                          </Button>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <Button
+                          size="lg"
+                          className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-900/30 hover:from-blue-500 hover:to-cyan-500"
+                          onClick={() => setSelected(featuredRelease!)}
+                        >
+                          <FileText className="mr-2 h-4 w-4" />
+                          {t("featured.readRelease")}
+                        </Button>
+                        {featuredMedia && (
+                          <a
+                            href={featuredMedia.link}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            className="inline-flex"
+                          >
+                            <Button
+                              size="lg"
+                              variant="outline"
+                              className="border-white/20 bg-white/5 hover:bg-white/10"
+                            >
+                              <ExternalLink className="mr-2 h-4 w-4" />
+                              {t("featured.relatedCoverage")}
+                            </Button>
+                          </a>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </div>
+                <div className="relative mx-auto aspect-[4/3] w-full max-w-lg lg:max-w-none">
+                  <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                  <Image
+                    src="/media/images/air_tanks.png"
+                    alt="Air Power USA compressed air energy systems"
+                    fill
+                    className="rounded-2xl object-cover ring-1 ring-white/10"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Press Releases */}
-        <div className="mb-20">
+        <div className="mb-20 rounded-3xl border border-border/50 bg-gradient-to-b from-card/40 to-muted/10 p-6 shadow-inner shadow-black/20 md:p-10">
           <div className="mx-auto max-w-3xl text-center mb-12">
             <Badge variant="secondary" className="mb-4">
               {t('press.badge', { default: 'Official Updates' })}
@@ -172,11 +399,17 @@ export default function NewsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={pressGridContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-40px" }}
+          >
             {sortedPressReleases.map((release) => (
+              <motion.div key={release.id} variants={pressGridItem}>
               <Card 
-                key={release.id} 
-                className={`group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] ${release.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}
+                className={`group h-full border-border/50 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-950/10 transition-all duration-300 hover:scale-[1.02] ${release.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}
                 onClick={() => {
                   if (!release.isPlaceholder && release.contentUrl) setSelected(release);
                 }}
@@ -220,67 +453,13 @@ export default function NewsSection() {
                   )}
                 </CardContent>
               </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
-
-        {/* Industry Insights */}
-        <div className="mt-4 mb-20">
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <Badge variant="secondary" className="mb-4">
-              {t('insights.badge', { default: 'Curated Reads' })}
-            </Badge>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {t('insights.titleTop', { default: 'Industry' })}
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-300">
-                {t('insights.titleBottom', { default: 'Insights' })}
-              </span>
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              {t('insights.subtitle', { default: 'Expert articles and explainers we recommend. External links open in a new tab.' })}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {industryInsights.map((article) => (
-              <Card key={article.id} className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="outline" className="bg-teal-500/10 text-teal-300 border-teal-500/20">Insight</Badge>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {article.date}
-                    </div>
-                  </div>
-                  <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                    {article.title}
-                  </CardTitle>
-                  <CardDescription className="font-medium text-primary">
-                    {article.publication}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {article.excerpt}
-                  </p>
-                  <a
-                    href={article.link}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                  >
-                    <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      {t('insights.read', { default: 'Read Article' })}
-                    </Button>
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Media Coverage */}
-        <div>
+        <div className="mb-20 rounded-3xl border border-border/40 bg-gradient-to-br from-violet-950/20 via-transparent to-slate-950/30 p-6 md:p-10">
           <div className="mx-auto max-w-3xl text-center mb-12">
             <Badge variant="secondary" className="mb-4">
               {t('coverage.badge', { default: 'External Coverage' })}
@@ -296,13 +475,21 @@ export default function NewsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            className={
+              mediaCoverage.length === 1
+                ? "grid grid-cols-1 gap-8 max-w-xl mx-auto"
+                : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            }
+          >
             {mediaCoverage.map((article) => (
-              <Card key={article.id} className={`group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] ${article.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}>
+              <Card key={article.id} className={`group border-border/50 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-950/15 transition-all duration-300 hover:scale-[1.02] ${article.isPlaceholder ? 'bg-muted/30 border-dashed border-2' : ''}`}>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="outline" className={`${article.isPlaceholder ? 'bg-purple-500/5 text-purple-400/60 border-purple-500/10 opacity-60' : 'bg-purple-500/10 text-purple-400 border-purple-500/20'}`}>
-                      External
+                      {article.coverageType && !article.isPlaceholder
+                        ? t(`coverage.types.${article.coverageType}`)
+                        : t("coverage.external")}
                     </Badge>
                     <div className="flex items-center text-sm text-muted-foreground">
                       <Calendar className="w-4 h-4 mr-1" />
@@ -333,10 +520,71 @@ export default function NewsSection() {
                     >
                       <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Read Article
+                        {t("coverage.readArticle")}
                       </Button>
                     </a>
                   )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Industry Insights */}
+        <div className="mb-20 rounded-3xl border border-border/40 bg-gradient-to-br from-slate-950/30 via-transparent to-emerald-950/10 p-6 md:p-10">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <Badge variant="secondary" className="mb-4">
+              {t('insights.badge', { default: 'Curated Reads' })}
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              {t('insights.titleTop', { default: 'Industry' })}
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-300">
+                {t('insights.titleBottom', { default: 'Insights' })}
+              </span>
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+              {t('insights.subtitle', { default: 'Expert articles and explainers we recommend. External links open in a new tab.' })}
+            </p>
+          </div>
+
+          <div
+            className={
+              industryInsights.length === 1
+                ? "grid grid-cols-1 gap-8 max-w-xl mx-auto"
+                : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            }
+          >
+            {industryInsights.map((article) => (
+              <Card key={article.id} className="group border-border/50 hover:border-emerald-500/25 hover:shadow-lg hover:shadow-emerald-950/10 transition-all duration-300 hover:scale-[1.02]">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="outline" className="bg-teal-500/10 text-teal-300 border-teal-500/20">Insight</Badge>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {article.date}
+                    </div>
+                  </div>
+                  <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
+                    {article.title}
+                  </CardTitle>
+                  <CardDescription className="font-medium text-primary">
+                    {article.publication}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    {article.excerpt}
+                  </p>
+                  <a
+                    href={article.link}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                  >
+                    <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      {t('insights.read', { default: 'Read Article' })}
+                    </Button>
+                  </a>
                 </CardContent>
               </Card>
             ))}

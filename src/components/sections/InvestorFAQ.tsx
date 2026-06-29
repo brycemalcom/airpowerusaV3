@@ -102,7 +102,7 @@ export default function InvestorFAQ({ showTitle = true, className = "" }: Invest
                 invest@airpowerusa.net
               </a>
               <div className="text-slate-600">
-                <span className="font-medium">{t('bottom.phone')} </span> 214.257.7957
+                <span className="font-medium">{t('bottom.phone')} </span> 214.885.2657
               </div>
             </div>
           </div>
