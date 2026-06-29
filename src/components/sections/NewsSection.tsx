@@ -41,6 +41,16 @@ type MediaCoverageItem = {
 
 const pressReleases: PressRelease[] = [
   {
+    id: 109,
+    title:
+      "Cyber Enviro-Tech, Inc. Highlights AirPower Relationship and Global Clean Energy Market Opportunity",
+    excerpt:
+      "CETI highlights its AirPower relationship and exclusive territory rights, positioning to pursue commercial opportunities across a described $2.4T clean energy and $847B off-grid market.",
+    date: "June 29, 2026",
+    category: "Official Updates",
+    contentUrl: "/press/2026-06-29-ceti-airpower-global-clean-energy-market-opportunity.html",
+  },
+  {
     id: 108,
     title:
       "Cyber Enviro-Tech Positions AirPower Technology Agreement to Support U.S. Energy Independence Following April 2026 Presidential Actions",
